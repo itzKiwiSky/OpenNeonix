@@ -150,9 +150,9 @@ function player:update(elapsed)
 
         if not self.properties.isGrounded then
             if self.properties.isPlayerBackwards then
-                self.properties.rotation = self.properties.rotation - 5
+                self.properties.rotation = self.properties.rotation - 10
             else
-                self.properties.rotation = self.properties.rotation + 5
+                self.properties.rotation = self.properties.rotation + 10
             end
         else
             self.properties.rotation = 0
@@ -209,6 +209,9 @@ function player:update(elapsed)
         if collision.rectRect(self.hitboxes.spikeHitbox, spike.hitbox) then
             self.properties.dead = true
         end
+    end
+    if self.properties.dead then
+        playstate:enter()
     end
     cam:lookAt(self.x, self.y)
 end

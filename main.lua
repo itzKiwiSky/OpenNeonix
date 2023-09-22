@@ -28,16 +28,10 @@ function love.load(args)
     loveconsole:init()
 
     -- resources --
-    fonts = {
-        alien = love.graphics.newFont("resources/fonts/alien.ttf", 12),
-        quicksand = {
-            light = love.graphics.newFont("resources/fonts/quicksand-light.ttf", 12),
-            bold = love.graphics.newFont("resources/fonts/quicksand-bold.ttf", 12),
-            medium = love.graphics.newFont("resources/fonts/quicksand-medium.ttf", 12),
-            regular = love.graphics.newFont("resources/fonts/quicksand-regular.ttf", 12),
-            semibold = love.graphics.newFont("resources/fonts/quicksand-semibold.ttf", 12),
-        },
+    registers = {
+        showHitboxes = false
     }
+    require('src.Components.Init')()
 
     -- addons loader --
     Addons = love.filesystem.getDirectoryItems("libraries/addons")
