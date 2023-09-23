@@ -1,0 +1,14 @@
+{
+    "_DESCRIPTION_" : [
+        "This file ccontains metadata about all levels, including data about songs, metadata and mapadata itself",
+        "If you want create your own map"
+    ],
+    "maps" : [
+        {
+            "name" : "dubnix",
+            "songFile" : "dubnix.ogg",
+            "mapData" : "dubnix.lua",
+            "mapType" : "gdplay"
+        }
+    ]
+}

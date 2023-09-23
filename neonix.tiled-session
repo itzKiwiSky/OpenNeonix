@@ -5,8 +5,8 @@
     },
     "activeFile": "tmx/level1.tmx",
     "expandedProjectPaths": [
-        "tmx",
-        "."
+        ".",
+        "tmx"
     ],
     "fileStates": {
         "": {
@@ -23,8 +23,8 @@
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 2281,
-                "y": 102
+                "x": 660,
+                "y": 8
             }
         },
         "tmx/level1.tmx#tiles": {
@@ -58,7 +58,7 @@
         "tmx/level1.tmx"
     ],
     "project": "neonix.tiled-project",
-    "property.type": "object",
+    "property.type": "color",
     "recentFiles": [
         "tmx/level1.tmx",
         "tmx/tiles.tsx",

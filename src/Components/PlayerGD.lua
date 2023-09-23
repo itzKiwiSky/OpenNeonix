@@ -30,9 +30,6 @@ function player:init(_x, _y)
     self.properties.playerColor.g = 255
     self.properties.playerColor.b = 255
 
-    self.debug.showHitbox = true
-    self.debug.showProperties = false
-
     self.hitboxes.master.x = _x
     self.hitboxes.master.y = _y
     self.hitboxes.master.w = 32
@@ -69,32 +66,34 @@ function player:init(_x, _y)
     
 end
 
+function player:drawHitbox()
+    love.graphics.setColor(1, 1, 0)
+    love.graphics.rectangle("line", self.hitboxes.front.x, self.hitboxes.front.y, self.hitboxes.front.w, self.hitboxes.front.h)
+    love.graphics.setColor(1, 1, 1)
+    love.graphics.setColor(1, 0, 1)
+    love.graphics.rectangle("line", self.hitboxes.back.x, self.hitboxes.back.y, self.hitboxes.back.w, self.hitboxes.back.h)
+    love.graphics.setColor(1, 1, 1)
+    love.graphics.setColor(0, 1, 1)
+    love.graphics.rectangle("line", self.hitboxes.head.x, self.hitboxes.head.y, self.hitboxes.head.w, self.hitboxes.head.h)
+    love.graphics.setColor(1, 1, 1)
+    love.graphics.setColor(1, 0.5, 0)
+    love.graphics.rectangle("line", self.hitboxes.foot.x, self.hitboxes.foot.y, self.hitboxes.foot.w, self.hitboxes.foot.h)
+    love.graphics.setColor(1, 1, 1)
+    love.graphics.setColor(0.5, 0, 0)
+    love.graphics.rectangle("line", self.hitboxes.spikeHitbox.x, self.hitboxes.spikeHitbox.y, self.hitboxes.spikeHitbox.w, self.hitboxes.spikeHitbox.h)
+    love.graphics.setColor(1, 1, 1)
+    love.graphics.rectangle("line", self.hitboxes.master.x, self.hitboxes.master.y, self.hitboxes.master.w, self.hitboxes.master.h)
+end
+
+function player:showStats()
+    local y = 0
+    for _, v in pairs(self.properties) do
+        love.graphics.print(_ .. " = " .. tostring(v), (self.x - 190), (self.y - 190) + y)
+        y = y + 15
+    end
+end
+
 function player:draw()
-    if self.debug.showHitbox then
-        love.graphics.setColor(1, 1, 0)
-        love.graphics.rectangle("line", self.hitboxes.front.x, self.hitboxes.front.y, self.hitboxes.front.w, self.hitboxes.front.h)
-        love.graphics.setColor(1, 1, 1)
-        love.graphics.setColor(1, 0, 1)
-        love.graphics.rectangle("line", self.hitboxes.back.x, self.hitboxes.back.y, self.hitboxes.back.w, self.hitboxes.back.h)
-        love.graphics.setColor(1, 1, 1)
-        love.graphics.setColor(0, 1, 1)
-        love.graphics.rectangle("line", self.hitboxes.head.x, self.hitboxes.head.y, self.hitboxes.head.w, self.hitboxes.head.h)
-        love.graphics.setColor(1, 1, 1)
-        love.graphics.setColor(1, 0.5, 0)
-        love.graphics.rectangle("line", self.hitboxes.foot.x, self.hitboxes.foot.y, self.hitboxes.foot.w, self.hitboxes.foot.h)
-        love.graphics.setColor(1, 1, 1)
-        love.graphics.setColor(0.5, 0, 0)
-        love.graphics.rectangle("line", self.hitboxes.spikeHitbox.x, self.hitboxes.spikeHitbox.y, self.hitboxes.spikeHitbox.w, self.hitboxes.spikeHitbox.h)
-        love.graphics.setColor(1, 1, 1)
-        love.graphics.rectangle("line", self.hitboxes.master.x, self.hitboxes.master.y, self.hitboxes.master.w, self.hitboxes.master.h)
-    end
-    if self.debug.showProperties then
-        local y = 0
-        for _, v in pairs(self.properties) do
-            love.graphics.print(_ .. " = " .. tostring(v), (self.x - 190), (self.y - 190) + y)
-            y = y + 15
-        end
-    end
     love.graphics.setColor(self.properties.playerColor.r / 255, self.properties.playerColor.g / 255,self.properties.playerColor.b / 255)
     love.graphics.draw(self.image, self.x + self.image:getWidth() / 2, self.y + self.image:getHeight() / 2, math.rad(self.properties.rotation), 1, 1, self.image:getWidth() / 2, self.image:getHeight() / 2)
     love.graphics.setColor(1, 1, 1)
@@ -102,7 +101,7 @@ end
 
 function player:update(elapsed)
     if not self.properties.dead then
-        self.properties.xVelocity = 5.5
+        self.properties.xVelocity = 5.2
         if not self.properties.isPlayerBackwards then
             self.x = self.x + self.properties.xVelocity
         else
@@ -150,9 +149,9 @@ function player:update(elapsed)
 
         if not self.properties.isGrounded then
             if self.properties.isPlayerBackwards then
-                self.properties.rotation = self.properties.rotation - 10
+                self.properties.rotation = self.properties.rotation - 7
             else
-                self.properties.rotation = self.properties.rotation + 10
+                self.properties.rotation = self.properties.rotation + 7
             end
         else
             self.properties.rotation = 0
@@ -213,7 +212,6 @@ function player:update(elapsed)
     if self.properties.dead then
         playstate:enter()
     end
-    cam:lookAt(self.x, self.y)
 end
 
 return player

@@ -4,6 +4,7 @@ function love.load(args)
     camera = require 'libraries.control.camera'
     timer = require 'libraries.control.timer'
     loveconsole = require 'libraries.control.loveconsole'
+    object = require 'libraries.control.object'
     -- filesystem --
     json = require 'libraries.filesystem.json'
     nativefs = require 'libraries.filesystem.nativefs'
@@ -32,7 +33,7 @@ function love.load(args)
         showHitboxes = false
     }
     require('src.Components.Init')()
-
+    
     -- addons loader --
     Addons = love.filesystem.getDirectoryItems("libraries/addons")
     for addon = 1, #Addons, 1 do
