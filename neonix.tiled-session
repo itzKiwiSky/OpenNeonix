@@ -23,8 +23,8 @@
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 660,
-                "y": 8
+                "x": -163,
+                "y": 12
             }
         },
         "tmx/level1.tmx#tiles": {
@@ -44,16 +44,33 @@
         "tmx/map01.tmx#tiles": {
             "scaleInDock": 1
         },
+        "tmx/menumap.tmx": {
+            "expandedObjectLayers": [
+                2,
+                3
+            ],
+            "scale": 1.5,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 189.99999999999994,
+                "y": 715.3333333333333
+            }
+        },
+        "tmx/menumap.tmx#tiles": {
+            "scaleInDock": 1
+        },
         "tmx/tiles.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         }
     },
-    "last.exportedFilePath": "C:/Users/choco/Desktop/Neonix!/resources/data/maps",
+    "last.exportedFilePath": "C:/Users/choco/Desktop/Neonix!/resources/data/maps/menu",
     "last.imagePath": "C:/Users/choco/Desktop/Neonix!/resources/images",
-    "map.fixedSize": false,
+    "map.fixedSize": true,
+    "map.height": 24,
     "map.lastUsedExportFilter": "Ficheiros Lua (*.lua)",
     "map.lastUsedFormat": "tmx",
+    "map.width": 44,
     "openFiles": [
         "tmx/level1.tmx"
     ],

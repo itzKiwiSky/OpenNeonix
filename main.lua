@@ -1,4 +1,6 @@
 function love.load(args)
+    love.math.setRandomSeed(os.time())
+
     -- control --
     gamestate = require 'libraries.control.gamestate'
     camera = require 'libraries.control.camera'
@@ -55,7 +57,7 @@ function love.load(args)
     end
 
     gamestate.registerEvents({'update', 'textinput', 'keypressed', 'mousepressed', 'mousereleased'})
-    gamestate.switch(playstate)
+    gamestate.switch(menustate)
 end
 
 function love.draw()

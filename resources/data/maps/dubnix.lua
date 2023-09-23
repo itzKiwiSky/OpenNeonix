@@ -25,7 +25,7 @@ return {
       spacing = 0,
       margin = 0,
       columns = 6,
-      image = "../../images/tiles.png",
+      image = "resources/images/tiles.png",
       imagewidth = 192,
       imageheight = 160,
       objectalignment = "unspecified",

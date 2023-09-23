@@ -741,8 +741,8 @@ Map.__index = Map
 -- path to the image.
 function Map:_loadImage(relativeImagePath)
 	if self._images[relativeImagePath] then return end
-	local imagePath = formatPath(self.dir .. relativeImagePath)
-	self._images[relativeImagePath] = love.graphics.newImage(imagePath)
+	--local imagePath = formatPath(self.dir .. relativeImagePath)
+	self._images[relativeImagePath] = love.graphics.newImage(relativeImagePath)
 end
 
 -- Loads all of the images used by the map.

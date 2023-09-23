@@ -11,4 +11,11 @@ return function()
         end
         love.graphics.setWireframe(toboolean(_value))
     end)
+    loveconsole:registerCommand("map_load", "Part of DrawingSettings | Set wireframe mode", function(_value)
+        if type(tonumber(_value)) == "number" then
+            playstate.currentLevel = tonumber(_value)
+            loveconsole:trace("[EVENT] : Loading map data")
+            gamestate.switch(playstate)
+        end
+    end)
 end

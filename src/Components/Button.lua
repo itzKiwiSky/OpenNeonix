@@ -18,23 +18,23 @@ end
 
 function button:draw()
     love.graphics.draw(self.image, self.x, self.y, 0, self.size, self.size, self.image:getWidth() / 2, self.image:getHeight() / 2)
-    love.graphics.rectangle("line", self.x - self.image:getWidth(), self.y - self.image:getHeight(), self.w * self.size, self.h * self.size)
+    --love.graphics.rectangle("line", self.x - self.image:getWidth() / 2, self.y - self.image:getHeight() / 2, self.w, self.h)
 end
 
-function button:mousepressed(x, y, button, _callback)
+function button:mousepressed(x, y, button)
     if button == 1 then
-        if x >= self.x and x <= self.x + self.w and y >= self.y and y <= self.y + self.h then
-            pcall(_callback)
+        if x >= self.x - self.image:getWidth() / 2 and x <= (self.x - self.image:getWidth() / 2) + self.w and y >= self.y - self.image:getHeight() / 2 and y <= (self.y - self.image:getHeight() / 2) + self.h then
+            return true
         end
     end
 end
 
-function button:isHovered(x, y, _callback, _callback2)
-    if x >= self.x - self.image:getWidth() and x <= (self.x - self.image:getWidth()) + self.w * self.size and y >= self.y - self.image:getHeight() and y <= (self.y - self.image:getHeight()) + self.h  * self.size then
-        pcall(_callback)
-    else
-        pcall(_callback2)
+function button:isHovered()
+    local x, y = love.mouse.getPosition()
+    if x >= self.x - self.image:getWidth() / 2 and x <= (self.x - self.image:getWidth() / 2) + self.w and y >= self.y - self.image:getHeight() / 2 and y <= (self.y - self.image:getHeight() / 2) + self.h then
+        return true
     end
+    return false
 end
 
 return button

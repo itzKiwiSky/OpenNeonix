@@ -9,6 +9,8 @@ function playstate:enter()
 
     effect = moonshine(moonshine.effects.glow)
 
+    --effect.disable("glow")
+
     mapMetaData = json.decode(love.filesystem.read("resources/data/Maps.json"))
 
     spikes = {}
