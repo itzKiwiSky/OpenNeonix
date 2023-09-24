@@ -4,6 +4,8 @@ function preloaderstate:enter()
     alien = love.graphics.newFont("resources/fonts/alien.ttf", 100)
     percentage = 0
     effect = moonshine(moonshine.effects.glow)
+
+    
 end
 
 function preloaderstate:draw()
@@ -23,7 +25,10 @@ function preloaderstate:draw()
 end
 
 function preloaderstate:update(elapsed)
-    
+    percentage = percentage + love.math.random(1, 5)
+    if percentage >= 100 then
+        gamestate.switch(menustate)
+    end
 end
 
 return preloaderstate

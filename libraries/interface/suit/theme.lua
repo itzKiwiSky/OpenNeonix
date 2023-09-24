@@ -18,7 +18,7 @@ function theme.getColorForState(opt)
 	return (opt.color and opt.color[opt.state]) or theme.color[s]
 end
 
-function theme.drawBox(x,y,w,h, colors, cornerRadius)
+function theme.drawBox(x,y,w,h, colors, cornerRadius, _line)
 	colors = colors or theme.getColorForState(opt)
 	cornerRadius = cornerRadius or theme.cornerRadius
 	w = math.max(cornerRadius/2, w)
@@ -27,7 +27,13 @@ function theme.drawBox(x,y,w,h, colors, cornerRadius)
 	end
 
 	love.graphics.setColor(colors.bg)
-	love.graphics.rectangle('fill', x,y, w,h, cornerRadius)
+	
+	if _line then
+		love.graphics.rectangle('line', x,y, w,h, cornerRadius)
+	else
+		love.graphics.rectangle('fill', x,y, w,h, cornerRadius)
+	end
+	love.graphics.setColor(1, 1, 1, 1)
 end
 
 function theme.getVerticalOffsetForAlign(valign, font, h)
@@ -52,7 +58,7 @@ end
 function theme.Button(text, opt, x,y,w,h)
 	local c = theme.getColorForState(opt)
 
-	theme.drawBox(x,y,w,h, c, opt.cornerRadius)
+	theme.drawBox(x,y,w,h, c, opt.cornerRadius, opt.line)
 	love.graphics.setColor(c.fg)
 	love.graphics.setFont(opt.font)
 

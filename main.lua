@@ -7,6 +7,7 @@ function love.load(args)
     timer = require 'libraries.control.timer'
     loveconsole = require 'libraries.control.loveconsole'
     object = require 'libraries.control.object'
+    lume = require 'libraries.control.lume'
     -- filesystem --
     json = require 'libraries.filesystem.json'
     nativefs = require 'libraries.filesystem.nativefs'
@@ -34,6 +35,26 @@ function love.load(args)
     registers = {
         showHitboxes = false
     }
+    _SaveData_ = {
+        playerdata = {
+            r = 255,
+            g = 255,
+            b = 255
+        },
+        achieviments = {},
+        levelsCompleted = {},
+        settings = {
+            glowShader = true,
+            blurShaderMenu = true,
+            musicVolume = 6
+        }
+    }
+    _initializeSave()
+
+    love.graphics.setNewFont("resources/fonts/quicksand-medium.ttf", 20)
+
+    love.audio.setVolume(_SaveData_.settings.musicVolume / 10)
+
     require('src.Components.Init')()
     
     -- addons loader --
@@ -57,7 +78,7 @@ function love.load(args)
     end
 
     gamestate.registerEvents({'update', 'textinput', 'keypressed', 'mousepressed', 'mousereleased'})
-    gamestate.switch(menustate)
+    gamestate.switch(preloaderstate)
 end
 
 function love.draw()
@@ -103,4 +124,33 @@ function _declareFonts(size)
             semibold = love.graphics.newFont("resources/fonts/quicksand-semibold.ttf", size),
         },
     }
+end
+
+function _initializeSave()
+    if not love.filesystem.getInfo("nxdata.nxsave") then
+        savefile = love.filesystem.newFile("nxdata.nxsave", "w")
+        savefile:write(lume.serialize(_SaveData_))
+        savefile:close()
+    end
+    _loadData()
+end
+
+function _saveDataTable()
+    if not love.filesystem.getInfo("nxdata.nxsave") then
+        savefile = love.filesystem.newFile("nxdata.nxsave", "w")
+        savefile:write(lume.serialize(_SaveData_))
+        savefile:close()
+    else
+        love.filesystem.write("nxdata.nxsave", lume.serialize(_SaveData_))
+    end
+end
+
+function _loadData()
+    if not love.filesystem.getInfo("nxdata.nxsave") then
+        savefile = love.filesystem.newFile("nxdata.nxsave", "w")
+        savefile:write(lume.serialize(_SaveData_))
+        savefile:close()
+    else
+        _SaveData_ = lume.deserialize(love.filesystem.read("nxdata.nxsave"))
+    end
 end

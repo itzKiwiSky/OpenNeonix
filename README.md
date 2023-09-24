@@ -1,8 +1,19 @@
-# LuminaToolKit Project Template
+![Alt text](assets/logo.png)
 
-LuminaToolKit is a simple collection of libraries, folders, pre-built scripts and addons that help you develop your games with Love2D game framework.
+# OpenNeonix!
 
-## Libraries Used
+OpenNeonix! (originally knows as Neonix! Zerodown) is a open source platform music based game
+
+## Building
+### [1] - LÖVE Enviroment
+Make sure you have LÖVE 11.4 (Misterous Mysteries) installed on your machine and configured the path on the enviroment variables
+
+> To test if LÖVE is installed and the path is configured open your terminal and type "love", if it opens the LÖVE app that show it is installed correctly.
+
+### [2] - Run with the script
+On Windows machines it comes with a `boot.cmd` file, just run it and it will boot up the game
+
+## Libraries Used and Some credits
 
 ### [Json - Actboy168](https://github.com/actboy168/json.lua/blob/master/json.lua)
 ### [Hump.Camera - Vlrd](https://github.com/vrld/hump)
@@ -17,3 +28,5 @@ LuminaToolKit is a simple collection of libraries, folders, pre-built scripts an
 ### [Collision - V3X3D](https://gitlab.com/V3X3D/love-libs/-/tree/master/CollisionLib)
 ### [G3D - groverburguer](https://github.com/groverburger/g3d)
 ### [LoveConsole - StrawberryChocolate (me :D)](https://github.com/Doge2Dev/LoveConsole)
+### [Lume - rxi](https://github.com/rxi/lume/)
+### [Object.lua - StrawberryChocolate (me again :3)](https://github.com/Doge2Dev/Object.lua)

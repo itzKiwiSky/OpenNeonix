@@ -3,10 +3,10 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "tmx/level1.tmx",
+    "activeFile": "tmx/menumap2.tmx",
     "expandedProjectPaths": [
-        ".",
-        "tmx"
+        "tmx",
+        "."
     ],
     "fileStates": {
         "": {
@@ -23,8 +23,8 @@
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -163,
-                "y": 12
+                "x": -165,
+                "y": 11
             }
         },
         "tmx/level1.tmx#tiles": {
@@ -46,17 +46,28 @@
         },
         "tmx/menumap.tmx": {
             "expandedObjectLayers": [
-                2,
-                3
+                3,
+                2
             ],
             "scale": 1.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 189.99999999999994,
-                "y": 715.3333333333333
+                "x": 188,
+                "y": 714
             }
         },
         "tmx/menumap.tmx#tiles": {
+            "scaleInDock": 1
+        },
+        "tmx/menumap2.tmx": {
+            "scale": 1,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 562,
+                "y": 597
+            }
+        },
+        "tmx/menumap2.tmx#tiles": {
             "scaleInDock": 1
         },
         "tmx/tiles.tsx": {
@@ -72,11 +83,15 @@
     "map.lastUsedFormat": "tmx",
     "map.width": 44,
     "openFiles": [
-        "tmx/level1.tmx"
+        "tmx/level1.tmx",
+        "tmx/menumap.tmx",
+        "tmx/menumap2.tmx"
     ],
     "project": "neonix.tiled-project",
     "property.type": "color",
     "recentFiles": [
+        "tmx/menumap2.tmx",
+        "tmx/menumap.tmx",
         "tmx/level1.tmx",
         "tmx/tiles.tsx",
         "tmx/map01.tmx"

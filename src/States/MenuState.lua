@@ -8,7 +8,9 @@ function menustate:enter()
     blocks = {}
     jumpObjects = {}
 
-    menuSoundAbstraction = love.audio.newSource("resources/sounds/abstraction.ogg", "static")
+    if not menuSoundAbstraction then
+        menuSoundAbstraction = love.audio.newSource("resources/sounds/abstraction.ogg", "static")
+    end
     alien = love.graphics.newFont("resources/fonts/alien.ttf", 100)
 
     playBtn = button.new("resources/images/playBtn.png", love.graphics.getWidth() / 2, love.graphics.getHeight() / 2)
@@ -43,11 +45,19 @@ function menustate:enter()
 
     effect = moonshine(moonshine.effects.boxblur).chain(moonshine.effects.glow)
     effect.boxblur.radius = {6, 6}
+    glowEffect = moonshine(moonshine.effects.glow)
+
+    playerEdit = object.new(love.graphics.getWidth() / 2 - 350, 150)
+    playerEdit:loadGraphic("resources/images/player.png")
+    playerEdit.sizeX = 2.5
+    playerEdit.sizeY = 2.5
+    playerEdit:centerOrigin()
 end
 
 function menustate:draw()
     effect(function()
         menumap:draw()
+        love.graphics.setColor(_SaveData_.playerdata.r / 255, _SaveData_.playerdata.g / 255, _SaveData_.playerdata.b / 255)
         playerMenu:draw()
     end)
     love.graphics.setColor(0.4, 0.4, 0.4)
@@ -59,11 +69,15 @@ function menustate:draw()
     love.graphics.print("Neonix!", alien, love.graphics.getWidth() / 2, 150, 0, 1, 1, alien:getWidth("Neonix!") / 2, alien:getHeight() / 2)
     playBtn:draw()
     editPlayerBtn:draw()
+    glowEffect(function()
+        playerEdit:draw()
+    end)
 end
 
 function menustate:update(elapsed)
+    playerEdit.angle = playerEdit.angle - 0.02
     if not menuSoundAbstraction:isPlaying() then
-        --menuSoundAbstraction:play()
+        menuSoundAbstraction:play()
     end
     playerMenu:update(elapsed)
     if playBtn:isHovered() then
@@ -81,6 +95,9 @@ end
 function menustate:mousepressed(x, y, button)
     if playBtn:mousepressed(x, y, button) then
         print("click")
+    end
+    if editPlayerBtn:mousepressed(x, y, button) then
+        gamestate.switch(playereditmenustate)
     end
 end
 
