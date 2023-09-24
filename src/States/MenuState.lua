@@ -12,6 +12,7 @@ function menustate:enter()
         menuSoundAbstraction = love.audio.newSource("resources/sounds/abstraction.ogg", "static")
     end
     alien = love.graphics.newFont("resources/fonts/alien.ttf", 100)
+    alienMini = love.graphics.newFont("resources/fonts/alien.ttf", 20)
 
     playBtn = button.new("resources/images/playBtn.png", love.graphics.getWidth() / 2, love.graphics.getHeight() / 2)
     playBtn.size = 2
@@ -67,6 +68,14 @@ function menustate:draw()
     love.graphics.print("Neonix!", alien, love.graphics.getWidth() / 2, 155, 0, 1, 1, alien:getWidth("Neonix!") / 2, alien:getHeight() / 2)
     love.graphics.setColor(1, 1, 1)
     love.graphics.print("Neonix!", alien, love.graphics.getWidth() / 2, 150, 0, 1, 1, alien:getWidth("Neonix!") / 2, alien:getHeight() / 2)
+
+    love.graphics.setColor(0.4, 0.4, 0.4)
+    love.graphics.print("Zerodown!", alienMini, love.graphics.getWidth() / 2, 241, 0, 1, 1, alien:getWidth("Neonix!") / 2, alien:getHeight() / 2)
+    love.graphics.setColor(1, 1, 1)
+    love.graphics.setColor(0.8, 0.8, 0.8)
+    love.graphics.print("Zerodown!", alienMini, love.graphics.getWidth() / 2, 238, 0, 1, 1, alien:getWidth("Neonix!") / 2, alien:getHeight() / 2)
+    love.graphics.setColor(1, 1, 1)
+    love.graphics.print("Zerodown!", alienMini, love.graphics.getWidth() / 2, 235, 0, 1, 1, alien:getWidth("Neonix!") / 2, alien:getHeight() / 2)
     playBtn:draw()
     editPlayerBtn:draw()
     glowEffect(function()
