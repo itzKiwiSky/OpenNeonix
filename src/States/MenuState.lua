@@ -105,7 +105,7 @@ end
 function menustate:mousepressed(x, y, button)
     if playBtn:mousepressed(x, y, button) then
         menuSoundAbstraction:stop()
-        gamestate.switch(playstate)
+        gamestate.switch(levelselectmenustate)
     end
     if editPlayerBtn:mousepressed(x, y, button) then
         gamestate.switch(playereditmenustate)

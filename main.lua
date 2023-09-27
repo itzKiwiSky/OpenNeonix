@@ -79,7 +79,7 @@ function love.load(args)
     end
 
     gamestate.registerEvents({'update', 'textinput', 'keypressed', 'mousepressed', 'mousereleased'})
-    gamestate.switch(levelselectmenustate)
+    gamestate.switch(preloaderstate)
 end
 
 function love.draw()
