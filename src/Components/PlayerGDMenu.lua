@@ -1,6 +1,6 @@
-local player = {}
+local playermenu = {}
 
-function player:init(_x, _y)
+function playermenu:init(_x, _y)
     self.x = _x
     self.y = _y
     self.image = love.graphics.newImage("resources/images/player.png")
@@ -66,7 +66,7 @@ function player:init(_x, _y)
     
 end
 
-function player:drawHitbox()
+function playermenu:drawHitbox()
     love.graphics.setColor(1, 1, 0)
     love.graphics.rectangle("line", self.hitboxes.front.x, self.hitboxes.front.y, self.hitboxes.front.w, self.hitboxes.front.h)
     love.graphics.setColor(1, 1, 1)
@@ -85,7 +85,7 @@ function player:drawHitbox()
     love.graphics.rectangle("line", self.hitboxes.master.x, self.hitboxes.master.y, self.hitboxes.master.w, self.hitboxes.master.h)
 end
 
-function player:showStats()
+function playermenu:showStats()
     local y = 0
     for _, v in pairs(self.properties) do
         love.graphics.print(_ .. " = " .. tostring(v), (self.x - 190), (self.y - 190) + y)
@@ -93,13 +93,13 @@ function player:showStats()
     end
 end
 
-function player:draw()
+function playermenu:draw()
     love.graphics.setColor(self.properties.playerColor.r / 255, self.properties.playerColor.g / 255,self.properties.playerColor.b / 255)
     love.graphics.draw(self.image, self.x + self.image:getWidth() / 2, self.y + self.image:getHeight() / 2, math.rad(self.properties.rotation), 1, 1, self.image:getWidth() / 2, self.image:getHeight() / 2)
     love.graphics.setColor(1, 1, 1)
 end
 
-function player:update(elapsed)
+function playermenu:update(elapsed)
     if not self.properties.dead then
         self.properties.xVelocity = 5.2
         if not self.properties.isPlayerBackwards then
@@ -194,7 +194,7 @@ function player:update(elapsed)
     end
     for _, jumpCollider in ipairs(jumpObjects) do
         if collision.rectRect(self.hitboxes.master, jumpCollider.hitbox) then
-            player:jump()
+            playermenu:jump()
         end
     end
     if collision.rectRect(self.hitboxes.master, endBlock.hitbox) then
@@ -203,7 +203,7 @@ function player:update(elapsed)
     end
 end
 
-function player:jump()
+function playermenu:jump()
     if not self.properties.isJumping and self.properties.isGrounded then
         self.properties.isJumping = true
         self.properties.isGrounded = false
@@ -215,4 +215,4 @@ function player:jump()
     end
 end
 
-return player
+return playermenu

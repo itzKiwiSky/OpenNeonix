@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "tmx/menumap2.tmx",
+    "activeFile": "tmx/level1.tmx",
     "expandedProjectPaths": [
         "tmx",
         "."
@@ -16,15 +16,29 @@
         "#tiles": {
             "scaleInDock": 1
         },
+        "tmx/dubnix-plataform.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 384.5,
+                "y": -39
+            }
+        },
+        "tmx/dubnix-plataform.tmx#tiles": {
+            "scaleInDock": 1
+        },
         "tmx/level1.tmx": {
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 1,
+            "scale": 0.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -165,
-                "y": 11
+                "x": 9434,
+                "y": -40
             }
         },
         "tmx/level1.tmx#tiles": {
@@ -75,24 +89,23 @@
             "scaleInEditor": 1
         }
     },
-    "last.exportedFilePath": "C:/Users/choco/Desktop/Neonix!/resources/data/maps/menu",
+    "last.exportedFilePath": "C:/Users/choco/Desktop/Neonix!/resources/data/maps",
     "last.imagePath": "C:/Users/choco/Desktop/Neonix!/resources/images",
-    "map.fixedSize": true,
+    "map.fixedSize": false,
     "map.height": 24,
     "map.lastUsedExportFilter": "Ficheiros Lua (*.lua)",
     "map.lastUsedFormat": "tmx",
     "map.width": 44,
     "openFiles": [
-        "tmx/level1.tmx",
-        "tmx/menumap.tmx",
-        "tmx/menumap2.tmx"
+        "tmx/level1.tmx"
     ],
     "project": "neonix.tiled-project",
     "property.type": "color",
     "recentFiles": [
+        "tmx/level1.tmx",
+        "tmx/dubnix-plataform.tmx",
         "tmx/menumap2.tmx",
         "tmx/menumap.tmx",
-        "tmx/level1.tmx",
         "tmx/tiles.tsx",
         "tmx/map01.tmx"
     ],

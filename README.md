@@ -1,4 +1,4 @@
-![Alt text](assets/logo.png)
+![](assets/logo.png)
 
 # OpenNeonix!
 
@@ -30,3 +30,4 @@ On Windows machines it comes with a `boot.cmd` file, just run it and it will boo
 ### [LoveConsole - StrawberryChocolate (me :D)](https://github.com/Doge2Dev/LoveConsole)
 ### [Lume - rxi](https://github.com/rxi/lume/)
 ### [Object.lua - StrawberryChocolate (me again :3)](https://github.com/Doge2Dev/Object.lua)
+### [Abstraction (The Impossible Game OST) - Vaporize](https://www.newgrounds.com/audio/listen/56709)

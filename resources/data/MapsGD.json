@@ -7,8 +7,7 @@
         {
             "name" : "dubnix",
             "songFile" : "dubnix.ogg",
-            "mapData" : "dubnix.lua",
-            "mapType" : "gdplay"
+            "mapData" : "dubnix.lua"
         }
     ]
 }

@@ -6,12 +6,9 @@ function playstate:enter()
     spike = require 'src.Components.Spike'
     player = require 'src.Components.PlayerGD'
     block = require 'src.Components.Block'
-
-    effect = moonshine(moonshine.effects.glow)
-
-    --effect.disable("glow")
-
-    mapMetaData = json.decode(love.filesystem.read("resources/data/Maps.json"))
+    shaderControl = require 'src.Components.Shader'
+    
+    mapMetaData = json.decode(love.filesystem.read("resources/data/MapsGD.json"))
 
     spikes = {}
     blocks = {}
@@ -51,15 +48,21 @@ function playstate:enter()
     scroll.hitbox.h = 32
     scroll.properties.scrollX = scroll.x
     scroll.properties.scrollY = scroll.y
+
+    --love.graphics.setBackgroundColor(0.3, 0.3, 0.3)
+
+    shaderControl:init()
+    shaderControl:send("objectPosition", {scroll.x + 600, scroll.y})
+    shaderControl:send("radius", 500)
 end
 
 function playstate:draw()
-    effect(function()
+    shaderControl:attach()
         cam:attach()
             map:draw()
             player:draw()
         cam:detach()
-    end)
+    shaderControl:detach()
 end
 
 function playstate:update(elapsed)

@@ -46,7 +46,8 @@ function love.load(args)
         settings = {
             glowShader = true,
             blurShaderMenu = true,
-            musicVolume = 6
+            musicVolume = 6,
+            menuMusic = "vaporize",
         }
     }
     _initializeSave()
@@ -78,7 +79,7 @@ function love.load(args)
     end
 
     gamestate.registerEvents({'update', 'textinput', 'keypressed', 'mousepressed', 'mousereleased'})
-    gamestate.switch(preloaderstate)
+    gamestate.switch(levelselectmenustate)
 end
 
 function love.draw()

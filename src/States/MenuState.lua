@@ -56,11 +56,12 @@ function menustate:enter()
 end
 
 function menustate:draw()
-    effect(function()
-        menumap:draw()
+    ---effect(function()
         love.graphics.setColor(_SaveData_.playerdata.r / 255, _SaveData_.playerdata.g / 255, _SaveData_.playerdata.b / 255)
         playerMenu:draw()
-    end)
+        love.graphics.setColor(1, 1, 1)
+        menumap:draw()
+    --end)
     love.graphics.setColor(0.4, 0.4, 0.4)
     love.graphics.print("Neonix!", alien, love.graphics.getWidth() / 2, 160, 0, 1, 1, alien:getWidth("Neonix!") / 2, alien:getHeight() / 2)
     love.graphics.setColor(1, 1, 1)
@@ -78,9 +79,9 @@ function menustate:draw()
     love.graphics.print("Zerodown!", alienMini, love.graphics.getWidth() / 2, 240, 0, 1, 1, alien:getWidth("Neonix!") / 2, alien:getHeight() / 2)
     playBtn:draw()
     editPlayerBtn:draw()
-    glowEffect(function()
+    --glowEffect(function()
         playerEdit:draw()
-    end)
+    --end)
 end
 
 function menustate:update(elapsed)
@@ -103,7 +104,8 @@ end
 
 function menustate:mousepressed(x, y, button)
     if playBtn:mousepressed(x, y, button) then
-        print("click")
+        menuSoundAbstraction:stop()
+        gamestate.switch(playstate)
     end
     if editPlayerBtn:mousepressed(x, y, button) then
         gamestate.switch(playereditmenustate)
