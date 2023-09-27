@@ -34,7 +34,7 @@ function preloaderstate:draw()
     end)
     love.graphics.draw(nxstudiosLogo, 0, love.graphics.getHeight() - nxstudiosLogo:getHeight() * 0.1, 0, 0.1, 0.1)
     love.graphics.draw(oftStudiosLogo, nxstudiosLogo:getWidth() * 0.1, love.graphics.getHeight() - oftStudiosLogo:getHeight() * 0.7, 0, 0.7, 0.7)
-    love.graphics.draw(gamepad, love.graphics.getWidth() - gamepad:getWidth(), love.graphics.getHeight() - gamepad:getHeight())
+    love.graphics.draw(gamepad, love.graphics.getWidth() - gamepad:getWidth() * 0.35, love.graphics.getHeight() - gamepad:getHeight() * 0.35, 0, 0.35, 0.35)
 end
 
 function preloaderstate:update(elapsed)
