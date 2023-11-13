@@ -4,7 +4,7 @@ function levelselectmenustate:enter()
     button = require 'src.Components.Button'
 
     effect = moonshine(moonshine.effects.glow)
-    mapMetaData = json.decode(love.filesystem.read("resources/data/MapsGD.json"))
+    mapMetaData = json.decode(love.filesystem.read("resources/data/MapData.json"))
     levelID = 1
     quicksandmedium = love.graphics.newFont("resources/fonts/quicksand-medium.ttf", 50)
     arrowsImage, arrowsQuads = love.graphics.getQuads("resources/images/arrows")
@@ -16,6 +16,10 @@ function levelselectmenustate:enter()
     rightArrow = button.newStatic(love.graphics.getWidth() - 30, love.graphics.getHeight() / 2)
     rightArrow.w = 64
     rightArrow.h = 64
+
+    playButton = button.newStatic(640, 300)
+    playButton.w = love.graphics.getWidth() - 400
+    playButton.h = 400
 end
 
 function levelselectmenustate:draw()
@@ -29,6 +33,7 @@ function levelselectmenustate:draw()
     love.graphics.draw(arrowsImage, arrowsQuads[1], love.graphics.getWidth() - 30, love.graphics.getHeight() / 2, 0, 1, 1, 32, 32)
     leftArrow:draw()
     rightArrow:draw()
+    playButton:draw()
 end
 
 function levelselectmenustate:update(elapsed)
@@ -46,6 +51,11 @@ function levelselectmenustate:mousepressed(x, y, button)
     end
     if rightArrow:mousepressed(x, y, button) then
         levelID = levelID + 1
+    end
+    if playButton:mousepressed(x, y, button) then
+        playstate.currentLevel = levelID
+        menuSoundAbstraction:stop()
+        gamestate.switch(playstate)
     end
 end
 

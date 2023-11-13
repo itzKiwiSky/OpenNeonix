@@ -16,7 +16,7 @@ function debug.getTableContent(tbl, indent)
         elseif (type(v) == "string") then
             toprint = toprint .. "\"" .. v .. "\",\r\n"
         elseif (type(v) == "table") then
-            --toprint = toprint .. debug.getTableContent(v, indent + 2) .. ",\r\n"
+            toprint = toprint .. debug.getTableContent(v, indent + 2) .. ",\r\n"
         else
             toprint = toprint .. "\"" .. tostring(v) .. "\",\r\n"
         end

@@ -18,6 +18,8 @@ function menustate:enter()
     playBtn.size = 2
     editPlayerBtn = button.new("resources/images/editPlayerBtn.png", love.graphics.getWidth() / 2 - 300, love.graphics.getHeight() / 2)
     editPlayerBtn.size = 2
+    jukeboxBtn = button.new("resources/images/jukeboxBtn.png", love.graphics.getWidth() / 2 + 300, love.graphics.getHeight() / 2)
+    jukeboxBtn.size = 2
 
     if not menumap then
         local value = love.math.random(1, 2)
@@ -57,9 +59,9 @@ end
 
 function menustate:draw()
     ---effect(function()
-        love.graphics.setColor(_SaveData_.playerdata.r / 255, _SaveData_.playerdata.g / 255, _SaveData_.playerdata.b / 255)
+        --love.graphics.setColor(_SaveData_.playerdata.r / 255, _SaveData_.playerdata.g / 255, _SaveData_.playerdata.b / 255)
         playerMenu:draw()
-        love.graphics.setColor(1, 1, 1)
+        --love.graphics.setColor(1, 1, 1)
         menumap:draw()
     --end)
     love.graphics.setColor(0.4, 0.4, 0.4)
@@ -79,6 +81,7 @@ function menustate:draw()
     love.graphics.print("Zerodown!", alienMini, love.graphics.getWidth() / 2, 240, 0, 1, 1, alien:getWidth("Neonix!") / 2, alien:getHeight() / 2)
     playBtn:draw()
     editPlayerBtn:draw()
+    jukeboxBtn:draw()
     --glowEffect(function()
         playerEdit:draw()
     --end)
@@ -100,15 +103,22 @@ function menustate:update(elapsed)
     else
         editPlayerBtn.size = 2
     end
+    if jukeboxBtn:isHovered() then
+        jukeboxBtn.size = 2.2
+    else
+        jukeboxBtn.size = 2
+    end
 end
 
 function menustate:mousepressed(x, y, button)
     if playBtn:mousepressed(x, y, button) then
-        menuSoundAbstraction:stop()
         gamestate.switch(levelselectmenustate)
     end
     if editPlayerBtn:mousepressed(x, y, button) then
         gamestate.switch(playereditmenustate)
+    end
+    if jukeboxBtn:mousepressed(x, y, button) then
+        gamestate.switch(jukeboxstate)
     end
 end
 

@@ -7,7 +7,8 @@
         {
             "name" : "dubnix",
             "songFile" : "dubnix.ogg",
-            "mapData" : "dubnix.lua"
+            "mapData" : "dubnix.lua",
+            "mapColor" : [42, 206, 96]
         }
     ]
 }

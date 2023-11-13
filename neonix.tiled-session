@@ -5,8 +5,8 @@
     },
     "activeFile": "tmx/level1.tmx",
     "expandedProjectPaths": [
-        "tmx",
-        "."
+        ".",
+        "tmx"
     ],
     "fileStates": {
         "": {
@@ -34,11 +34,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 0.5,
-            "selectedLayer": 0,
+            "scale": 1,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 9434,
-                "y": -40
+                "x": 420,
+                "y": -103
             }
         },
         "tmx/level1.tmx#tiles": {
@@ -100,7 +100,7 @@
         "tmx/level1.tmx"
     ],
     "project": "neonix.tiled-project",
-    "property.type": "color",
+    "property.type": "string",
     "recentFiles": [
         "tmx/level1.tmx",
         "tmx/dubnix-plataform.tmx",

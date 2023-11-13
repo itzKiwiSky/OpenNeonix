@@ -1,6 +1,6 @@
-local playermenu = {}
+local player = {}
 
-function playermenu:init(_x, _y)
+function player:init(_x, _y)
     self.x = _x
     self.y = _y
     self.image = love.graphics.newImage("resources/images/player.png")
@@ -66,7 +66,7 @@ function playermenu:init(_x, _y)
     
 end
 
-function playermenu:drawHitbox()
+function player:drawHitbox()
     love.graphics.setColor(1, 1, 0)
     love.graphics.rectangle("line", self.hitboxes.front.x, self.hitboxes.front.y, self.hitboxes.front.w, self.hitboxes.front.h)
     love.graphics.setColor(1, 1, 1)
@@ -85,7 +85,7 @@ function playermenu:drawHitbox()
     love.graphics.rectangle("line", self.hitboxes.master.x, self.hitboxes.master.y, self.hitboxes.master.w, self.hitboxes.master.h)
 end
 
-function playermenu:showStats()
+function player:showStats()
     local y = 0
     for _, v in pairs(self.properties) do
         love.graphics.print(_ .. " = " .. tostring(v), (self.x - 190), (self.y - 190) + y)
@@ -93,13 +93,13 @@ function playermenu:showStats()
     end
 end
 
-function playermenu:draw()
+function player:draw()
     love.graphics.setColor(self.properties.playerColor.r / 255, self.properties.playerColor.g / 255,self.properties.playerColor.b / 255)
     love.graphics.draw(self.image, self.x + self.image:getWidth() / 2, self.y + self.image:getHeight() / 2, math.rad(self.properties.rotation), 1, 1, self.image:getWidth() / 2, self.image:getHeight() / 2)
     love.graphics.setColor(1, 1, 1)
 end
 
-function playermenu:update(elapsed)
+function player:update(elapsed)
     if not self.properties.dead then
         self.properties.xVelocity = 5.2
         if not self.properties.isPlayerBackwards then
@@ -112,6 +112,18 @@ function playermenu:update(elapsed)
             self.properties.gravity = 0.8
         else
             self.properties.gravity = -0.8
+        end
+
+        if love.keyboard.isDown("space", "up", "z", "rshift", "lshift") or love.mouse.isDown(1) then
+            if not self.properties.isJumping and self.properties.isGrounded then
+                self.properties.isJumping = true
+                self.properties.isGrounded = false
+                if self.properties.isGravityInverse then
+                    self.properties.yVelocity = self.properties.jumpSpeed
+                else
+                    self.properties.yVelocity = -self.properties.jumpSpeed
+                end
+            end
         end
 
         self.properties.yVelocity = self.properties.yVelocity + self.properties.gravity
@@ -164,28 +176,84 @@ function playermenu:update(elapsed)
                 self.properties.isGrounded = true
             end
         end
-    end
-    for _, jumpCollider in ipairs(jumpObjects) do
-        if collision.rectRect(self.hitboxes.master, jumpCollider.hitbox) then
-            playermenu:jump()
+            --% Front collider %--
+        if self.hitboxes.front.enable then
+            if collision.rectRect(self.hitboxes.front, block.hitbox) then
+                self.properties.dead = true
+                ps:emit(64)
+                if not deathEffect:isPlaying() then
+                    if self.properties.dead then
+                        self.x, self.y = map.layers["playerSpawn"].objects[1].x, map.layers["playerSpawn"].objects[1].y
+                        self.properties.dead = false
+                        mapSong:seek(0)
+                        deathEffect:play()
+                    end
+                end
+            end
+        end
+
+            --% back collider %--
+        if self.hitboxes.back.enable then
+            if collision.rectRect(self.hitboxes.back, block.hitbox) then
+                self.properties.dead = true
+                ps:emit(64)
+                if not deathEffect:isPlaying() then
+                    if self.properties.dead then
+                        self.x, self.y = map.layers["playerSpawn"].objects[1].x, map.layers["playerSpawn"].objects[1].y
+                        self.properties.dead = false
+                        mapSong:seek(0)
+                        deathEffect:play()
+                    end
+                end
+            end
+        end
+
+            --% head collider %--
+        if self.hitboxes.head.enable then
+            if collision.rectRect(self.hitboxes.head, block.hitbox) then
+                self.properties.dead = true
+                ps:emit(64)
+                if not deathEffect:isPlaying() then
+                    if self.properties.dead then
+                        self.x, self.y = map.layers["playerSpawn"].objects[1].x, map.layers["playerSpawn"].objects[1].y
+                        self.properties.dead = false
+                        mapSong:seek(0)
+                        deathEffect:play()
+                    end
+                end
+            end
+        end
+
+        --% foot collider %--
+        if self.hitboxes.foot.enable then
+            if collision.rectRect(self.hitboxes.foot, block.hitbox) then
+                self.properties.dead = true
+                ps:emit(64)
+                if not deathEffect:isPlaying() then
+                    if self.properties.dead then
+                        self.x, self.y = map.layers["playerSpawn"].objects[1].x, map.layers["playerSpawn"].objects[1].y
+                        self.properties.dead = false
+                        mapSong:seek(0)
+                        deathEffect:play()
+                    end
+                end
+            end
         end
     end
-    if collision.rectRect(self.hitboxes.master, endBlock.hitbox) then
-        self.x = menumap.layers["playerSpawn"].objects[1].x
-        self.y = menumap.layers["playerSpawn"].objects[1].y
+    for _, spike in ipairs(spikes) do
+        if collision.rectRect(self.hitboxes.spikeHitbox, spike.hitbox) then
+            self.properties.dead = true
+            ps:emit(64)
+            if not deathEffect:isPlaying() then
+                if self.properties.dead then
+                    self.x, self.y = map.layers["playerSpawn"].objects[1].x, map.layers["playerSpawn"].objects[1].y
+                    self.properties.dead = false
+                    mapSong:seek(0)
+                    deathEffect:play()
+                end
+            end
+        end
     end
 end
 
-function playermenu:jump()
-    if not self.properties.isJumping and self.properties.isGrounded then
-        self.properties.isJumping = true
-        self.properties.isGrounded = false
-        if self.properties.isGravityInverse then
-            self.properties.yVelocity = self.properties.jumpSpeed
-        else
-            self.properties.yVelocity = -self.properties.jumpSpeed
-        end
-    end
-end
-
-return playermenu
+return player

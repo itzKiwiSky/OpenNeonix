@@ -35,13 +35,56 @@ function love.load(args)
     registers = {
         showHitboxes = false
     }
+
+    availableColors = {
+        {255, 0, 0},
+        {170, 0, 0},
+        {128, 0, 0},    --% ThSun <3
+        {0, 255, 0},
+        {0, 170, 0},
+        {0, 128, 0},
+        {0, 0, 255},
+        {0, 0, 170},
+        {0, 0, 128},
+        {255, 255, 0},
+        {170, 170, 0},
+        {128, 128, 0},
+        {255, 0, 255},
+        {170, 0, 170},
+        {128, 0, 128},
+        {0, 255, 255},
+        {0, 170, 170},
+        {0, 128, 128},
+        {255, 85, 0},   --% ayanoTheFoxy <3
+        {188, 63, 0},
+        {116, 39, 0},
+        {113, 56, 27},
+        {86, 42, 18},
+        {60, 28, 12},
+        {167, 62, 255},
+        {126, 39, 199},
+        {74, 20, 120},
+        {0, 255, 162},
+        {0, 165, 105},
+        {0, 113, 72},
+        {255, 0, 106},
+        {191, 0, 80},
+        {124, 0, 52},
+        {255, 255, 255},
+        {170, 170, 170},
+        {128, 128, 128},
+        {109, 109, 109},
+        {67, 67, 67},
+        {0, 0, 0},
+    }
+
     _SaveData_ = {
         playerdata = {
-            r = 255,
-            g = 255,
-            b = 255
+            iconId = 1,
+            frontColorID = 1,
+            backColorID = 5
         },
-        achieviments = {},
+        achievements = {},
         levelsCompleted = {},
         settings = {
             glowShader = true,
@@ -84,7 +127,6 @@ end
 
 function love.draw()
     gamestate.current():draw()
-    suit.draw()
     loveconsole:render()
 end
 
@@ -97,12 +139,7 @@ function love.textinput(text)
     loveconsole:textinput(text)
 end
 
-function love.textedited(text)
-    suit.textedited(text)
-end
-
 function love.keypressed(k)
-    suit.keypressed(k)
     loveconsole:keypressed(k)
 end
 

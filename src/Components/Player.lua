@@ -1,9 +1,12 @@
 local player = {}
 
-function player:init(_x, _y)
+function player:init(_id, _x, _y)
     self.x = _x
     self.y = _y
-    self.image = love.graphics.newImage("resources/images/player.png")
+
+    self.frontPlayerIcon, self.frontPlayerQuads = love.graphics.getQuads("resources/images/playerSheetFront")
+    self.backPlayerIcon, self.backPlayerQuads = love.graphics.getQuads("resources/images/playerSheetBack")
+
     self.properties = {}
     self.debug = {}
     self.hitboxes = {}
@@ -25,10 +28,6 @@ function player:init(_x, _y)
     self.properties.isGravityInverse = false
     self.properties.dead = false
     self.properties.playerGamemode = "player"       --% Available modes : Player, Flight (only implemented player) %--
-    self.properties.playerColor = {}
-    self.properties.playerColor.r = 255
-    self.properties.playerColor.g = 255
-    self.properties.playerColor.b = 255
 
     self.hitboxes.master.x = _x
     self.hitboxes.master.y = _y
@@ -63,7 +62,6 @@ function player:init(_x, _y)
     self.hitboxes.spikeHitbox.y = _y + 8
     self.hitboxes.spikeHitbox.w = 16
     self.hitboxes.spikeHitbox.h = 16
-    
 end
 
 function player:drawHitbox()
@@ -94,9 +92,15 @@ function player:showStats()
 end
 
 function player:draw()
-    love.graphics.setColor(self.properties.playerColor.r / 255, self.properties.playerColor.g / 255,self.properties.playerColor.b / 255)
-    love.graphics.draw(self.image, self.x + self.image:getWidth() / 2, self.y + self.image:getHeight() / 2, math.rad(self.properties.rotation), 1, 1, self.image:getWidth() / 2, self.image:getHeight() / 2)
-    love.graphics.setColor(1, 1, 1)
+    local bqx, bqy, bqw, bqh = self.backPlayerQuads[_SaveData_.playerdata.iconId]:getViewport()
+    local fqx, fqy, fqw, fqh = self.frontPlayerQuads[_SaveData_.playerdata.iconId]:getViewport()
+    love.graphics.setColor(availableColors[_SaveData_.playerdata.backColorID][1] / 255, availableColors[_SaveData_.playerdata.backColorID][2] / 255, availableColors[_SaveData_.playerdata.backColorID][3] / 255)
+    love.graphics.draw(self.backPlayerIcon, self.backPlayerQuads[_SaveData_.playerdata.iconId], self.hitboxes.master.x + bqw / 2, self.hitboxes.master.y + bqh / 2, math.rad(self.properties.rotation), 1, 1, bqw / 2, bqh / 2)
+    love.graphics.setColor(1, 1, 1, 1)
+
+    love.graphics.setColor(availableColors[_SaveData_.playerdata.frontColorID][1] / 255, availableColors[_SaveData_.playerdata.frontColorID][2] / 255, availableColors[_SaveData_.playerdata.frontColorID][3] / 255)
+    love.graphics.draw(self.frontPlayerIcon, self.frontPlayerQuads[_SaveData_.playerdata.iconId], self.hitboxes.master.x + fqw / 2, self.hitboxes.master.y + fqh / 2, math.rad(self.properties.rotation), 1, 1, fqw / 2, fqh / 2)
+    love.graphics.setColor(1, 1, 1, 1)
 end
 
 function player:update(elapsed)
@@ -180,6 +184,15 @@ function player:update(elapsed)
         if self.hitboxes.front.enable then
             if collision.rectRect(self.hitboxes.front, block.hitbox) then
                 self.properties.dead = true
+                ps:emit(64)
+                if not deathEffect:isPlaying() then
+                    if self.properties.dead then
+                        self.x, self.y = map.layers["playerSpawn"].objects[1].x, map.layers["playerSpawn"].objects[1].y - 16
+                        self.properties.dead = false
+                        mapSong:seek(0)
+                        deathEffect:play()
+                    end
+                end
             end
         end
 
@@ -187,6 +200,15 @@ function player:update(elapsed)
         if self.hitboxes.back.enable then
             if collision.rectRect(self.hitboxes.back, block.hitbox) then
                 self.properties.dead = true
+                ps:emit(64)
+                if not deathEffect:isPlaying() then
+                    if self.properties.dead then
+                        self.x, self.y = map.layers["playerSpawn"].objects[1].x, map.layers["playerSpawn"].objects[1].y - 16
+                        self.properties.dead = false
+                        mapSong:seek(0)
+                        deathEffect:play()
+                    end
+                end
             end
         end
 
@@ -194,6 +216,15 @@ function player:update(elapsed)
         if self.hitboxes.head.enable then
             if collision.rectRect(self.hitboxes.head, block.hitbox) then
                 self.properties.dead = true
+                ps:emit(64)
+                if not deathEffect:isPlaying() then
+                    if self.properties.dead then
+                        self.x, self.y = map.layers["playerSpawn"].objects[1].x, map.layers["playerSpawn"].objects[1].y - 16
+                        self.properties.dead = false
+                        mapSong:seek(0)
+                        deathEffect:play()
+                    end
+                end
             end
         end
 
@@ -201,16 +232,31 @@ function player:update(elapsed)
         if self.hitboxes.foot.enable then
             if collision.rectRect(self.hitboxes.foot, block.hitbox) then
                 self.properties.dead = true
+                ps:emit(64)
+                if not deathEffect:isPlaying() then
+                    if self.properties.dead then
+                        self.x, self.y = map.layers["playerSpawn"].objects[1].x, map.layers["playerSpawn"].objects[1].y - 16
+                        self.properties.dead = false
+                        mapSong:seek(0)
+                        deathEffect:play()
+                    end
+                end
             end
         end
     end
     for _, spike in ipairs(spikes) do
         if collision.rectRect(self.hitboxes.spikeHitbox, spike.hitbox) then
             self.properties.dead = true
+            ps:emit(64)
+            if not deathEffect:isPlaying() then
+                if self.properties.dead then
+                    self.x, self.y = map.layers["playerSpawn"].objects[1].x, map.layers["playerSpawn"].objects[1].y - 16
+                    self.properties.dead = false
+                    mapSong:seek(0)
+                    deathEffect:play()
+                end
+            end
         end
-    end
-    if self.properties.dead then
-        playstate:enter()
     end
 end
 
