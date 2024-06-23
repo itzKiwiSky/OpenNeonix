@@ -1,0 +1,22 @@
+I want take a array formated like this:
+
+map = {
+    0, 0, 0, 0, 0,
+    0, 2, 0, 0, 0,
+    0, 0, 1, 1, 0,
+    0, 0, 0, 0, 0,
+    0, 0, 0, 0, 3,
+}
+
+and I need an array that looks like this:
+
+map = {
+    {0, 0, 0, 0, 0},
+    {0, 2, 0, 0, 0},
+    {0, 0, 1, 1, 0},
+    {0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 3},
+}
+
+what is the formula to convert this array?
+write in lua please.
