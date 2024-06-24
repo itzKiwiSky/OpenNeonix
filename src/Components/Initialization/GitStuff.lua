@@ -7,7 +7,7 @@ function GitStuff.getAll()
 
     io.printf("{brightYellow}[CommitID] : " .. commitID .. "{reset}")
     io.printf("{brightMagenta}[Branch] : " .. branch .. "{reset}")
-    io.printf("{cyan}[Status] : " .. (status == "" and "Everything clear :3" or status) .. "{reset}")
+    io.printf("{cyan}[Status] : " .. (status == "" and "Everything clear :3" or status) .. "{reset}\n")
 end
 
 return GitStuff
