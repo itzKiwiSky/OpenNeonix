@@ -15,6 +15,7 @@ return function()
     cartographer = require 'libraries.cartographer'
     collision = require 'libraries.collision'
     deep = require 'libraries.deep'
+    discordrpc = require 'libraries.discordRPC'
     gamestate = require 'libraries.gamestate'
     gamejolt = require 'libraries.gamejolt'
     json = require 'libraries.json'

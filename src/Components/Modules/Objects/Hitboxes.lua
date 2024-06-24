@@ -1,5 +1,4 @@
 local Hitboxes = {}
-local col = require 'src.Components.Modules.Utils.Colors'
 Hitboxes.__index = Hitboxes
 local types = {}
 
@@ -39,9 +38,9 @@ local function _new(_type, _x, _y, _w, _h)
 end
 
 function Hitboxes:draw()
-    love.graphics.setColor(_getItem(self.type, col) .. "77")
+    love.graphics.setColor(_getItem(self.type, colors) .. "77")
         love.graphics.rectangle("fill", self.x, self.y, self.w, self.h)
-        love.graphics.setColor(_getItem(self.type, col) .. "ff")
+        love.graphics.setColor(_getItem(self.type, colors) .. "ff")
         love.graphics.rectangle("line", self.x, self.y, self.w, self.h)
     love.graphics.setColor(1, 1, 1, 1)
 end

@@ -267,3 +267,5 @@ function love.ease.inOutBack(t, b, c, d, s)
         return c / 2 * (t * t * ((s + 1) * t + s) + 2) + b
     end
 end
+
+return love.ease

@@ -9,6 +9,9 @@ VERSION = {
 }
 
 function love.initialize(args)
+    local gitStuff = require 'src.Components.Initialization.GitStuff'
+    gitStuff.getAll()
+
     lollipop.currentSave.game = {}
     lollipop.initializeSlot("game")
 

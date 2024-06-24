@@ -1,4 +1,4 @@
-return {
+colors = {
     ["black"] = "#000000",
     ["white"] = "#ffffff",
     ["slate-50"] = "#f8fafc",
@@ -222,3 +222,5 @@ return {
     ["rose-800"] = "#9f1239",
     ["rose-900"] = "#881337"
 }
+
+return colors
