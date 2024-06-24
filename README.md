@@ -16,7 +16,11 @@ The game is in alpha stage, and is not accept contributions, check our Gamejolt 
 
 To tun the game on your machine, first, install LÖVE and download the project, after that just drag n' drop the folder on the LÖVE executable.
 
+> NOTE: For security reasons, I gitignored the ApiStuff.json file because it contains data about the API keys of the gamejolt page and also the DiscordRPC thing. 
+
 # Credits
 [Background Arts](https://flamefoxgames.itch.io/vaporwave-retrowave-backgrounds) - [FlameFoxGames](https://x.com/FlameFoxGames)
 
 [Abstraction (Soundtrack menu)](https://www.newgrounds.com/audio/listen/56709) - [Vaporize](http://soundcloud.com/foxthree)
+
+[Some vector icons - SVG REPO](https://www.svgrepo.com/)

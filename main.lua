@@ -10,9 +10,36 @@ VERSION = {
 
 function love.initialize(args)
     local gitStuff = require 'src.Components.Initialization.GitStuff'
+    require("src.Components.Modules.API.InitializeGJ")()
+    require("src.Components.Modules.API.InitializeDiscord")()
+
     gitStuff.getAll()
 
-    lollipop.currentSave.game = {}
+    lollipop.currentSave.game = {
+        user = {
+            settings = {
+                video = {},
+                audio = {},
+                misc = {
+                    language = "en",
+                    gamejolt = {
+                        username = "",
+                        usertoken = ""
+                    }
+                }
+            }
+        }
+    }
+
+    if lollipop.currentSave.game.user.settings.misc.gamejolt.username ~= "" and lollipop.currentSave.game.user.settings.misc.gamejolt.usertoken ~= "" then
+        gamejolt.authUser(
+            lollipop.currentSave.game.user.settings.misc.gamejolt.username,
+            lollipop.currentSave.game.user.settings.misc.gamejolt.usertoken
+        )
+        gamejolt.openSession()
+        io.printf(string.format("{bgGreen}{brightWhite}{bold}[Gamejolt]{reset}{brightWhite} : Client connected (%s, %s, %s){reset}", gamejolt.username, gamejolt.userToken))
+    end
+
     lollipop.initializeSlot("game")
 
     AssetHandler:init()
@@ -33,4 +60,8 @@ function love.initialize(args)
 
     gamestate.registerEvents()
     gamestate.switch(DebugState)
+end
+
+function discordrpc.ready(userId, username, discriminator, avatar)
+    io.printf(string.format("{bgBlue}{brightBlue}{bold}[Discord]{reset}{brightBlue} : Client connected (%s, %s, %s){reset}", userId, username, discriminator))
 end
