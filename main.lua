@@ -9,12 +9,7 @@ VERSION = {
 }
 
 function love.initialize(args)
-    local gitStuff = require 'src.Components.Initialization.GitStuff'
-    require("src.Components.Modules.API.InitializeGJ")()
-    require("src.Components.Modules.API.InitializeDiscord")()
-
-    gitStuff.getAll()
-
+    Presence = require 'src.Components.Modules.API.Presence'
     lollipop.currentSave.game = {
         user = {
             settings = {
@@ -31,16 +26,16 @@ function love.initialize(args)
         }
     }
 
-    if lollipop.currentSave.game.user.settings.misc.gamejolt.username ~= "" and lollipop.currentSave.game.user.settings.misc.gamejolt.usertoken ~= "" then
-        gamejolt.authUser(
-            lollipop.currentSave.game.user.settings.misc.gamejolt.username,
-            lollipop.currentSave.game.user.settings.misc.gamejolt.usertoken
-        )
-        gamejolt.openSession()
-        io.printf(string.format("{bgGreen}{brightWhite}{bold}[Gamejolt]{reset}{brightWhite} : Client connected (%s, %s, %s){reset}", gamejolt.username, gamejolt.userToken))
-    end
-
     lollipop.initializeSlot("game")
+
+
+    local gitStuff = require 'src.Components.Initialization.GitStuff'
+    Presence = require 'src.Components.Modules.API.Presence'
+    require("src.Components.Modules.API.InitializeGJ")()
+    require("src.Components.Modules.API.InitializeDiscord")()
+
+    gitStuff.getAll()
+
 
     AssetHandler:init()
 
@@ -62,6 +57,22 @@ function love.initialize(args)
     gamestate.switch(DebugState)
 end
 
+function love.update(elapsed)
+    discordrpc.runCallbacks()
+end
+
+function love.quit()
+    discordrpc.shutdown()
+end
+
 function discordrpc.ready(userId, username, discriminator, avatar)
     io.printf(string.format("{bgBlue}{brightBlue}{bold}[Discord]{reset}{brightBlue} : Client connected (%s, %s, %s){reset}", userId, username, discriminator))
+end
+
+function discordrpc.disconnected(errorCode, message)
+    io.printf(string.format("{bgBlue}{brightBlue}{bold}[Discord]{reset}{brightBlue} : Client disconnected (%d, %s){reset}", errorCode, message))
+end
+
+function discordrpc.errored(errorCode, message)
+    io.printf(string.format("{bgBlue}{brightBlue}{bold}[Discord]{reset}{bgRed}{brightWhite}[Error]{reset}{brightWhite} : (%d, %s){reset}", errorCode, message))
 end
