@@ -9,7 +9,7 @@ function Cube.update(self, elapsed)
     --end
 
     if not self.properties.dead then
-        self.properties.xVel = 5.2
+        self.properties.xVel = 0 --5.2
 
         if self.properties.direction == "right" then
             self.x = self.x + self.properties.xVel

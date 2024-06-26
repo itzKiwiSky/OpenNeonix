@@ -9,7 +9,7 @@ function love.conf(w)
     w.window.borderless     =       false
     w.window.resizable      =       false
     w.window.fullscreen     =       false
-    w.window.depth          =       16 
+    w.window.depth          =       16
 
     --% Debug %--
     w.console               =       love.filesystem.isFused() and false or true

@@ -3,42 +3,60 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "MapFiles/PlayerTestMap.tmx",
     "expandedProjectPaths": [
+        ".",
+        "MapFiles",
+        "Tilesets"
     ],
     "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
         "MapFiles/DebugMap.tmx": {
             "scale": 1.15966796875,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 347.5132631578947,
-                "y": 202.21305263157893
+                "x": 338.0277894736842,
+                "y": 172.46315789473684
             }
         },
         "MapFiles/DebugMap.tmx#blocks": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "MapFiles/DebugMap.tmx#objects": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "MapFiles/PlayerTestMap.tmx": {
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 290,
-                "y": 182.5
+                "x": 275,
+                "y": 275
             }
+        },
+        "Tilesets/blocks.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/objects.tsx": {
+            "scaleInDock": 1
         }
     },
-    "last.exportedFilePath": "C:/Users/kiwis/Área de Trabalho/openneonix/assets/data/maps",
+    "last.exportedFilePath": "C:/Users/kiwis/Área de Trabalho/openneonix/assets/projects/NeonixTiled/Tilesets",
     "last.imagePath": "C:/Users/kiwis/Área de Trabalho/openneonix/assets/images",
-    "lastUsedTilesetExportFilter": "Todos os Ficheiros (*)",
+    "lastUsedTilesetExportFilter": "Ficheiros Lua (*.lua)",
     "map.fixedSize": false,
     "map.lastUsedExportFilter": "Ficheiros Lua (*.lua)",
     "map.lastUsedFormat": "tmx",
     "openFiles": [
+        "MapFiles/DebugMap.tmx",
+        "MapFiles/PlayerTestMap.tmx"
     ],
     "project": "openneonix.tiled-project",
     "recentFiles": [
+        "MapFiles/DebugMap.tmx",
+        "MapFiles/PlayerTestMap.tmx"
     ]
 }

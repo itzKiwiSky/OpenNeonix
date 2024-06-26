@@ -7,7 +7,7 @@ function DebugState:enter()
     nxWorld = require 'src.Components.Modules.Map.World'
     hitbox = require 'src.Components.Modules.Objects.Hitboxes'
 
-    --map = nxWorld("assets/data/maps/testMap.lua")
+    map = nxWorld("assets/data/maps/DebugMap.lua")
 
     nxCam = {
         cam = camera(),
@@ -25,7 +25,7 @@ end
 
 function DebugState:draw()
     nxCam.cam:attach()
-        --map:draw()
+        map:draw()
         player:draw()
     nxCam.cam:detach()
 end

@@ -61,6 +61,7 @@ local function _new(_filename)
         quads = {},
         imgs = {},
         elements = {
+            worldCollider = hc.new(),
             hitboxes = {},
             objects = {}
         }
@@ -75,14 +76,19 @@ local function _new(_filename)
     self.meta.color = _convertColor(tiledMap.properties["level color"])
 
     local tilesetQuads = {}
+    local mapTilesets = {}
     for t = 1, #tiledMap.tilesets, 1 do
         local filename = tiledMap.tilesets[t].image:match("[^/]+$")
+        local tilesetFilename = require(tiledMap.tilesets.filename:match("[^/]+$"))
         local tw, th = tiledMap.tilesets[t].tilewidth, tiledMap.tilesets[t].tileheight
         self.meta.tileW, self.meta.tileH = tw, th
         local tilesetData = _loadTilesets("assets/images/" .. filename, tw, th)
         table.insert(tilesetQuads, tilesetData.quads)
         table.insert(self.assets.batches, love.graphics.newSpriteBatch(tilesetData.sheet, nil, "static"))
     end
+
+
+
     for _, ts in pairs(tiledMap.tilesets) do
         for _, t in ipairs(ts.tiles) do
             table.insert(self.meta.tileData, {
@@ -145,6 +151,7 @@ function World:recompile()
             end 
         end 
     end
+    self:addHitboxes()
 end
 
 function World:addHitboxes()
@@ -154,12 +161,21 @@ function World:addHitboxes()
                 if chunk.data[y][x] > 0 then
                     local t = self.meta.tileData[chunk.data[y][x]]
                     if t and t.hitbox.active then
-                        table.insert(self.assets.elements.hitboxes, hitbox(
+                        print(                                (chunk.meta.x + x * self.meta.tileW) + t.hitbox.offsetX,
+                        (chunk.meta.y + y * self.meta.tileH) + t.hitbox.offsetY,
+                        t.hitbox.w, t.hitbox.h, t.id)
+                        table.insert(self.assets.elements.hitboxes, self.assets.elements.worldCollider:rectangle(
+                                (chunk.meta.x + x * self.meta.tileW) + t.hitbox.offsetX,
+                                (chunk.meta.y + y * self.meta.tileH) + t.hitbox.offsetY,
+                                t.hitbox.w, t.hitbox.h
+                            )
+                        )
+                        --[[hitbox(
                             (t.id >= 15 and "object" or "tile"),
                             (chunk.meta.x + x * self.meta.tileW) + t.hitbox.offsetX,
                             (chunk.meta.y + y * self.meta.tileH) + t.hitbox.offsetY,
                             t.hitbox.w, t.hitbox.h
-                        ))
+                        )]]--
                     end
                 end
             end 
@@ -173,7 +189,7 @@ function World:draw()
         love.graphics.draw(batches)
     end
     for _, h in ipairs(map.assets.elements.hitboxes) do
-        h:draw()
+        h:draw("line")
     end
 end
 

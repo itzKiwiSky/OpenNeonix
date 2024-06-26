@@ -1,17 +1,24 @@
 love.filesystem.load("src/Components/Initialization/Run.lua")()
 love.filesystem.load("src/Components/Initialization/ErrorHandler.lua")()
 
-AssetHandler = require("src.Components.Helpers.AssetManager")()
+--AssetHandler = require("src.Components.Helpers.AssetManager")()
 
 VERSION = {
     ENGINE = "0.0.1",
-    FORMATS = "0.0.1"
+    FORMATS = "0.0.1",
+    meta = {
+        commitID = "",
+        branch = "",
+    }
 }
 
 function love.initialize(args)
+    fontcache = require 'src.Components.Modules.System.FontCache'
+    versionChecker = require 'src.Components.Modules.API.CheckVersion'
     Presence = require 'src.Components.Modules.API.Presence'
     GameColors = require 'src.Components.Modules.Utils.GameColors'
 
+    fontcache.init()
 
     lollipop.currentSave.game = {
         user = {
@@ -23,7 +30,8 @@ function love.initialize(args)
                     gamejolt = {
                         username = "",
                         usertoken = ""
-                    }
+                    },
+                    checkForUpdates = true,
                 }
             },
             customization = {
@@ -58,9 +66,6 @@ function love.initialize(args)
 
     gitStuff.getAll()
 
-
-    AssetHandler:init()
-
     local states = love.filesystem.getDirectoryItems("src/States")
     for s = 1, #states, 1 do
         require("src.States." .. states[s]:gsub(".lua", ""))
@@ -72,7 +77,13 @@ function love.initialize(args)
     end
 
     gamestate.registerEvents()
-    gamestate.switch(DebugState)
+
+    if lollipop.currentSave.game.user.settings.misc.checkForUpdates then
+        if versionChecker.check() then
+            gamestate.switch(OutdatedState)
+        end
+    end
+    gamestate.switch(OutdatedState)
 end
 
 function love.update(elapsed)

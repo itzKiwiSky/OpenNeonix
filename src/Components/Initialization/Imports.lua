@@ -1,4 +1,5 @@
 return function()
+    https = require 'https'
     breezefield = require 'libraries.breezefield'
     lollipop = require 'libraries.lollipop'
     loveframes = require 'libraries.loveframes'
