@@ -147,11 +147,38 @@ function World:recompile()
     end
 end
 
+function World:addHitboxes()
+    for _, chunk in ipairs(self.data) do
+        for y = 1, chunk.meta.h, 1 do
+            for x = 1, chunk.meta.w, 1 do
+                if chunk.data[y][x] > 0 then
+                    local t = self.meta.tileData[chunk.data[y][x]]
+                    if t and t.hitbox.active then
+                        table.insert(self.assets.elements.hitboxes, hitbox(
+                            (t.id >= 15 and "object" or "tile"),
+                            (chunk.meta.x + x * self.meta.tileW) + t.hitbox.offsetX,
+                            (chunk.meta.y + y * self.meta.tileH) + t.hitbox.offsetY,
+                            t.hitbox.w, t.hitbox.h
+                        ))
+                    end
+                end
+            end 
+        end 
+    end
+end
+
 function World:draw()
-    love.graphics.draw(self.assets.bg, nxCam.x / 0.5, nxCam.y / 0.5, 0, 1, 1)
+    --love.graphics.draw(self.assets.bg, nxCam.x / 0.5, nxCam.y / 0.5, 0, 1, 1)
     for _, batches in pairs(self.assets.batches) do
         love.graphics.draw(batches)
     end
+    for _, h in ipairs(map.assets.elements.hitboxes) do
+        h:draw()
+    end
+end
+
+function World:update(elapsed)
+    nxCam.cam:lookAt(nxCam.camFocusObj.x, nxCam.camFocusObj.y)
 end
 
 return setmetatable(World, { __call = function(_, ...) return _new(...) end })

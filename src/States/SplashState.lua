@@ -1,15 +1,15 @@
-SplashScreen = {}
+SplashState = {}
 
-function SplashScreen:enter()
-
-end
-
-function SplashScreen:draw()
+function SplashState:enter()
 
 end
 
-function SplashScreen:update(elapsed)
+function SplashState:draw()
 
 end
 
-return SplashScreen
+function SplashState:update(elapsed)
+
+end
+
+return SplashState

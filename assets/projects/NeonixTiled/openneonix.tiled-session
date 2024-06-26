@@ -1,0 +1,44 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "MapFiles/DebugMap.tmx": {
+            "scale": 1.15966796875,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 347.5132631578947,
+                "y": 202.21305263157893
+            }
+        },
+        "MapFiles/DebugMap.tmx#blocks": {
+            "scaleInDock": 1
+        },
+        "MapFiles/DebugMap.tmx#objects": {
+            "scaleInDock": 1
+        },
+        "MapFiles/PlayerTestMap.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 290,
+                "y": 182.5
+            }
+        }
+    },
+    "last.exportedFilePath": "C:/Users/kiwis/Área de Trabalho/openneonix/assets/data/maps",
+    "last.imagePath": "C:/Users/kiwis/Área de Trabalho/openneonix/assets/images",
+    "lastUsedTilesetExportFilter": "Todos os Ficheiros (*)",
+    "map.fixedSize": false,
+    "map.lastUsedExportFilter": "Ficheiros Lua (*.lua)",
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+    ],
+    "project": "openneonix.tiled-project",
+    "recentFiles": [
+    ]
+}

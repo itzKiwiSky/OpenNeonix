@@ -10,6 +10,9 @@ VERSION = {
 
 function love.initialize(args)
     Presence = require 'src.Components.Modules.API.Presence'
+    GameColors = require 'src.Components.Modules.Utils.GameColors'
+
+
     lollipop.currentSave.game = {
         user = {
             settings = {
@@ -22,11 +25,30 @@ function love.initialize(args)
                         usertoken = ""
                     }
                 }
+            },
+            customization = {
+                player = {
+                    type = "vertical",
+                    colors = {
+                        GameColors[1],
+                        GameColors[1]
+                    }
+                }
             }
         }
     }
 
     lollipop.initializeSlot("game")
+
+    registers = {
+        user = {
+            player = {
+                assets = {
+                    gradient = nil
+                }
+            }
+        }
+    }
 
 
     local gitStuff = require 'src.Components.Initialization.GitStuff'
@@ -38,10 +60,6 @@ function love.initialize(args)
 
 
     AssetHandler:init()
-
-    registers = {
-
-    }
 
     local states = love.filesystem.getDirectoryItems("src/States")
     for s = 1, #states, 1 do
@@ -66,13 +84,13 @@ function love.quit()
 end
 
 function discordrpc.ready(userId, username, discriminator, avatar)
-    io.printf(string.format("{bgBlue}{brightBlue}{bold}[Discord]{reset}{brightBlue} : Client connected (%s, %s, %s){reset}", userId, username, discriminator))
+    io.printf(string.format("{bgBlue}{brightBlue}{bold}[Discord]{reset}{brightBlue} : Client connected (%s, %s, %s){reset}\n", userId, username, discriminator))
 end
 
 function discordrpc.disconnected(errorCode, message)
-    io.printf(string.format("{bgBlue}{brightBlue}{bold}[Discord]{reset}{brightBlue} : Client disconnected (%d, %s){reset}", errorCode, message))
+    io.printf(string.format("{bgBlue}{brightBlue}{bold}[Discord]{reset}{brightBlue} : Client disconnected (%d, %s){reset}\n", errorCode, message))
 end
 
 function discordrpc.errored(errorCode, message)
-    io.printf(string.format("{bgBlue}{brightBlue}{bold}[Discord]{reset}{bgRed}{brightWhite}[Error]{reset}{brightWhite} : (%d, %s){reset}", errorCode, message))
+    io.printf(string.format("{bgBlue}{brightBlue}{bold}[Discord]{reset}{bgRed}{brightWhite}[Error]{reset}{brightWhite} : (%d, %s){reset}\n", errorCode, message))
 end
