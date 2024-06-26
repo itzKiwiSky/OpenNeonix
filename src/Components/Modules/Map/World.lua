@@ -75,21 +75,23 @@ local function _new(_filename)
     self.assets.bg = love.graphics.newImage("assets/images/Backgrounds/gameBG" .. bgID .. ".png")
     self.meta.color = _convertColor(tiledMap.properties["level color"])
 
-    local tilesetQuads = {}
+    local tempTilesetQuads = {}
     local mapTilesets = {}
     for t = 1, #tiledMap.tilesets, 1 do
-        local filename = tiledMap.tilesets[t].image:match("[^/]+$")
-        local tilesetFilename = require(tiledMap.tilesets.filename:match("[^/]+$"))
-        local tw, th = tiledMap.tilesets[t].tilewidth, tiledMap.tilesets[t].tileheight
-        self.meta.tileW, self.meta.tileH = tw, th
-        local tilesetData = _loadTilesets("assets/images/" .. filename, tw, th)
-        table.insert(tilesetQuads, tilesetData.quads)
-        table.insert(self.assets.batches, love.graphics.newSpriteBatch(tilesetData.sheet, nil, "static"))
+        local tilesetPath = tiledMap.tilesets[t].exportfilename:match("[^/]+$")
+        table.insert(mapTilesets, require("assets.data.maps.sets." .. tilesetPath:gsub(".lua", "")))
     end
 
+    for ts = 1, #mapTilesets, 1 do
+        local tileImagePath = mapTilesets[ts].image:match("[^/]+$")
+        local tw, th = mapTilesets[ts].tilewidth, mapTilesets[ts].tileheight
+        self.meta.tileW, self.meta.tileH = tw, th
+        local tsdata = _loadTilesets("assets/images/" .. tileImagePath, tw, th)
+        table.insert(tempTilesetQuads, tsdata.quads)
+        table.insert(self.assets.batches, love.graphics.newSpriteBatch(tsdata.sheet, nil, "static"))
+    end
 
-
-    for _, ts in pairs(tiledMap.tilesets) do
+    for _, ts in pairs(mapTilesets) do
         for _, t in ipairs(ts.tiles) do
             table.insert(self.meta.tileData, {
                 id = #self.meta.tileData + 1,
@@ -105,7 +107,8 @@ local function _new(_filename)
             })
         end
     end
-    self.assets.quads = lume.concat(unpack(tilesetQuads))
+
+    self.assets.quads = lume.concat(unpack(tempTilesetQuads))
 
     self:construct(tiledMap.layers[1])
     self:recompile()
@@ -161,21 +164,12 @@ function World:addHitboxes()
                 if chunk.data[y][x] > 0 then
                     local t = self.meta.tileData[chunk.data[y][x]]
                     if t and t.hitbox.active then
-                        print(                                (chunk.meta.x + x * self.meta.tileW) + t.hitbox.offsetX,
-                        (chunk.meta.y + y * self.meta.tileH) + t.hitbox.offsetY,
-                        t.hitbox.w, t.hitbox.h, t.id)
                         table.insert(self.assets.elements.hitboxes, self.assets.elements.worldCollider:rectangle(
                                 (chunk.meta.x + x * self.meta.tileW) + t.hitbox.offsetX,
                                 (chunk.meta.y + y * self.meta.tileH) + t.hitbox.offsetY,
                                 t.hitbox.w, t.hitbox.h
                             )
                         )
-                        --[[hitbox(
-                            (t.id >= 15 and "object" or "tile"),
-                            (chunk.meta.x + x * self.meta.tileW) + t.hitbox.offsetX,
-                            (chunk.meta.y + y * self.meta.tileH) + t.hitbox.offsetY,
-                            t.hitbox.w, t.hitbox.h
-                        )]]--
                     end
                 end
             end 

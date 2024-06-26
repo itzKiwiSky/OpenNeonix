@@ -22,13 +22,13 @@ return {
       name = "objects",
       firstgid = 1,
       filename = "../../projects/NeonixTiled/Tilesets/objects.tsx",
-      exportfilename = "../../projects/NeonixTiled/Tilesets/objects.lua"
+      exportfilename = "Sets/objects.lua"
     },
     {
       name = "blocks",
       firstgid = 18,
       filename = "../../projects/NeonixTiled/Tilesets/blocks.tsx",
-      exportfilename = "../../projects/NeonixTiled/Tilesets/blocks.lua"
+      exportfilename = "Sets/blocks.lua"
     }
   },
   layers = {

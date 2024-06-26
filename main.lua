@@ -83,7 +83,7 @@ function love.initialize(args)
             gamestate.switch(OutdatedState)
         end
     end
-    gamestate.switch(OutdatedState)
+    gamestate.switch(DebugState)
 end
 
 function love.update(elapsed)
