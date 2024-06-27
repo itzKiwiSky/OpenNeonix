@@ -16,7 +16,7 @@ function math.onRange(n, max, range) return n / max * range end
 
 function math.remapToRange(value, start1, stop1, start2, stop2) return start2 + (value - start1) * ((stop2 - start2) / (stop1 - start1)) end
 
-function math.round(n, idp) return tonumber(string.format( '%.' .. (idp or 0) .. 'f', n)) end
+function math.round(n, precision) return tonumber(string.format( '%.' .. (precision or 0) .. 'f', n)) end
 
 function math.byteToSize(byte)
     local kb = byte / 1024
@@ -45,6 +45,10 @@ function math.signed(n)
     else return -math.abs(n) end
 end
 
+function math.sign(number)
+    return number > 0 and 1 or (number == 0 and 0 or -1)
+end
+
 function math.transform(a, b, t) return b / a * t end
 
 function math.root(a, i, n)
@@ -54,4 +58,4 @@ function math.root(a, i, n)
     else return a ^ (n / i) end
 end
 
-return math.multiply, math.lerp, math.round, math.onRange, math.dist, math.root, math.isPercent, math.clamp, math.signed, math.transform
+return math

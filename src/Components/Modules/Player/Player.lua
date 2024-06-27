@@ -1,6 +1,6 @@
 local Player = {}
 
-local AnimationHandler = require 'src.Components.Modules.AnimationHandler'
+local Collider = require 'src.Components.Modules.Map.Collider'
 
 -- import gamemodes --
 local Gamemodes = {
@@ -21,7 +21,7 @@ function Player:init(_x, _y)
         xVel = -10,
         yVel = 0,
         gravity = 5.5,
-        jumpForce = 11.3,
+        jumpForce = 13.5,
 
         grounded = false,
         jumping = false,
@@ -31,6 +31,11 @@ function Player:init(_x, _y)
         state = "cube",
         flipped = false,
         direction = "right",
+    }
+
+    self.hitboxes = {
+        ["master"] = Collider(self.x, self.y, 32, 32),
+        ["spikeBox"] = Collider(self.x, self.y, 28, 28),
     }
 
     self.assets = {}
@@ -50,10 +55,12 @@ function Player:init(_x, _y)
         h = pqh
     }
 
-    self.assets.stencils["cube"] = function()
-        love.graphics.setShader(self.assets.maskShader)
-            love.graphics.draw(self.assets.drawable, self.assets.states["cube"], self.x, self.y, self.r, 1, 1)
-        love.graphics.setShader()
+    for k, v in pairs(Gamemodes) do
+        self.assets.stencils[k] = function()
+            love.graphics.setShader(self.assets.maskShader)
+                love.graphics.draw(self.assets.drawable, self.assets.states[k], self.x, self.y, self.r, 1, 1, self.assets.meta.size.w / 2, self.assets.meta.size.h / 2)
+            love.graphics.setShader()
+        end
     end
 end
 
@@ -69,6 +76,12 @@ end
 function Player:update(elapsed)
     if Gamemodes[self.properties.state].update then
         Gamemodes[self.properties.state].update(self, elapsed)
+    end
+end
+
+function Player:keypressed(k)
+    if Gamemodes[self.properties.state].keypressed then
+        Gamemodes[self.properties.state].keypressed(self, k)
     end
 end
 

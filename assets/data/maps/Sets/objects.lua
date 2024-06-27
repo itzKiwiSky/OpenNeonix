@@ -87,7 +87,7 @@ return {
     {
       id = 4,
       properties = {
-        ["collidable"] = true,
+        ["collidable"] = false,
         ["h"] = 40,
         ["hitbox"] = true,
         ["objname"] = "obj_jump_orb",

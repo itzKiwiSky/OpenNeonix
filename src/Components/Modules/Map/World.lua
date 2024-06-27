@@ -1,7 +1,7 @@
 local World = {}
 World.__index = World
 
-local Hitbox = require 'src.Components.Modules.Objects.Hitboxes'
+local Collider = require 'src.Components.Modules.Map.Collider'
 
 local function _debugPrint(twoDArray)
     for i = 1, #twoDArray do
@@ -103,7 +103,8 @@ local function _new(_filename)
                     h = t.properties["h"]
                 },
                 special = t.properties["special"],
-                visible = t.properties["visible"]
+                visible = t.properties["visible"],
+                hazard = t.properties["collidable"]
             })
         end
     end
@@ -164,10 +165,20 @@ function World:addHitboxes()
                 if chunk.data[y][x] > 0 then
                     local t = self.meta.tileData[chunk.data[y][x]]
                     if t and t.hitbox.active then
+                        --[[
                         table.insert(self.assets.elements.hitboxes, self.assets.elements.worldCollider:rectangle(
                                 (chunk.meta.x + x * self.meta.tileW) + t.hitbox.offsetX,
                                 (chunk.meta.y + y * self.meta.tileH) + t.hitbox.offsetY,
                                 t.hitbox.w, t.hitbox.h
+                            )
+                        )
+                        ]]--
+
+                        table.insert(self.assets.elements.hitboxes, 
+                            Collider(
+                                (chunk.meta.x + x * self.meta.tileW) + t.hitbox.offsetX,
+                                (chunk.meta.y + y * self.meta.tileH) + t.hitbox.offsetY,
+                                t.hitbox.w, t.hitbox.h, t.hazard
                             )
                         )
                     end
@@ -182,13 +193,9 @@ function World:draw()
     for _, batches in pairs(self.assets.batches) do
         love.graphics.draw(batches)
     end
-    for _, h in ipairs(map.assets.elements.hitboxes) do
+    for _, h in ipairs(self.assets.elements.hitboxes) do
         h:draw("line")
     end
-end
-
-function World:update(elapsed)
-    nxCam.cam:lookAt(nxCam.camFocusObj.x, nxCam.camFocusObj.y)
 end
 
 return setmetatable(World, { __call = function(_, ...) return _new(...) end })

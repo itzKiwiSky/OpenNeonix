@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset version="1.10" tiledversion="1.10.2" name="objects" tilewidth="32" tileheight="32" tilecount="17" columns="17">
  <editorsettings>
-  <export target="objects.tsx" format="tsx"/>
+  <export target="../../../data/maps/Sets/objects.lua" format="lua"/>
  </editorsettings>
  <image source="../../../images/objects.png" width="544" height="32"/>
  <tile id="0">
@@ -58,7 +58,7 @@
  </tile>
  <tile id="4">
   <properties>
-   <property name="collidable" type="bool" value="true"/>
+   <property name="collidable" type="bool" value="false"/>
    <property name="h" type="int" value="40"/>
    <property name="hitbox" type="bool" value="true"/>
    <property name="objname" value="obj_jump_orb"/>
