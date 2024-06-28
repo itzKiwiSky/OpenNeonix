@@ -1,22 +1,18 @@
-local Collider = {}
-Collider.__index = Collider
+local Collider = entity:extend()
 
 local function _new(_x, _y, _w, _h, _hazard)
-    self = setmetatable({}, Collider)
-    self.x = _x
-    self.y = _y
-    self.w = _w
-    self.h = _h
-    self.hazard = _hazard
-    self.last = {}
-    self.last.x = self.x
-    self.last.y = self.y
-    return self
+    Collider.super.new(self, _x, _y, _w, _h, _hazard)
+    self.strength = 100000
 end
 
 function Collider:draw()
+    love.graphics.setColor(self.type == "hazard" and "#ff0000ff" or "#ffff00ff")
     love.graphics.rectangle("line", self.x, self.y, self.w, self.h)
+
+    love.graphics.setColor(self.type == "hazard" and "#ff000077" or "#ffff0077")
+    love.graphics.rectangle("fill", self.x, self.y, self.w, self.h)
+
+    love.graphics.setColor("#ffffffff")
 end
 
-
-return setmetatable(Collider, { __call = function(_, ...) return _new(...) end })
+return Collider

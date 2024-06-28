@@ -104,7 +104,7 @@ local function _new(_filename)
                 },
                 special = t.properties["special"],
                 visible = t.properties["visible"],
-                hazard = t.properties["collidable"]
+                hazard = t.properties["hazard"]
             })
         end
     end
@@ -178,7 +178,7 @@ function World:addHitboxes()
                             Collider(
                                 (chunk.meta.x + x * self.meta.tileW) + t.hitbox.offsetX,
                                 (chunk.meta.y + y * self.meta.tileH) + t.hitbox.offsetY,
-                                t.hitbox.w, t.hitbox.h, t.hazard
+                                t.hitbox.w, t.hitbox.h, (t.hazard) and "hazard" or "tile"
                             )
                         )
                     end

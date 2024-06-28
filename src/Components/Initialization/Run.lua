@@ -76,6 +76,8 @@ function love.run()
             love.graphics.present()
         end
 
+        collectgarbage("collect")
+
         if love.timer then love.timer.sleep(0.001) end
     end
 end

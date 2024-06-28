@@ -9,6 +9,7 @@ return function()
     sunlight = require 'libraries.sunlight'
     thirst = require 'libraries.thirst'
     windfield = require 'libraries.windfield'
+    class = require 'libraries.classic'
     anim8 = require 'libraries.anim8'
     baton = require 'libraries.baton'
     bump = require 'libraries.bump'

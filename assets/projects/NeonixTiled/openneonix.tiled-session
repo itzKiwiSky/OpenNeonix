@@ -5,9 +5,9 @@
     },
     "activeFile": "MapFiles/PlayerTestMap.tmx",
     "expandedProjectPaths": [
+        ".",
         "Tilesets",
-        "MapFiles",
-        "."
+        "MapFiles"
     ],
     "fileStates": {
         "": {
@@ -17,8 +17,8 @@
             "scale": 1.15966796875,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 196.17684210526318,
-                "y": 169.87621052631576
+                "x": 373.38273684210526,
+                "y": 171.60084210526315
             }
         },
         "MapFiles/DebugMap.tmx#blocks": {
@@ -33,16 +33,16 @@
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 305,
-                "y": 273
+                "x": 304,
+                "y": 244
             }
         },
         "MapFiles/Template.tmx": {
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 337,
-                "y": 312
+                "x": 558,
+                "y": 311
             }
         },
         "Tilesets/blocks.tsx": {
@@ -64,12 +64,15 @@
         "MapFiles/DebugMap.tmx",
         "MapFiles/PlayerTestMap.tmx",
         "Tilesets/blocks.tsx",
-        "Tilesets/objects.tsx"
+        "Tilesets/objects.tsx",
+        "MapFiles/Template.tmx"
     ],
     "project": "openneonix.tiled-project",
+    "property.type": "bool",
     "recentFiles": [
-        "MapFiles/DebugMap.tmx",
         "Tilesets/objects.tsx",
+        "MapFiles/DebugMap.tmx",
+        "MapFiles/Template.tmx",
         "Tilesets/blocks.tsx",
         "MapFiles/PlayerTestMap.tmx"
     ]

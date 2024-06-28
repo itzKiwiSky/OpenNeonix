@@ -1,37 +1,41 @@
-local Player = entity:extend()
+local Player = {}
 
-function Player:new(_x, _y)
-    Player.super.new(self, _x, _y, 32, 32, "player")
+local Collider = require 'src.Components.Modules.Map.Collider'
+
+-- import gamemodes --
+local Gamemodes = {
+    ["cube"] = require 'src.Components.Modules.Player.Gamemodes.Cube'
+}
+
+function Player:init(_x, _y)
+    self.x = _x
+    self.y = _y
+
+    --registers.user.player.assets.gradient = love.graphics.newGradient("vertical")
 
     self.properties = {
         w = 32,
         h = 32,
         r = 0,
 
-        xVel = 5.2,
+        xVel = -10,
         yVel = 0,
         gravity = 5.5,
-        jumpForce = 8.7,
-
-        maxVelY = 15,
+        jumpForce = 13.5,
 
         grounded = false,
         jumping = false,
         falling = false,
         dead = false,
-        flipped = false,
 
         state = "cube",
+        flipped = false,
         direction = "right",
     }
 
-    self.hitbox = {
-        ["spikeBox"] = {
-            x = 0,
-            y = 0,
-            w = 28,
-            h = 28
-        }
+    self.hitboxes = {
+        ["master"] = Collider(self.x, self.y, 32, 32),
+        ["spikeBox"] = Collider(self.x, self.y, 28, 28),
     }
 
     self.assets = {}
@@ -51,11 +55,7 @@ function Player:new(_x, _y)
         h = pqh
     }
 
-    self.gamemodes = {
-        ["cube"] = require 'src.Components.Modules.Player.Gamemodes.Cube'
-    }
-
-    for k, v in pairs(self.gamemodes) do
+    for k, v in pairs(Gamemodes) do
         self.assets.stencils[k] = function()
             love.graphics.setShader(self.assets.maskShader)
                 love.graphics.draw(self.assets.drawable, self.assets.states[k], self.x, self.y, self.r, 1, 1, self.assets.meta.size.w / 2, self.assets.meta.size.h / 2)
@@ -65,26 +65,23 @@ function Player:new(_x, _y)
 end
 
 function Player:draw()
-    love.graphics.rectangle(
-        "line", self.hitbox["spikeBox"].x, self.hitbox["spikeBox"].y,
-        self.hitbox["spikeBox"].w, self.hitbox["spikeBox"].h
-    )
-    if self.gamemodes[self.properties.state].draw then
-        self.gamemodes[self.properties.state].draw(self)
+    --if self.assets.states[self.state] then
+        --love.graphics.draw(self.assets.drawable, self.assets.states[self.state], self.x, self.y, self.r, 1, 1)
+    --end
+    if Gamemodes[self.properties.state].draw then
+        Gamemodes[self.properties.state].draw(self)
     end
 end
 
 function Player:update(elapsed)
-    Player.super.update(self, elapsed)
-    self.hitbox["spikeBox"].x, self.hitbox["spikeBox"].y = self.x + 2, self.y + 2
-    if self.gamemodes[self.properties.state].update then
-        self.gamemodes[self.properties.state].update(self, elapsed)
+    if Gamemodes[self.properties.state].update then
+        Gamemodes[self.properties.state].update(self, elapsed)
     end
 end
 
 function Player:keypressed(k)
-    if self.gamemodes[self.properties.state].keypressed then
-        self.gamemodes[self.properties.state].keypressed(self, k)
+    if Gamemodes[self.properties.state].keypressed then
+        Gamemodes[self.properties.state].keypressed(self, k)
     end
 end
 

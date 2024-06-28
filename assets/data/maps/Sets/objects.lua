@@ -33,6 +33,7 @@ return {
       properties = {
         ["collidable"] = true,
         ["h"] = 6,
+        ["hazard"] = true,
         ["hitbox"] = true,
         ["objname"] = "obj_spike_up",
         ["offsetX"] = 0,
@@ -47,6 +48,7 @@ return {
       properties = {
         ["collidable"] = true,
         ["h"] = 6,
+        ["hazard"] = true,
         ["hitbox"] = true,
         ["objname"] = "obj_spike_down",
         ["offsetX"] = 0,
@@ -61,6 +63,7 @@ return {
       properties = {
         ["collidable"] = true,
         ["h"] = 32,
+        ["hazard"] = true,
         ["hitbox"] = true,
         ["objname"] = "obj_spike_left",
         ["offsetX"] = 13,
@@ -75,6 +78,7 @@ return {
       properties = {
         ["collidable"] = true,
         ["h"] = 32,
+        ["hazard"] = true,
         ["hitbox"] = true,
         ["objname"] = "obj_spike_right",
         ["offsetX"] = 13,
@@ -89,11 +93,12 @@ return {
       properties = {
         ["collidable"] = false,
         ["h"] = 40,
+        ["hazard"] = false,
         ["hitbox"] = true,
         ["objname"] = "obj_jump_orb",
         ["offsetX"] = -4,
         ["offsetY"] = -4,
-        ["special"] = false,
+        ["special"] = true,
         ["visible"] = true,
         ["w"] = 40
       }
@@ -103,6 +108,7 @@ return {
       properties = {
         ["collidable"] = true,
         ["h"] = 16,
+        ["hazard"] = true,
         ["hitbox"] = true,
         ["objname"] = "obj_saw",
         ["offsetX"] = 8,
@@ -117,6 +123,7 @@ return {
       properties = {
         ["collidable"] = false,
         ["h"] = 0,
+        ["hazard"] = false,
         ["hitbox"] = false,
         ["objname"] = "speed_up",
         ["offsetX"] = 0,
@@ -131,6 +138,7 @@ return {
       properties = {
         ["collidable"] = false,
         ["h"] = 0,
+        ["hazard"] = false,
         ["hitbox"] = false,
         ["objname"] = "speed_down",
         ["offsetX"] = 0,
@@ -145,6 +153,7 @@ return {
       properties = {
         ["collidable"] = false,
         ["h"] = 0,
+        ["hazard"] = false,
         ["hitbox"] = false,
         ["objname"] = "start_pos",
         ["offsetX"] = 0,
@@ -159,6 +168,7 @@ return {
       properties = {
         ["collidable"] = false,
         ["h"] = 0,
+        ["hazard"] = false,
         ["hitbox"] = false,
         ["objname"] = "end_pos",
         ["offsetX"] = 0,
@@ -173,6 +183,7 @@ return {
       properties = {
         ["collidable"] = true,
         ["h"] = 32,
+        ["hazard"] = true,
         ["hitbox"] = true,
         ["objname"] = "killzone",
         ["offsetX"] = 0,
@@ -187,6 +198,7 @@ return {
       properties = {
         ["collidable"] = false,
         ["h"] = 0,
+        ["hazard"] = false,
         ["hitbox"] = false,
         ["objname"] = "obj_hide",
         ["offsetX"] = 0,
@@ -201,6 +213,7 @@ return {
       properties = {
         ["collidable"] = false,
         ["h"] = 0,
+        ["hazard"] = false,
         ["hitbox"] = false,
         ["objname"] = "obj_show",
         ["offsetX"] = 0,
@@ -216,6 +229,7 @@ return {
         ["collidable"] = false,
         ["direction"] = 0,
         ["h"] = 0,
+        ["hazard"] = false,
         ["hitbox"] = false,
         ["lifetime"] = -1,
         ["objname"] = "particle_emitter",
@@ -231,6 +245,7 @@ return {
       properties = {
         ["collidable"] = false,
         ["h"] = 0,
+        ["hazard"] = false,
         ["hitbox"] = false,
         ["objname"] = "obj_gamemode_cube",
         ["offsetX"] = 0,
@@ -245,6 +260,7 @@ return {
       properties = {
         ["collidable"] = false,
         ["h"] = 0,
+        ["hazard"] = false,
         ["hitbox"] = false,
         ["objname"] = "obj_gamemode_float",
         ["offsetX"] = 0,
@@ -259,6 +275,7 @@ return {
       properties = {
         ["collidable"] = false,
         ["h"] = 0,
+        ["hazard"] = false,
         ["hitbox"] = false,
         ["objname"] = "obj_gamemode_dart",
         ["offsetX"] = 0,

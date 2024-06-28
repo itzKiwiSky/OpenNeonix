@@ -8,6 +8,7 @@
   <properties>
    <property name="collidable" type="bool" value="true"/>
    <property name="h" type="int" value="6"/>
+   <property name="hazard" type="bool" value="true"/>
    <property name="hitbox" type="bool" value="true"/>
    <property name="objname" value="obj_spike_up"/>
    <property name="offsetX" type="int" value="0"/>
@@ -21,6 +22,7 @@
   <properties>
    <property name="collidable" type="bool" value="true"/>
    <property name="h" type="int" value="6"/>
+   <property name="hazard" type="bool" value="true"/>
    <property name="hitbox" type="bool" value="true"/>
    <property name="objname" value="obj_spike_down"/>
    <property name="offsetX" type="int" value="0"/>
@@ -34,6 +36,7 @@
   <properties>
    <property name="collidable" type="bool" value="true"/>
    <property name="h" type="int" value="32"/>
+   <property name="hazard" type="bool" value="true"/>
    <property name="hitbox" type="bool" value="true"/>
    <property name="objname" value="obj_spike_left"/>
    <property name="offsetX" type="int" value="13"/>
@@ -47,6 +50,7 @@
   <properties>
    <property name="collidable" type="bool" value="true"/>
    <property name="h" type="int" value="32"/>
+   <property name="hazard" type="bool" value="true"/>
    <property name="hitbox" type="bool" value="true"/>
    <property name="objname" value="obj_spike_right"/>
    <property name="offsetX" type="int" value="13"/>
@@ -60,6 +64,7 @@
   <properties>
    <property name="collidable" type="bool" value="false"/>
    <property name="h" type="int" value="40"/>
+   <property name="hazard" type="bool" value="true"/>
    <property name="hitbox" type="bool" value="true"/>
    <property name="objname" value="obj_jump_orb"/>
    <property name="offsetX" type="int" value="-4"/>
@@ -73,6 +78,7 @@
   <properties>
    <property name="collidable" type="bool" value="true"/>
    <property name="h" type="int" value="16"/>
+   <property name="hazard" type="bool" value="true"/>
    <property name="hitbox" type="bool" value="true"/>
    <property name="objname" value="obj_saw"/>
    <property name="offsetX" type="int" value="8"/>
@@ -86,6 +92,7 @@
   <properties>
    <property name="collidable" type="bool" value="false"/>
    <property name="h" type="int" value="0"/>
+   <property name="hazard" type="bool" value="false"/>
    <property name="hitbox" type="bool" value="false"/>
    <property name="objname" value="speed_up"/>
    <property name="offsetX" type="int" value="0"/>
@@ -99,6 +106,7 @@
   <properties>
    <property name="collidable" type="bool" value="false"/>
    <property name="h" type="int" value="0"/>
+   <property name="hazard" type="bool" value="false"/>
    <property name="hitbox" type="bool" value="false"/>
    <property name="objname" value="speed_down"/>
    <property name="offsetX" type="int" value="0"/>
@@ -112,6 +120,7 @@
   <properties>
    <property name="collidable" type="bool" value="false"/>
    <property name="h" type="int" value="0"/>
+   <property name="hazard" type="bool" value="false"/>
    <property name="hitbox" type="bool" value="false"/>
    <property name="objname" value="start_pos"/>
    <property name="offsetX" type="int" value="0"/>
@@ -125,6 +134,7 @@
   <properties>
    <property name="collidable" type="bool" value="false"/>
    <property name="h" type="int" value="0"/>
+   <property name="hazard" type="bool" value="false"/>
    <property name="hitbox" type="bool" value="false"/>
    <property name="objname" value="end_pos"/>
    <property name="offsetX" type="int" value="0"/>
@@ -138,6 +148,7 @@
   <properties>
    <property name="collidable" type="bool" value="true"/>
    <property name="h" type="int" value="32"/>
+   <property name="hazard" type="bool" value="true"/>
    <property name="hitbox" type="bool" value="true"/>
    <property name="objname" value="killzone"/>
    <property name="offsetX" type="int" value="0"/>
@@ -151,6 +162,7 @@
   <properties>
    <property name="collidable" type="bool" value="false"/>
    <property name="h" type="int" value="0"/>
+   <property name="hazard" type="bool" value="false"/>
    <property name="hitbox" type="bool" value="false"/>
    <property name="objname" value="obj_hide"/>
    <property name="offsetX" type="int" value="0"/>
@@ -164,6 +176,7 @@
   <properties>
    <property name="collidable" type="bool" value="false"/>
    <property name="h" type="int" value="0"/>
+   <property name="hazard" type="bool" value="false"/>
    <property name="hitbox" type="bool" value="false"/>
    <property name="objname" value="obj_show"/>
    <property name="offsetX" type="int" value="0"/>
@@ -178,6 +191,7 @@
    <property name="collidable" type="bool" value="false"/>
    <property name="direction" type="int" value="0"/>
    <property name="h" type="int" value="0"/>
+   <property name="hazard" type="bool" value="false"/>
    <property name="hitbox" type="bool" value="false"/>
    <property name="lifetime" type="int" value="-1"/>
    <property name="objname" value="particle_emitter"/>
@@ -192,6 +206,7 @@
   <properties>
    <property name="collidable" type="bool" value="false"/>
    <property name="h" type="int" value="0"/>
+   <property name="hazard" type="bool" value="false"/>
    <property name="hitbox" type="bool" value="false"/>
    <property name="objname" value="obj_gamemode_cube"/>
    <property name="offsetX" type="int" value="0"/>
@@ -205,6 +220,7 @@
   <properties>
    <property name="collidable" type="bool" value="false"/>
    <property name="h" type="int" value="0"/>
+   <property name="hazard" type="bool" value="false"/>
    <property name="hitbox" type="bool" value="false"/>
    <property name="objname" value="obj_gamemode_float"/>
    <property name="offsetX" type="int" value="0"/>
@@ -218,6 +234,7 @@
   <properties>
    <property name="collidable" type="bool" value="false"/>
    <property name="h" type="int" value="0"/>
+   <property name="hazard" type="bool" value="false"/>
    <property name="hitbox" type="bool" value="false"/>
    <property name="objname" value="obj_gamemode_dart"/>
    <property name="offsetX" type="int" value="0"/>

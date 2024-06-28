@@ -23,10 +23,21 @@ function love.initialize(args)
     lollipop.currentSave.game = {
         user = {
             settings = {
-                video = {},
-                audio = {},
+                video = {
+                    shaders = true,
+                    particleEffects = true,
+                    fullscreen = false,
+                    colors = true,
+                    backgrounds = true,
+                },
+                audio = {
+                    master = 75,
+                    music = 75,
+                    sfx = 50,
+                },
                 misc = {
                     language = "en",
+                    discordrpc = true,
                     gamejolt = {
                         username = "",
                         usertoken = ""
@@ -62,9 +73,19 @@ function love.initialize(args)
     local gitStuff = require 'src.Components.Initialization.GitStuff'
     Presence = require 'src.Components.Modules.API.Presence'
     require("src.Components.Modules.API.InitializeGJ")()
-    require("src.Components.Modules.API.InitializeDiscord")()
+    
+    if lollipop.currentSave.game.user.settings.misc.discordrpc then
+        require("src.Components.Modules.API.InitializeDiscord")()
+    end
 
-    gitStuff.getAll()
+    if not love.filesystem.isFused() then
+        gitStuff.getAll()
+
+        if love.filesystem.getInfo(".nxid") then
+            local title = love.window.getTitle()
+            love.window.setTitle(title .. " | " .. love.filesystem.read(".nxid"))
+        end
+    end
 
     local states = love.filesystem.getDirectoryItems("src/States")
     for s = 1, #states, 1 do

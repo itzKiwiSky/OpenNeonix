@@ -26,7 +26,7 @@ function OutdatedState:enter()
         gamestate.switch(SplashState)
     end)
 
-    nxlogo = love.graphics.newImage("assets/images/logoTransparent.png")
+    nxlogo = love.graphics.newImage("assets/images/menus/logoTransparent.png")
 end
 
 function OutdatedState:draw()

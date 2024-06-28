@@ -1,6 +1,7 @@
 DebugState = {}
 
 function DebugState:enter()
+    entity = require 'src.Components.Modules.Map.Entity'
     player = require 'src.Components.Modules.Player.Player'
     nxWorld = require 'src.Components.Modules.Map.World'
 
@@ -13,11 +14,12 @@ function DebugState:enter()
             y = love.graphics.getHeight() / 2,
             w = 32,
             h = 32,
-            drawable = love.graphics.newImage("assets/images/icon.png")
         }
     }
 
-    player:init(90, 0)
+    print(debug.formattable(playMap.assets.elements.hitboxes[1]))
+
+    player = player(90, 90)
 end
 
 function DebugState:draw()
@@ -28,15 +30,14 @@ function DebugState:draw()
 end
 
 function DebugState:update(elapsed)
-    local up, down, left, right = love.keyboard.isDown("w", "up"), love.keyboard.isDown("s", "down"), love.keyboard.isDown("a", "left"), love.keyboard.isDown("d", "right")
-    nxCam.camFocusObj.y = nxCam.camFocusObj.y - (up and 3 or 0)
-    nxCam.camFocusObj.y = nxCam.camFocusObj.y + (down and 3 or 0)
-    nxCam.camFocusObj.x = nxCam.camFocusObj.x - (left and 3 or 0)
-    nxCam.camFocusObj.x = nxCam.camFocusObj.x + (right and 3 or 0)
+    --local up, down, left, right = love.keyboard.isDown("w", "up"), love.keyboard.isDown("s", "down"), love.keyboard.isDown("a", "left"), love.keyboard.isDown("d", "right")
+    --nxCam.camFocusObj.y = nxCam.camFocusObj.y - (up and 3 or 0)
+    --nxCam.camFocusObj.y = nxCam.camFocusObj.y + (down and 3 or 0)
+    --nxCam.camFocusObj.x = nxCam.camFocusObj.x - (left and 3 or 0)
+    --nxCam.camFocusObj.x = nxCam.camFocusObj.x + (right and 3 or 0)
 
-    nxCam.cam.x = nxCam.camFocusObj.x
-    nxCam.cam.y = nxCam.camFocusObj.y
-
+    --nxCam.cam.x = nxCam.camFocusObj.x
+    --nxCam.cam.y = nxCam.camFocusObj.y
     player:update(elapsed)
 end
 

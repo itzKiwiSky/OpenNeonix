@@ -5,8 +5,10 @@ function GitStuff.getAll()
     local branch = io.popen("git rev-parse --abbrev-ref HEAD"):read("*all")
     local status = io.popen("git status --porcelain"):read("*all")
 
-    VERSION.meta.commitID = string.sub(commitID, 1, 6)
-    VERSION.meta.branch = branch
+    local cidfile = nativefs.newFile(love.filesystem.getSource() .. "/.nxid")
+    cidfile:open("w")
+    cidfile:write(string.sub(commitID, 1, 8))
+    cidfile:close()
 
     io.printf("{brightYellow}[CommitID] : " .. commitID .. "{reset}")
     io.printf("{brightMagenta}[Branch] : " .. branch .. "{reset}")

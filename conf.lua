@@ -3,13 +3,14 @@ function love.conf(w)
     w.window.width          =       1280
     w.window.height         =       768
     w.window.icon           =       "icon.png"
-    w.window.title          =       "Neonix! Zerodown"
+    w.window.title          =       "[Neonix!]"
     w.window.x              =       nil
     w.window.y              =       nil
     w.window.borderless     =       false
     w.window.resizable      =       false
     w.window.fullscreen     =       false
     w.window.depth          =       16
+    --w.window.vsync          =       0
 
     --% Debug %--
     w.console               =       love.filesystem.isFused() and false or true
