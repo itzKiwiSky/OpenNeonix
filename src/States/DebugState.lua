@@ -1,9 +1,9 @@
 DebugState = {}
 
 function DebugState:enter()
-    entity = require 'src.Components.Modules.Map.Entity'
-    player = require 'src.Components.Modules.Player.Player'
-    nxWorld = require 'src.Components.Modules.Map.World'
+    Entity = require 'src.Components.Modules.Game.Map.Entity'
+    Player = require 'src.Components.Modules.Game.Player.Player'
+    nxWorld = require 'src.Components.Modules.Game.Map.World'
 
     playMap = nxWorld("assets/data/maps/PlayerTestMap.lua")
 
@@ -17,9 +17,7 @@ function DebugState:enter()
         }
     }
 
-    print(debug.formattable(playMap.assets.elements.hitboxes[1]))
-
-    player = player(90, 90)
+    player = Player(90, 90)
 end
 
 function DebugState:draw()
@@ -39,6 +37,7 @@ function DebugState:update(elapsed)
     --nxCam.cam.x = nxCam.camFocusObj.x
     --nxCam.cam.y = nxCam.camFocusObj.y
     player:update(elapsed)
+    playMap:update(elapsed)
 end
 
 function DebugState:keypressed(k)

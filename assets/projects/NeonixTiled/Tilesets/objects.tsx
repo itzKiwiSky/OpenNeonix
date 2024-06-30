@@ -64,12 +64,12 @@
   <properties>
    <property name="collidable" type="bool" value="false"/>
    <property name="h" type="int" value="40"/>
-   <property name="hazard" type="bool" value="true"/>
+   <property name="hazard" type="bool" value="false"/>
    <property name="hitbox" type="bool" value="true"/>
    <property name="objname" value="obj_jump_orb"/>
    <property name="offsetX" type="int" value="-4"/>
    <property name="offsetY" type="int" value="-4"/>
-   <property name="special" type="bool" value="false"/>
+   <property name="special" type="bool" value="true"/>
    <property name="visible" type="bool" value="true"/>
    <property name="w" type="int" value="40"/>
   </properties>
