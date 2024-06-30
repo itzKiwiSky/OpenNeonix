@@ -76,7 +76,7 @@ local function _normalizeColor(value)
     end
 end
 
-function love.graphics.setColor(_r, _g, _b, _a)
+function love.graphics.setHexColor(_r, _g, _b, _a)
     if type(_r) == "string" then
         local r, g, b, a = _r:match("#(%x%x)(%x%x)(%x%x)(%x%x)")
         if r then
@@ -88,51 +88,6 @@ function love.graphics.setColor(_r, _g, _b, _a)
             end
         end
         lgSetColor(r, g, b, a or 1)
-    elseif type(_r) == "table" then
-        if #_r >= 3 then
-            if _r.r then
-                if _r.a then
-                    lgSetColor(
-                        _normalizeColor(_r.r),
-                        _normalizeColor(_r.g),
-                        _normalizeColor(_r.b),
-                        _normalizeColor(_r.a)
-                    )
-                else
-                    lgSetColor(
-                        _normalizeColor(_r.r),
-                        _normalizeColor(_r.g),
-                        _normalizeColor(_r.b),
-                        1
-                    )
-                end
-            else
-                if _r[4] then
-                    lgSetColor(
-                        _normalizeColor(_r[1]),
-                        _normalizeColor(_r[2]),
-                        _normalizeColor(_r[3]),
-                        _normalizeColor(_r[4])
-                    )
-                else
-                    lgSetColor(
-                        _normalizeColor(_r[1]),
-                        _normalizeColor(_r[2]),
-                        _normalizeColor(_r[3]),
-                        1
-                    )
-                end
-            end
-        else
-            error("Invalid table length for color")
-        end
-    else
-        lgSetColor(
-            _normalizeColor(_r),
-            _normalizeColor(_g),
-            _normalizeColor(_b),
-            _normalizeColor(_a or 1)
-        )
     end
 end
 

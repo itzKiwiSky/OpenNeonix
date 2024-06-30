@@ -5,7 +5,9 @@
  </editorsettings>
  <properties>
   <property name="background id" type="int" value="1"/>
+  <property name="bpm" type="file" value=""/>
   <property name="level color" type="color" value="#ff0a595a"/>
+  <property name="map name" value=""/>
   <property name="room height" type="int" value="2000"/>
   <property name="room width" type="int" value="2000"/>
  </properties>

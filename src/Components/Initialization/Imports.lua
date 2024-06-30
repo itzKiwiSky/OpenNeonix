@@ -1,4 +1,5 @@
 return function()
+    --TODO: Clean out this shitty mess of libraries --
     https = require 'https'
     breezefield = require 'libraries.breezefield'
     lollipop = require 'libraries.lollipop'
@@ -14,12 +15,14 @@ return function()
     baton = require 'libraries.baton'
     bump = require 'libraries.bump'
     camera = require 'libraries.camera'
+    luafft = require 'libraries.luafft'
     cartographer = require 'libraries.cartographer'
     collision = require 'libraries.collision'
     deep = require 'libraries.deep'
     discordrpc = require 'libraries.discordRPC'
     gamestate = require 'libraries.gamestate'
     gamejolt = require 'libraries.gamejolt'
+    knifeevent = require 'libraries.KnifeEvent'
     json = require 'libraries.json'
     hc = require 'libraries.hc'
     lualzw = require 'libraries.Lualzw'

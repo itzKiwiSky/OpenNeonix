@@ -16,6 +16,11 @@ Conductor.curStep = 0
 
 Conductor.offset = 0
 
+local function updateCrochets()
+    Conductor.crochet = ((60 / Conductor.bpm) * 1000)
+    Conductor.stepCrochet = Conductor.crochet / 4
+end
+
 function Conductor:update(elapsed)
     local oldStep = Conductor.curStep
     
@@ -38,11 +43,6 @@ end
 
 function Conductor:beatHit()
     -- gibe buissy pleez
-end
-
-function updateCrochets( )
-    Conductor.crochet = ((60 / Conductor.bpm) * 1000)
-    Conductor.stepCrochet = Conductor.crochet / 4
 end
 
 return Conductor

@@ -7,9 +7,9 @@ function Tile:new(_x, _y, _w, _h)
 end
 
 function Tile:draw()
-    love.graphics.setColor("#ffffff55")
+    love.graphics.setHexColor("#ffffff55")
     love.graphics.rectangle("line", self.x, self.y, self.w, self.h)
-    love.graphics.setColor("#ffffffff")
+    love.graphics.setHexColor("#ffffffff")
     love.graphics.rectangle("line", self.x, self.y, self.w, self.h)
 end
 

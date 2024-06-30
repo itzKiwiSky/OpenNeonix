@@ -1,0 +1,61 @@
+[Neonix]
+
+
+
+____________________________
+
+Created By NXStudios
+____________________________
+
+
+-=[Soundtrack Artists]=-
+
+Aff
+Lopp
+Yvee
+Vaporize
+
+____________________________
+
+
+-=[Soundtracks]=-
+
+Crymson Edge - KiwiSky_ (Me lol)
+BulletProof - Aff
+Andesite - Yvee
+Neurofunk - Lopp
+Neurolab - Lopp
+Nip-trip - Yvee
+Dubnix -  Aff
+Get it - Aff
+Get it (Remix) - Lopp
+Night Heights - Yvee
+Hydroxygen - Lopp
+Neon Grind Cracker - Aff
+Next-gen - Lopp
+Abstraction - Vaporize
+
+____________________________
+
+-=[Fonts]=-
+Quicksand
+Alien Moon
+8 Bit font
+
+____________________________
+
+-=[Arts]=-
+
+Some icons from SVGRepo
+FlameFoxGames - All backgrounds
+
+____________________________
+
+Powered with LÖVE
+
+____________________________
+
+
+
+Thank you for Playing =3
+

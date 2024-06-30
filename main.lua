@@ -18,6 +18,7 @@ function love.initialize(args)
     Presence = require 'src.Components.Modules.API.Presence'
     GameColors = require 'src.Components.Modules.Utils.GameColors'
 
+
     fontcache.init()
 
     lollipop.currentSave.game = {
@@ -104,7 +105,7 @@ function love.initialize(args)
             gamestate.switch(OutdatedState)
         end
     end
-    gamestate.switch(DebugState)
+    gamestate.switch(CreditsState)
 end
 
 function love.update(elapsed)
