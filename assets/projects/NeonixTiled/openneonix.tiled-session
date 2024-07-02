@@ -5,9 +5,9 @@
     },
     "activeFile": "MapFiles/Template.tmx",
     "expandedProjectPaths": [
+        "MapFiles",
         "Tilesets",
-        ".",
-        "MapFiles"
+        "."
     ],
     "fileStates": {
         "": {
@@ -41,8 +41,8 @@
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 780,
-                "y": 311
+                "x": 1043,
+                "y": 316
             }
         },
         "Tilesets/blocks.tsx": {

@@ -1,6 +1,7 @@
 return function()
     --TODO: Clean out this shitty mess of libraries --
     https = require 'https'
+    g3d = require 'libraries.g3d'
     breezefield = require 'libraries.breezefield'
     lollipop = require 'libraries.lollipop'
     loveframes = require 'libraries.loveframes'
@@ -22,6 +23,7 @@ return function()
     discordrpc = require 'libraries.discordRPC'
     gamestate = require 'libraries.gamestate'
     gamejolt = require 'libraries.gamejolt'
+    flux = require 'libraries.flux'
     knifeevent = require 'libraries.KnifeEvent'
     json = require 'libraries.json'
     hc = require 'libraries.hc'

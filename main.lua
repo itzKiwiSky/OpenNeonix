@@ -105,7 +105,7 @@ function love.initialize(args)
             gamestate.switch(OutdatedState)
         end
     end
-    gamestate.switch(CreditsState)
+    gamestate.switch(TitleState)
 end
 
 function love.update(elapsed)

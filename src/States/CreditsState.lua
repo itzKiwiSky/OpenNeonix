@@ -29,12 +29,12 @@ function CreditsState:enter()
     spvz = SpectrumVisualizer("assets/sounds/Tracks/neon_code.ogg", 1024, 32)
 
     fogFx = Fog(love.graphics.newImage("assets/images/menus/glow.png"))
-end
 
-knifeevent.on("beatHit", function()
-    logoBumpSize = 0.23
-    Expander.add(nxLogoFX, 0.2, 0.2, 1.66, 0.03, 0.3)
-end)
+    knifeevent.on("beatHit", function()
+        logoBumpSize = 0.23
+        Expander.add(nxLogoFX, 0.2, 0.2, 1.66, 0.03, 0.3)
+    end)
+end
 
 function CreditsState:draw()
     love.graphics.printf(creditsText, f_credits, 0, yText, love.graphics.getWidth(), "center")
