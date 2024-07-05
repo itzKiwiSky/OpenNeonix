@@ -122,7 +122,7 @@ function love.initialize(args)
             gamestate.switch(OutdatedState)
         end
     end
-    gamestate.switch(MenuState)
+    gamestate.switch(TitleState)
 end
 
 function love.update(elapsed)
