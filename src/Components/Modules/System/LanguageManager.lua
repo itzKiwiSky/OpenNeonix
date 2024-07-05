@@ -16,7 +16,7 @@ local function _new(_language)
         self = {}
 
         local tempdata = json.decode(love.filesystem.read("assets/data/language/" .. _language .. ".lang"))
-        _findKey(tempdata, self.pool)
+        _findKey(tempdata, self)
     return self
 end
 

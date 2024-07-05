@@ -1,8 +1,23 @@
 {
     "menu" : {
-        "menu_selection_normal_title" : "Normal mode",
-        "menu_selection_normal_description" : "Play to different levels and get the best rating",
-        "menu_selection_editor_title" : "Editor mode",
-        "menu_selection_editor_description" : "Build your own dream level and play others levels"
+        "selection" : {
+            "menu_selection_title" : "Select mode",
+            "menu_selection_normal_title" : "Normal mode",
+            "menu_selection_editor_title" : "Editor mode",
+            "menu_selection_char_editor_title" : "Customization mode"
+        },
+        "gamejolt" : {
+            "menu_gamejolt_state_not_connected" : "Not logged in",
+            "menu_gamejolt_state_connected" : "Welcome",
+            "menu_gamejolt_login_panel" : {
+                "menu_gamejolt_login_panel_desc" : "Log with your gamejolt account to unlock new features",
+                "menu_gamejolt_login_panel_login_button" : "Connect",
+                "menu_gamejolt_login_panel_cancel_button" : "Cancel",
+                "menu_gamejolt_login_panel_state" : {
+                    "menu_gamejolt_login_panel_state_fail" : "Failed to connect with gamejolt API, try again later",
+                    "menu_gamejolt_login_panel_state_sucess" : "Sucess, you're now logged in"
+                }
+            }
+        }
     }
 }

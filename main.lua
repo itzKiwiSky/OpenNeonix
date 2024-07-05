@@ -63,6 +63,7 @@ function love.initialize(args)
 
     lollipop.initializeSlot("game")
 
+    love.audio.setVolume(0.01 * lollipop.currentSave.game.user.settings.audio.master)
     languageService = LanguageController(lollipop.currentSave.game.user.settings.misc.language)
 
     registers = {
@@ -121,7 +122,7 @@ function love.initialize(args)
             gamestate.switch(OutdatedState)
         end
     end
-    gamestate.switch(TitleState)
+    gamestate.switch(MenuState)
 end
 
 function love.update(elapsed)
@@ -136,7 +137,9 @@ function love.update(elapsed)
 end
 
 function love.quit()
-    gamejolt.closeSession()
+    if gamejolt.isLoggedIn then
+        gamejolt.closeSession()
+    end
     discordrpc.shutdown()
 end
 
