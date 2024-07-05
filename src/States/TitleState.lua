@@ -20,9 +20,13 @@ function TitleState:enter()
     Conductor.bpm = 123 / 2
 
     crymsonEdgeMenuTheme = love.audio.newSource("assets/sounds/Tracks/crymson_edge.ogg", "static")
+    crymsonEdgeMenuTheme:setVolume(registers.system.settings.audio.music)
+    
     spvzmenu = SpectrumVisualizer("assets/sounds/Tracks/crymson_edge.ogg", 1024, 32)
     
     fogGlowFx = Fog(love.graphics.newImage("assets/images/menus/glow.png"))
+
+    glowFX = moonshine(moonshine.effects.glow)
 
     menuCam = camera()
     menuCam.y = menuCam.y - 96
@@ -30,15 +34,15 @@ function TitleState:enter()
     knifeevent.hook(Conductor, { "beatHit" })
 
     glowSize = 0
-    logoBumpSize = 0.5
+    logoBumpSize = 0.3
 
     alphaText = 1
     enterPressed = false
     flash = 0
 
-    camTween = flux.to(menuCam, 3, {y = love.graphics.getHeight() * 2})
-    camTween:delay(3)
-    camTween:ease("backinout")
+    camTween = flux.to(menuCam, 3, {y = menuCam.y + love.graphics.getHeight()})
+    camTween:delay(1.8)
+    camTween:ease("backin")
     camTween:oncomplete(function()
         gamestate.switch(MenuState)
     end)

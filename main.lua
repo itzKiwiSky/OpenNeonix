@@ -17,6 +17,9 @@ function love.initialize(args)
     versionChecker = require 'src.Components.Modules.API.CheckVersion'
     Presence = require 'src.Components.Modules.API.Presence'
     GameColors = require 'src.Components.Modules.Utils.GameColors'
+    LanguageController = require 'src.Components.Modules.System.LanguageManager'
+    connectGJ = require 'src.Components.Modules.API.InitializeGJ'
+    connectDiscordRPC = require 'src.Components.Modules.API.InitializeDiscord'
 
 
     fontcache.init()
@@ -37,7 +40,7 @@ function love.initialize(args)
                     sfx = 50,
                 },
                 misc = {
-                    language = "en",
+                    language = "English",
                     discordrpc = true,
                     gamejolt = {
                         username = "",
@@ -60,23 +63,36 @@ function love.initialize(args)
 
     lollipop.initializeSlot("game")
 
+    languageService = LanguageController(lollipop.currentSave.game.user.settings.misc.language)
+
     registers = {
         user = {
             player = {
                 assets = {
                     gradient = nil
-                }
+                },
+                gamejoltConnected = false,
             }
+        },
+        system = {
+            settings = {
+                audio = {
+                    master = lollipop.currentSave.game.user.settings.audio.master,
+                    music = lollipop.currentSave.game.user.settings.audio.music,
+                    sfx = lollipop.currentSave.game.user.settings.audio.sfx,
+                }
+            },
+            gameTime = 0
         }
     }
 
 
     local gitStuff = require 'src.Components.Initialization.GitStuff'
     Presence = require 'src.Components.Modules.API.Presence'
-    require("src.Components.Modules.API.InitializeGJ")()
+    connectGJ()
     
     if lollipop.currentSave.game.user.settings.misc.discordrpc then
-        require("src.Components.Modules.API.InitializeDiscord")()
+        connectDiscordRPC()
     end
 
     if not love.filesystem.isFused() then
@@ -110,9 +126,17 @@ end
 
 function love.update(elapsed)
     discordrpc.runCallbacks()
+    if gamejolt.isLoggedIn then
+        registers.system.gameTime = registers.system.gameTime * elapsed
+        if math.floor(registers.system.gameTime) > 25 then
+            gamejolt.pingSession(true)
+            registers.system.gameTime = 0
+        end
+    end
 end
 
 function love.quit()
+    gamejolt.closeSession()
     discordrpc.shutdown()
 end
 

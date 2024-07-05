@@ -12,8 +12,9 @@ function CreditsState:enter()
     nxLogoFX = love.graphics.newImage("assets/images/menus/logo_fx.png")
     
     neonCodeCreditsSoundtrack = love.audio.newSource("assets/sounds/Tracks/neon_code.ogg", "static")
+    neonCodeCreditsSoundtrack:setVolume(registers.system.settings.audio.music)
 
-    gradientFade = love.graphics.newGradient("vertical", {255, 255, 255, 255}, {255, 255, 255, 0})
+    gradientFade = love.graphics.newGradient("vertical", {255, 255, 255, 255}, {0, 0, 0, 0})
 
     Conductor.bpm = 87
 

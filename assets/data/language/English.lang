@@ -1,0 +1,8 @@
+{
+    "menu" : {
+        "menu_selection_normal_title" : "Normal mode",
+        "menu_selection_normal_description" : "Play to different levels and get the best rating",
+        "menu_selection_editor_title" : "Editor mode",
+        "menu_selection_editor_description" : "Build your own dream level and play others levels"
+    }
+}

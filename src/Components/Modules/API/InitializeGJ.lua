@@ -9,6 +9,7 @@ return function()
                 lollipop.currentSave.game.user.settings.misc.gamejolt.usertoken
             )
             gamejolt.openSession()
+            registers.user.player.gamejoltConnected = true
             io.printf(string.format("{bgGreen}{brightWhite}{bold}[Gamejolt]{reset}{brightWhite} : Client connected (%s, %s, %s){reset}", gamejolt.username, gamejolt.userToken))
         end
     end
