@@ -63,6 +63,10 @@ function love.initialize(args)
 
     lollipop.initializeSlot("game")
 
+    if not lollipop.currentSave.game.user.gameid then
+        lollipop.currentSave.game.user.gameid = love.data.encode("string", "hex", love.data.hash("md5", love.system.getOS() .. os.time()))
+    end
+
     love.audio.setVolume(0.01 * lollipop.currentSave.game.user.settings.audio.master)
     languageService = LanguageController(lollipop.currentSave.game.user.settings.misc.language)
 
@@ -110,6 +114,11 @@ function love.initialize(args)
         require("src.States." .. states[s]:gsub(".lua", ""))
     end
 
+    local substates = love.filesystem.getDirectoryItems("src/SubStates")
+    for s = 1, #substates, 1 do
+        require("src.SubStates." .. substates[s]:gsub(".lua", ""))
+    end
+
     if DEBUG_APP then
         love.filesystem.createDirectory("editor")
         love.filesystem.createDirectory("editor/maps")
@@ -120,9 +129,10 @@ function love.initialize(args)
     if lollipop.currentSave.game.user.settings.misc.checkForUpdates then
         if versionChecker.check() then
             gamestate.switch(OutdatedState)
+        else
+            gamestate.switch(MenuState)
         end
     end
-    gamestate.switch(TitleState)
 end
 
 function love.update(elapsed)
