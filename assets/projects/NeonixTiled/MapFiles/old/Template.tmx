@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="1" nextlayerid="2" nextobjectid="1">
+ <editorsettings>
+  <export target="../../../data/maps/PlayerTestMap.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="background id" type="int" value="1"/>
+  <property name="bpm" type="file" value=""/>
+  <property name="level color" type="color" value="#ff0a595a"/>
+  <property name="map name" value=""/>
+  <property name="room height" type="int" value="2000"/>
+  <property name="room width" type="int" value="2000"/>
+ </properties>
+ <tileset firstgid="1" source="../Tilesets/blocks.tsx"/>
+ <tileset firstgid="15" source="../Tilesets/objects.tsx"/>
+ <layer id="1" name="tiles" width="30" height="20">
+  <data encoding="csv"/>
+ </layer>
+</map>

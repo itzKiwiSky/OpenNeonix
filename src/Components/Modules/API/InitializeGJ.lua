@@ -10,7 +10,7 @@ return function()
             )
             gamejolt.openSession()
             registers.user.player.gamejoltConnected = true
-            io.printf(string.format("{bgGreen}{brightWhite}{bold}[Gamejolt]{reset}{brightWhite} : Client connected (%s, %s){reset}", gamejolt.username, gamejolt.userToken))
+            io.printf(string.format("{bgGreen}{brightWhite}{bold}[Gamejolt]{reset}{brightWhite} : Client connected (%s, %s){reset}\n", gamejolt.username, gamejolt.userToken))
         end
     end
 end

@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.2",
+  tiledversion = "1.11.0",
   name = "blocks",
   class = "",
   tilewidth = 32,
@@ -31,6 +31,7 @@ return {
     {
       id = 0,
       properties = {
+        ["collidable"] = true,
         ["h"] = 4,
         ["hitbox"] = true,
         ["objName"] = "tile_horizontal",
@@ -43,6 +44,7 @@ return {
     {
       id = 1,
       properties = {
+        ["collidable"] = true,
         ["h"] = 18,
         ["hitbox"] = true,
         ["objName"] = "tile_corner_down_right",
@@ -55,6 +57,7 @@ return {
     {
       id = 2,
       properties = {
+        ["collidable"] = true,
         ["h"] = 18,
         ["hitbox"] = true,
         ["objName"] = "tile_corner_up_right",
@@ -67,6 +70,7 @@ return {
     {
       id = 3,
       properties = {
+        ["collidable"] = true,
         ["h"] = 32,
         ["hitbox"] = true,
         ["objName"] = "tile_bif_right",
@@ -79,6 +83,7 @@ return {
     {
       id = 4,
       properties = {
+        ["collidable"] = true,
         ["h"] = 32,
         ["hitbox"] = true,
         ["objName"] = "tile_bif_left",
@@ -91,6 +96,7 @@ return {
     {
       id = 5,
       properties = {
+        ["collidable"] = true,
         ["h"] = 8,
         ["hitbox"] = true,
         ["objName"] = "tile_point_left",
@@ -103,6 +109,7 @@ return {
     {
       id = 6,
       properties = {
+        ["collidable"] = true,
         ["h"] = 8,
         ["hitbox"] = true,
         ["objName"] = "tile_point_right",
@@ -115,6 +122,7 @@ return {
     {
       id = 7,
       properties = {
+        ["collidable"] = true,
         ["h"] = 32,
         ["hitbox"] = true,
         ["objName"] = "tile_vertical",
@@ -127,6 +135,7 @@ return {
     {
       id = 8,
       properties = {
+        ["collidable"] = true,
         ["h"] = 18,
         ["hitbox"] = true,
         ["objName"] = "tile_corner_left_up",
@@ -139,6 +148,7 @@ return {
     {
       id = 9,
       properties = {
+        ["collidable"] = true,
         ["h"] = 18,
         ["hitbox"] = true,
         ["objName"] = "tile_corner_left_up",
@@ -151,6 +161,7 @@ return {
     {
       id = 10,
       properties = {
+        ["collidable"] = true,
         ["h"] = 18,
         ["hitbox"] = true,
         ["objName"] = "tile_bif_down",
@@ -163,6 +174,7 @@ return {
     {
       id = 11,
       properties = {
+        ["collidable"] = true,
         ["h"] = 18,
         ["hitbox"] = true,
         ["objName"] = "tile_bif_up",
@@ -175,6 +187,7 @@ return {
     {
       id = 12,
       properties = {
+        ["collidable"] = true,
         ["h"] = 8,
         ["hitbox"] = true,
         ["objName"] = "tile_point_up",
@@ -187,6 +200,7 @@ return {
     {
       id = 13,
       properties = {
+        ["collidable"] = true,
         ["h"] = 8,
         ["hitbox"] = true,
         ["objName"] = "tile_point_down",

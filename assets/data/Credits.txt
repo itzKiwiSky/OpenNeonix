@@ -50,10 +50,13 @@ Some icons from SVGRepo
 FlameFoxGames - All backgrounds
 Thiagopdps - Pixel art icons
 
+
+-=[ Dedications ]=-
+yThzones <3
+
 ____________________________
 
 Powered with LÖVE
-
 ____________________________
 
 

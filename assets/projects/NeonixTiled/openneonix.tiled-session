@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "MapFiles/Template.tmx",
+    "activeFile": "Tilesets/tiles.tsx",
     "expandedProjectPaths": [
         "MapFiles",
-        "Tilesets",
-        "."
+        ".",
+        "Tilesets"
     ],
     "fileStates": {
         "": {
@@ -17,8 +17,8 @@
             "scale": 1.15966796875,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 550.5886315789473,
-                "y": 172.46315789473687
+                "x": 280.6837894736842,
+                "y": 272.49178947368426
             }
         },
         "MapFiles/DebugMap.tmx#blocks": {
@@ -30,50 +30,69 @@
             "scaleInEditor": 1
         },
         "MapFiles/PlayerTestMap.tmx": {
-            "scale": 1,
+            "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 298.5,
-                "y": 239
+                "x": 606,
+                "y": 258.66666666666663
             }
         },
         "MapFiles/Template.tmx": {
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1043,
-                "y": 316
+                "x": 2095,
+                "y": 336
             }
         },
+        "MapFiles/tiles.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tilesets/actions.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "Tilesets/blocks.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tilesets/hazard.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "Tilesets/objects.tsx": {
             "scaleInDock": 0.75,
             "scaleInEditor": 1
+        },
+        "Tilesets/tiles.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         }
     },
-    "last.exportedFilePath": "C:/Users/kiwis/Área de Trabalho/openneonix/assets/data/maps/Sets",
+    "last.exportedFilePath": "C:/Users/kiwis/Área de Trabalho/openneonix/assets/data/maps",
     "last.imagePath": "C:/Users/kiwis/Área de Trabalho/openneonix/assets/images",
-    "lastUsedTilesetExportFilter": "Ficheiros Lua (*.lua)",
+    "lastUsedTilesetExportFilter": "Todos os Ficheiros (*)",
     "map.fixedSize": false,
     "map.lastUsedExportFilter": "Ficheiros Lua (*.lua)",
     "map.lastUsedFormat": "tmx",
     "openFiles": [
-        "MapFiles/DebugMap.tmx",
-        "MapFiles/PlayerTestMap.tmx",
-        "Tilesets/blocks.tsx",
-        "MapFiles/Template.tmx",
-        "Tilesets/objects.tsx"
+        "Tilesets/actions.tsx",
+        "Tilesets/hazard.tsx",
+        "Tilesets/tiles.tsx"
     ],
     "project": "openneonix.tiled-project",
-    "property.type": "file",
+    "property.type": "bool",
     "recentFiles": [
-        "MapFiles/DebugMap.tmx",
+        "Tilesets/actions.tsx",
+        "Tilesets/hazard.tsx",
+        "Tilesets/tiles.tsx",
+        "MapFiles/tiles.tsx",
+        "MapFiles/Template.tmx",
         "MapFiles/PlayerTestMap.tmx",
-        "Tilesets/blocks.tsx",
+        "MapFiles/DebugMap.tmx",
         "Tilesets/objects.tsx",
-        "MapFiles/Template.tmx"
-    ]
+        "Tilesets/blocks.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx"
 }

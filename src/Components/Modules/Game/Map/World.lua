@@ -102,9 +102,11 @@ local function _new(_filename)
                     w = t.properties["w"],
                     h = t.properties["h"]
                 },
+                active = t.properties["hitbox"],
                 special = t.properties["special"],
                 visible = t.properties["visible"],
-                hazard = t.properties["hazard"]
+                hazard = t.properties["hazard"],
+                collidable = t.properties["collidable"]
             })
         end
     end
@@ -166,7 +168,8 @@ function World:addHitboxes()
                     local t = self.meta.tileData[chunk.data[y][x]]
                     if t and t.hitbox.active then
                         --[[
-                        table.insert(self.assets.elements.hitboxes, self.assets.elements.worldCollider:rectangle(
+                        table.insert(self.assets.elements.hitboxes, 
+                            self.assets.elements.worldCollider:rectangle(
                                 (chunk.meta.x + x * self.meta.tileW) + t.hitbox.offsetX,
                                 (chunk.meta.y + y * self.meta.tileH) + t.hitbox.offsetY,
                                 t.hitbox.w, t.hitbox.h
@@ -174,13 +177,19 @@ function World:addHitboxes()
                         )
                         ]]--
 
-                        table.insert(self.assets.elements.hitboxes, 
-                            Tile(
-                                (chunk.meta.x + x * self.meta.tileW) + t.hitbox.offsetX,
-                                (chunk.meta.y + y * self.meta.tileH) + t.hitbox.offsetY,
-                                t.hitbox.w, t.hitbox.h
+                        if t.hitbox.hazard then
+
+                        elseif t.hitbox.special then
+                            
+                        elseif t.hitbox.collidable then
+                            table.insert(self.assets.elements.hitboxes, 
+                                Tile(
+                                    (chunk.meta.x + x * self.meta.tileW) + t.hitbox.offsetX,
+                                    (chunk.meta.y + y * self.meta.tileH) + t.hitbox.offsetY,
+                                    t.hitbox.w, t.hitbox.h
+                                )
                             )
-                        )
+                        end
                     end
                 end
             end 

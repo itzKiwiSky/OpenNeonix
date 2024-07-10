@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="32" tileheight="32" infinite="1" nextlayerid="5" nextobjectid="1">
+ <editorsettings>
+  <export target="../../../data/maps/DebugMap.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="background id" type="int" value="1"/>
+  <property name="level color" type="color" value="#ff62a635"/>
+  <property name="room height" type="int" value="2000"/>
+  <property name="room width" type="int" value="2000"/>
+ </properties>
+ <tileset firstgid="1" source="../Tilesets/objects.tsx"/>
+ <tileset firstgid="18" source="../Tilesets/blocks.tsx"/>
+ <layer id="1" name="tiles" class="primary" width="20" height="15">
+  <data encoding="csv">
+   <chunk x="0" y="0" width="16" height="16">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,18,0,19,0,20,0,21,0,22,0,23,0,24,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,25,0,26,0,27,0,28,0,29,0,30,0,31,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,8,0,9,0,10,0,11,0,12,0,13,0,14,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,15,0,16,0,17,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</chunk>
+  </data>
+ </layer>
+</map>
