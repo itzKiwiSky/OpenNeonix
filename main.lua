@@ -119,10 +119,9 @@ function love.initialize(args)
         require("src.SubStates." .. substates[s]:gsub(".lua", ""))
     end
 
-    if DEBUG_APP then
-        love.filesystem.createDirectory("editor")
-        love.filesystem.createDirectory("editor/maps")
-    end
+    love.filesystem.createDirectory("editor")
+    love.filesystem.createDirectory("editor/levels")
+    love.filesystem.createDirectory("editor/edited")
 
     gamestate.registerEvents()
 
@@ -130,7 +129,7 @@ function love.initialize(args)
         if versionChecker.check() then
             gamestate.switch(OutdatedState)
         else
-            gamestate.switch(DebugState)
+            gamestate.switch(TitleState)
         end
     end
 end

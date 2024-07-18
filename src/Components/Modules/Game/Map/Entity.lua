@@ -45,7 +45,7 @@ function Entity:collide(e, direction)
         local pushback = self.x + self.w - e.x
         self.x = self.x - pushback
     elseif direction == "left" then
-        local pushback = e.x + e.w - self.x
+        local pushback = e.x + e.w - self. x
         self.x = self.x + pushback
     elseif direction == "bottom" then
         local pushback = self.y + self.h - e.y

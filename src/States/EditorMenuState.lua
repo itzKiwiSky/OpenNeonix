@@ -1,6 +1,6 @@
-MenuState = {}
+EditorMenuState = {}
 
-function MenuState:enter()
+function EditorMenuState:enter()
     MenuController = require 'src.Components.Modules.Game.Menu.MenuController'
     MenuItem = require 'src.Components.Modules.Game.Menu.MenuItem'
     MenuBGParticles = require 'src.Components.Modules.Game.Menu.MenuParticleSystem'
@@ -17,28 +17,6 @@ function MenuState:enter()
     sunBG = love.graphics.newImage("assets/images/menus/sun.png")
     sunGlow = love.graphics.newImage("assets/images/menus/lightDot.png")
     lockIcon = userIconQuads["lock"]
-
-    userUI = {
-        userIcon = userIconQuads["userIcon"],
-        error = userIconQuads["errorIcon"],
-        sucess = userIconQuads["sucessIcon"],
-        sizeMulti = 0,
-        textAlpha = 0,
-        hovered = false,
-        uiActive = false,
-        bgUIAlpha = 0,
-        sysDetails = {
-            username = "",
-            token = ""
-        },
-        clickzone = clickzone(32, 32, 64, 64),
-        dialogStatusOpen = false,
-        panel = {
-            signOffConfirmDialog = false,
-            backupRunning = false,
-            loadingRunning = false,
-        }
-    }
 
     menuCam = camera(love.graphics.getWidth() / 2, -love.graphics.getHeight() - 512)
 
@@ -120,7 +98,7 @@ function MenuState:enter()
     end)
 end
 
-function MenuState:draw()
+function EditorMenuState:draw()
     menuCam:attach()
         love.graphics.setBlendMode("add")
         love.graphics.draw(MenuBGP, love.graphics.getWidth() / 2, love.graphics.getHeight() / 2)
@@ -183,7 +161,7 @@ function MenuState:draw()
     slab.Draw()
 end
 
-function MenuState:update(elapsed)
+function EditorMenuState:update(elapsed)
     MenuBGP:update(elapsed)
 
     slab.Update(elapsed)
@@ -240,7 +218,7 @@ function MenuState:update(elapsed)
     end
 end
 
-function MenuState:mousepressed(x, y, button)
+function EditorMenuState:mousepressed(x, y, button)
     if not userUI.uiActive then
         for i = 1, #menuContent, 1 do
             if menuContent[i].btn:hovered() then
@@ -260,4 +238,4 @@ function MenuState:mousepressed(x, y, button)
     end
 end
 
-return MenuState
+return EditorMenuState

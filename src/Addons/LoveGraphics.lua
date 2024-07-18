@@ -20,6 +20,27 @@ function love.graphics.getQuads(filename)
     return image, Quads
 end
 
+function love.graphics.getHashedQuads(filename)
+    local image = love.graphics.newImage(filename .. ".png")
+    local jsonData = love.filesystem.read(filename .. ".json")
+    local sparrow = json.decode(jsonData)
+
+    local quads = {}
+    for key, obj in pairs(sparrow.frames) do
+        --print(key, key:gsub("%.[^.]+$", ""), obj)
+        --print(debug.formattable(obj))
+        quads[key:gsub("%.[^.]+$", "")] = love.graphics.newQuad(
+            obj.frame.x,
+            obj.frame.y,
+            obj.frame.w,
+            obj.frame.h,
+            image
+        )
+    end
+
+    return image, quads
+end
+
 -- Color multipler
 local COLOR_MUL = love._version >= "11.0" and 1 or 255
 

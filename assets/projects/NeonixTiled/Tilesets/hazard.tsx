@@ -43,7 +43,7 @@
  </tile>
  <tile id="4">
   <properties>
-   <property name="hazard" type="bool" value="true"/>
+   <property name="hazard" type="bool" value="false"/>
    <property name="height" type="int" value="0"/>
    <property name="hitbox" type="bool" value="true"/>
    <property name="offsetX" type="int" value="0"/>
