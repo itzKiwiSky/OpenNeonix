@@ -5,6 +5,7 @@ return function()
     loveframes = require 'libraries.loveframes'
     moonshine = require 'libraries.moonshine'
     slab = require 'libraries.slab'
+    suit = require 'libraries.suit'
     thirst = require 'libraries.thirst'
     class = require 'libraries.classic'
     baton = require 'libraries.baton'
