@@ -1,8 +1,6 @@
 MenuState = {}
 
 function MenuState:enter()
-    MenuController = require 'src.Components.Modules.Game.Menu.MenuController'
-    MenuItem = require 'src.Components.Modules.Game.Menu.MenuItem'
     MenuBGParticles = require 'src.Components.Modules.Game.Menu.MenuParticleSystem'
     clickzone = require 'src.Components.Modules.Game.Menu.SelectionClick'
     logonUI = require 'src.Components.Interface.GamejoltLoginUI'
@@ -56,7 +54,7 @@ function MenuState:enter()
             selected = false,
             sizeMulti = 0,
             textAlpha = 0,
-            changeState = EditorHubState,
+            changeState = EditorMenuState,
             lock = {
                 locked = false,
                 alpha = 0,
@@ -112,7 +110,7 @@ function MenuState:enter()
 
 
     leaveCamTweenGroup = flux.group()
-    leaveCamTween= leaveCamTweenGroup:to(menuCam, 1.6, {y = love.graphics.getHeight() + 512})
+    leaveCamTween= leaveCamTweenGroup:to(menuCam, 1.6, {x = -(love.graphics.getWidth() + 512)})
     leaveCamTween:ease("backin")
     leaveCamTween:oncomplete(function()
         leaveCamAnimTransitionRunning = false
@@ -247,6 +245,7 @@ function MenuState:mousepressed(x, y, button)
                 if button == 1 then
                     if not menuContent[i].lock.locked then
                         leaveCamAnimTransitionRunning = true
+                        optionSelected = i
                     end
                 end
             end

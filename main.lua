@@ -129,7 +129,7 @@ function love.initialize(args)
         if versionChecker.check() then
             gamestate.switch(OutdatedState)
         else
-            gamestate.switch(TitleState)
+            gamestate.switch(MenuState)
         end
     end
 end

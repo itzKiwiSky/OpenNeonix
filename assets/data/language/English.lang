@@ -6,6 +6,14 @@
             "menu_selection_editor_title" : "Editor mode",
             "menu_selection_char_editor_title" : "Customization mode"
         },
+        "editor_hub" : {
+            "menu_selection_editor_hub_create" : "Create",
+            "menu_selection_editor_hub_browse" : "Browse levels",
+            "menu_selection_editor_hub_saved" : "Saved levels",
+            "menu_selection_editor_hub_browse_list" : {
+                "menu_selection_editor_hub_browse_list_title" : "Online levels"
+            }
+        },
         "gamejolt" : {
             "menu_gamejolt_state_not_connected" : "Not logged in",
             "menu_gamejolt_state_connected" : "Welcome",
