@@ -16,7 +16,7 @@ local function _devide(list, factor)
   end
 
 local function _new(_songPath, _size, _barCount)
-    self = setmetatable({}, SpectrumVisualizer)
+    local self = setmetatable({}, SpectrumVisualizer)
     self.barCount = _barCount
     self.size = _size
     self.soundData = love.sound.newSoundData(_songPath)
