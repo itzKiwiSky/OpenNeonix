@@ -1,4 +1,4 @@
-![sexylogo:)](logo.png)
+[![sexylogo:)](logo.png)](https://gamejolt.com/games/zerodownnx/904594)
 # Neonix!
 
 > Control Your character jumping above spikes and holes, with 13 Soundtracks, in this rhythm based platform.
@@ -23,7 +23,32 @@ To tun the game on your machine, first, install LÖVE and download the project, 
 
 [Some vector icons - SVG REPO](https://www.svgrepo.com/)
 
+### Libraries used
+- [g3d - groveburguer](https://github.com/groverburger/g3d)
+- [LoveFrames - LinuxMan](https://github.com/linux-man/LoveFrames)
+- [Flux - rxi](https://github.com/rxi/flux/)
+- [GamejoltLua - mbrovko](https://github.com/mbrovko/gamejoltlua)
+- [luafft - h4rm](https://github.com/h4rm/luafft)
+- [Slab - flamendless](https://github.com/flamendless/Slab)
+- [Suit - vlrd](https://github.com/vrld/suit)
+- [Thirst - rhysuki](https://github.com/rhysuki/thirst)
+- [Moonshine - vrld](https://github.com/vrld/moonshine)
+- [hump.camera - vrld](https://github.com/vrld/hump)
+- [hump.gamestate - vrld](https://github.com/vrld/hump)
+- [hump.timer - vrld](https://github.com/vrld/hump)
+- [Baton - tesselode](https://github.com/tesselode/baton)
+- [Classic - rxi](https://github.com/rxi/classic)
+- [Lume - rxi](https://github.com/rxi/lume)
+- [lua-discordRPC - pfirsich](https://github.com/pfirsich/lua-discordRPC)
+- [Deep - Nikaoto](https://github.com/Nikaoto/deep)
+- [Knife.event - airstruck](https://github.com/airstruck/knife)
+- [collision - V3X3D](https://gitlab.com/V3X3D/love-libs)
+- [Multouch - Bl0odWolf (❤️)](https://github.com/Bl0odWolf/Multouch)
+- [NativeFS - EngineerSmith](https://github.com/EngineerSmith/nativefs)
+
+And all the love2D community, you guys are awesome <3
+
 ## Special help
 
-[Thiagopdps](https://www.instagram.com/thiagopdps/)
+[Thiagopdps](https://www.instagram.com/thiagopdps/)<br>
 [ViktorSandwich](https://gamejolt.com/@Viktorsandwich_99b8)
