@@ -1,10 +1,10 @@
 EditorMenuState = {}
 
 function EditorMenuState:enter()
-    MenuBGParticles = require 'src.Components.Modules.Game.Menu.EditorMenu.EditorMenuParticles'
+
     clickzone = require 'src.Components.Modules.Game.Menu.SelectionClick'
 
-    editorHubParticles = MenuBGParticles()
+    editorHubParticles = require("src.Components.Modules.Game.Menu.EditorMenu.EditorMenuParticles")()
     
     userIconImage, userIconQuads = love.graphics.getHashedQuads("assets/images/menus/menuIcons")
     lockIcon = userIconQuads["lock"]
@@ -68,8 +68,8 @@ function EditorMenuState:enter()
     enterCamAnimTransitionRunning = true
 
     enterCamTweenGroup = flux.group()
-    enterCamTween = enterCamTweenGroup:to(menuCam, 0.4, {x = love.graphics.getWidth() / 2})
-    enterCamTween:ease("quartinout")
+    enterCamTween = enterCamTweenGroup:to(menuCam, 0.5, {x = love.graphics.getWidth() / 2})
+    enterCamTween:ease("backout")
     enterCamTween:oncomplete(function()
         enterCamAnimTransitionRunning = false
     end)
@@ -78,18 +78,16 @@ end
 function EditorMenuState:draw()
     menuCam:attach()
         love.graphics.setBlendMode("add")
-            love.graphics.draw(editorHubParticles, love.graphics.getWidth() / 2, 245)
+            love.graphics.draw(editorHubParticles, love.graphics.getWidth(), 0)
         love.graphics.setBlendMode("alpha")
 
-        love.graphics.printf(languageService["menu_selection_title"], f_menuSelection, 0, 96, love.graphics.getWidth(), "center")
+        love.graphics.printf(languageService["menu_selection_editor_hub_title"], f_menuSelection, 0, 96, love.graphics.getWidth(), "center")
 
-        --love.graphics.rectangle("fill", optionBoxX, love.graphics.getHeight() / 2 - 256 / 2, 256, 256, 15)
         for i = 1, #menuContent, 1 do
             local optionListBoxW = love.graphics.getWidth() - (256 / #menuContent)
             local fraction = optionListBoxW / #menuContent
             local optionBoxW = fraction - 16
             local optionBoxX = 256 + i * fraction - fraction / 2 - optionBoxW / 2
-            --love.graphics.rectangle("fill", optionBoxX, love.graphics.getHeight() / 2 - 256 / 2, 256, 256, 15)
             if not menuContent[i].btn then
                 menuContent[i].btn = clickzone(optionBoxX - 128, (love.graphics.getHeight() / 2) - 128, 256, 256)
             end
@@ -110,7 +108,6 @@ function EditorMenuState:draw()
             if menuContent[i].lock.locked then
                 love.graphics.setBlendMode("add")
                     love.graphics.setColor(1, 1, 1, menuContent[i].lock.alpha)
-                        --love.graphics.draw(menuContent[i].lock.icon, optionBoxX, love.graphics.getHeight() / 2, 0, 0.7, 0.7, lockIcon:getWidth() / 2, lockIcon:getHeight() / 2)
                         local qx, qy, qw, qh = lockIcon:getViewport()
                         love.graphics.draw(userIconImage, lockIcon, optionBoxX, love.graphics.getHeight() / 2, 0, 0.6, 0.6, qw / 2, qh / 2)
                     love.graphics.setColor(1, 1, 1, 1)
@@ -125,7 +122,7 @@ function EditorMenuState:draw()
 end
 
 function EditorMenuState:update(elapsed)
-    MenuBGP:update(elapsed)
+    editorHubParticles:update(elapsed)
 
     for i = 1, #menuContent, 1 do
         menuContent[i].sizeMulti = math.lerp(menuContent[i].sizeMulti, 0, 0.1)
