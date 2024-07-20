@@ -79,6 +79,10 @@ function CreditsState:update(elapsed)
         yText = love.graphics.getHeight() - 20
     end
 
+    if love.keyboard.isDown("escape") then
+        
+    end
+
     fogFx:update(elapsed)
 end
 

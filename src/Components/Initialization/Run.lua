@@ -9,9 +9,6 @@ function love.run()
 
     local debugcmd = console()
     require("src.Components.Initialization.ConsoleCommandRegister")(debugcmd)
-    local fpsColorLoL = lue:newColor({255, 255, 255})
-    fpsColorLoL:setColor({255, 255, 255})
-    fpsColorLoL.speed = 75
 
     if love.initialize then 
         love.initialize(love.arg.parseGameArguments(arg), arg)
@@ -54,7 +51,6 @@ function love.run()
 
             if DEBUG_APP then
                 debugcmd:updateInterface(elapsed)
-                fpsColorLoL:update(elapsed)
             end
         end
 
@@ -68,9 +64,7 @@ function love.run()
             
             if DEBUG_APP then
                 debugcmd:draw()
-                love.graphics.setColor(fpsColorLoL:getColor())
                 love.graphics.print("FPS : " .. love.timer.getFPS(), 5, 5)
-                love.graphics.setColor(1, 1, 1, 1)
             end
 
             love.graphics.present()

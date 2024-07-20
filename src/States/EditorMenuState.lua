@@ -11,6 +11,11 @@ function EditorMenuState:enter()
 
     menuCam = camera(love.graphics.getWidth() + 512)
 
+    if crymsonEdgeMenuTheme then
+        crymsonEdgeMenuTheme = love.audio.newSource("assets/sounds/Tracks/crymson_edge.ogg", "static")
+    end
+    crymsonEdgeMenuTheme:setVolume(registers.system.settings.audio.music)
+
     menuIcons = {
         editorBrowse = love.graphics.newImage("assets/images/menus/editorHubBrowse.png"),
         editorLevelList = love.graphics.newImage("assets/images/menus/editorHubEditor.png"),

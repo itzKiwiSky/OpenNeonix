@@ -19,14 +19,14 @@ function TitleState:enter()
 
     Conductor.bpm = 123 / 2
 
-    crymsonEdgeMenuTheme = love.audio.newSource("assets/sounds/Tracks/crymson_edge.ogg", "static")
+    if crymsonEdgeMenuTheme then
+        crymsonEdgeMenuTheme = love.audio.newSource("assets/sounds/Tracks/crymson_edge.ogg", "static")
+    end
     crymsonEdgeMenuTheme:setVolume(registers.system.settings.audio.music)
     
     spvzmenu = SpectrumVisualizer("assets/sounds/Tracks/crymson_edge.ogg", 1024, 32)
     
     fogGlowFx = Fog(love.graphics.newImage("assets/images/menus/glow.png"))
-
-    glowFX = moonshine(moonshine.effects.glow)
 
     menuCam = camera()
     menuCam.y = menuCam.y - 96

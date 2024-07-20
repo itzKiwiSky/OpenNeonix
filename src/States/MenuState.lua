@@ -10,6 +10,11 @@ function MenuState:enter()
 
     MenuBGP = MenuBGParticles()
 
+    if crymsonEdgeMenuTheme then
+        crymsonEdgeMenuTheme = love.audio.newSource("assets/sounds/Tracks/crymson_edge.ogg", "static")
+    end
+    crymsonEdgeMenuTheme:setVolume(registers.system.settings.audio.music)
+
     userIconImage, userIconQuads = love.graphics.getHashedQuads("assets/images/menus/menuIcons")
 
     sunBG = love.graphics.newImage("assets/images/menus/sun.png")
