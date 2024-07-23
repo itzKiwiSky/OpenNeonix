@@ -1,6 +1,5 @@
 return function()
     https = require 'https'
-    andromeda = require 'libraries.andromeda'
     g3d = require 'libraries.g3d'
     lollipop = require 'libraries.lollipop'
     loveframes = require 'libraries.loveframes'
