@@ -4,7 +4,7 @@ function EditorLevelListState:enter()
     Conductor = require 'src.Components.Modules.Game.Conductor'
     ParticleController = require 'src.Components.Modules.Game.Graphics.ParticleController'
 
-    if crymsonEdgeMenuTheme then
+    if not crymsonEdgeMenuTheme then
         crymsonEdgeMenuTheme = love.audio.newSource("assets/sounds/Tracks/crymson_edge.ogg", "static")
     end
     crymsonEdgeMenuTheme:setVolume(registers.system.settings.audio.music)

@@ -11,7 +11,7 @@ function EditorMenuState:enter()
 
     menuCam = camera(love.graphics.getWidth() + 512)
 
-    if crymsonEdgeMenuTheme then
+    if not crymsonEdgeMenuTheme then
         crymsonEdgeMenuTheme = love.audio.newSource("assets/sounds/Tracks/crymson_edge.ogg", "static")
     end
     crymsonEdgeMenuTheme:setVolume(registers.system.settings.audio.music)

@@ -1,0 +1,111 @@
+{
+  "frames": {
+    "trophy_common.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 1019,
+        "h": 1019
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 5,
+        "w": 1019,
+        "h": 1019
+      },
+      "sourceSize": {
+        "w": 1024,
+        "h": 1024
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "trophy_epic.png": {
+      "frame": {
+        "x": 0,
+        "y": 1019,
+        "w": 1019,
+        "h": 1019
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 5,
+        "w": 1019,
+        "h": 1019
+      },
+      "sourceSize": {
+        "w": 1024,
+        "h": 1024
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "trophy_master.png": {
+      "frame": {
+        "x": 1019,
+        "y": 0,
+        "w": 1019,
+        "h": 1019
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 5,
+        "w": 1019,
+        "h": 1019
+      },
+      "sourceSize": {
+        "w": 1024,
+        "h": 1024
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "trophy_rare.png": {
+      "frame": {
+        "x": 1019,
+        "y": 1019,
+        "w": 1019,
+        "h": 1019
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 5,
+        "w": 1019,
+        "h": 1019
+      },
+      "sourceSize": {
+        "w": 1024,
+        "h": 1024
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "trophies.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 2038,
+      "h": 2038
+    },
+    "scale": 1
+  }
+}

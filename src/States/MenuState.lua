@@ -10,7 +10,7 @@ function MenuState:enter()
 
     MenuBGP = MenuBGParticles()
 
-    if crymsonEdgeMenuTheme then
+    if not crymsonEdgeMenuTheme then
         crymsonEdgeMenuTheme = love.audio.newSource("assets/sounds/Tracks/crymson_edge.ogg", "static")
     end
     crymsonEdgeMenuTheme:setVolume(registers.system.settings.audio.music)

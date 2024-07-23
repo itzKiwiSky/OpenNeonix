@@ -6,7 +6,7 @@ You can't
 Neurofunk, Nice song
 Abstraction - Vaporize
 where the end point?
-Neo.Exception().Lang = 1
+Neo.Exception().Dead();
 LOL U DED KKKKKKKK
 #brazil
 blinded lmao
