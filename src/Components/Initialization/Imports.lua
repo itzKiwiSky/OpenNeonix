@@ -22,4 +22,5 @@ return function()
     lume = require 'libraries.Lume'
     nativefs = require 'libraries.nativefs'
     timer = require 'libraries.timer'
+    terminal = require 'libraries.Terminal'
 end

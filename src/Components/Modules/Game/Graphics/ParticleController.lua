@@ -6,7 +6,11 @@ local function _new(_filename)
     self.ps = {}
 
     assert(type(_filename) == "string", "[ERROR] : Invalid parameter type, expected 'string', got: " .. type(_filename))
-    local psdata = love.filesystem.load(_filename)()
+    local psdata, err = love.filesystem.load(_filename)()
+
+    if err then
+        error(err)
+    end
 
     for _, ps in ipairs(psdata) do
         if type(ps) == "table" then

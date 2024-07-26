@@ -1,3 +1,4 @@
+local particles = {x=-195, y=-79}
 local pimage = love.graphics.newImage("assets/images/menus/lightDot.png")
 pimage:setFilter("linear", "linear")
 
@@ -22,5 +23,5 @@ ps:setSpin(0, 0)
 ps:setSpinVariation(0)
 ps:setSpread(6.2831854820251)
 ps:setTangentialAcceleration(0, 0)
-
-return ps
+table.insert(particles, {system=ps, kickStartSteps=0, kickStartDt=0, emitAtStart=241, blendMode="add", shader=nil, texturePath="glowStar.png", texturePreset="", shaderPath="", shaderFilename="", x=0, y=0})
+return particles
