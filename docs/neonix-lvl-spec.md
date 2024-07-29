@@ -20,7 +20,13 @@ level content
         "username" : "username",
         "gameversion" : 0,
         "requestedDifficulty" : 0, // float range 0.5 -> 5.0
-        "songID" : "000000"     // used to download the song from newgrounds
+        "songID" : "000000"     // used to download the song from newgrounds,
+        "textures" : [
+            {
+                "tag" : "tag",
+                "data" : "[read the image data]->[encode to hex]->[b64 encrypt]->[gzip compress]->[encode to hex]",
+            }
+        ]
     },
     "level" : {
         "startPos" : [0, 0],

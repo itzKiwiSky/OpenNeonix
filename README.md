@@ -21,6 +21,8 @@ To tun the game on your machine, first, install LÖVE and download the project, 
 # Credits
 [Background Arts](https://flamefoxgames.itch.io/vaporwave-retrowave-backgrounds) - [FlameFoxGames](https://x.com/FlameFoxGames)
 
+[int10h - Fonts](https://int10h.org/)
+
 [Some vector icons - SVG REPO](https://www.svgrepo.com/)
 
 ### Libraries used

@@ -12,13 +12,13 @@ local basic_scheme = {
     ["brightBlue"] = {0, 0, 1},
     ["brightCyan"] = {0, 1, 1},
     ["brightGreen"] = {0, 1, 0},
-    ["brightPurple"] = {1, 0, 1},
+    ["brightMagenta"] = {1, 0, 1},
     ["brightRed"] = {1, 0, 0},
     ["brightWhite"] = {1, 1, 1},
     ["brightYellow"] = {1, 1, 0},
     ["cyan"] = {0, 0.5, 0.5},
     ["green"] = {0, 0.5, 0},
-    ["purple"] = {0.5, 0, 0.5},
+    ["magenta"] = {0.5, 0, 0.5},
     ["red"] = {0.5, 0, 0},
     ["white"] = {0.75, 0.75, 0.75},
     ["yellow"] = {0.5, 0.5, 0}
@@ -144,7 +144,15 @@ local function applyTerminalState(terminal, state)
     terminal.state_buffer = state.stateBuffer
 end
 
-local function terminal_update(terminal, dt)
+local function update(terminal, dt)
+    local styles = {
+        ["line"] = "┌┐└┘─│",
+        ["bold"] = "┏┓┗┛━┃",
+        ["text"] = "++++-|",
+        ["double"] = "╔╗╚╝═║",
+        ["block"] = "██████"
+    }
+
     terminal.dirty = true
     if #terminal.stdin == 0 then return end
     local frame_budget = terminal.speed * dt + terminal.accumulator
@@ -210,12 +218,6 @@ local function terminal_update(terminal, dt)
         elseif char_or_command.type == "fill" then
             local x, y, w, h = char_or_command.x, char_or_command.y, char_or_command.w, char_or_command.h
             local style = char_or_command.style
-            local styles = {
-                ["block"] = "█",
-                ["semigrid"] = "▓",
-                ["halfgrid"] = "▒",
-                ["grid"] = "░"
-            }
 
             local charStyle = styles[style]
 
@@ -229,13 +231,6 @@ local function terminal_update(terminal, dt)
                 end
             end
         elseif char_or_command.type == "frame" then
-            local styles = {
-                ["line"] = "┌┐└┘─│",
-                ["bold"] = "┏┓┗┛━┃",
-                ["text"] = "++++-|",
-                ["double"] = "╔╗╚╝═║",
-                ["block"] = "██████"
-            }
 
             local curStyle = styles[char_or_command.style]
             if not curStyle then
@@ -256,7 +251,7 @@ local function terminal_update(terminal, dt)
 
 
             local horizontal_char = utf8_sub(curStyle, 5, 5)
-              local vertical_char = utf8_sub(curStyle, 6, 6)
+            local vertical_char = utf8_sub(curStyle, 6, 6)
             for i=left+1, right-1 do
                 terminal_update_character(terminal, i, top, horizontal_char)
                 terminal_update_character(terminal, i, bottom, horizontal_char)
@@ -289,27 +284,10 @@ local function terminal_update(terminal, dt)
 
             local horizontal_char = utf8_sub(curStyle, 5, 5)
             local vertical_char = utf8_sub(curStyle, 6, 6)
-            --[[
-            terminal_update_character(terminal, left, top, utf8_sub(curStyle, 1, 1))
-            terminal_update_character(terminal, right, top, utf8_sub(curStyle, 2, 2))
-            terminal_update_character(terminal, left, bottom, utf8_sub(curStyle, 3, 3))
-            terminal_update_character(terminal, right, bottom, utf8_sub(curStyle, 4, 4))
-
-            
-            for i = left + 1, right - 1 do
-                terminal_update_character(terminal, i, top, horizontal_char)
-                terminal_update_character(terminal, i, bottom, horizontal_char)
-            end
-            for i = top + 1, bottom - 1 do
-                terminal_update_character(terminal, left, i, vertical_char)
-                terminal_update_character(terminal, right, i, vertical_char)
-            end
-            ]]--
 
             local lg, sh = char_or_command.light, char_or_command.shadow
             local lastCursorColor = terminal.cursor_color
 
-            --terminal_set_cursor_color(terminal, basic_scheme[lg])
             print(left, top)
             terminal.cursor_color = basic_scheme[lg]
             terminal_update_character(terminal, left, top, utf8_sub(curStyle, 1, 1))
@@ -321,8 +299,6 @@ local function terminal_update(terminal, dt)
             end
             terminal_update_character(terminal, left, bottom, utf8_sub(curStyle, 3, 3))
 
-
-            --terminal_set_cursor_color(terminal, basic_scheme[sh])
             terminal.cursor_color = basic_scheme[sh]
             terminal_update_character(terminal, right, top, utf8_sub(curStyle, 2, 2))
             for i = left + 1, right - 1, 1 do
@@ -423,6 +399,51 @@ local function terminal_blit(terminal, x, y, str)
     end
 end
 
+function printTag(_str)
+    for t, c in pairs(basic_scheme) do
+        _str = _str:gsub("{" .. t .. "}", c)
+    end
+end
+
+local function blitSprite(terminal, _filename, _x, _y)
+    -- do parsing shit --
+    local fd = love.filesystem.read(_filename)
+    local lines = string.split(fd, "&")
+    local sprite = {}
+
+    for _, line in ipairs(lines) do
+        local props = string.split(line, ":")
+        
+        -- treat the response --
+        local colorStrRaw, posStr, char = props[1]:gsub("[%[%]]", ""), props[2]:gsub("[{}]", ""), props[3]
+
+        local colorStr = string.split(colorStrRaw, ";")
+        local color = {tonumber(colorStr[1]), tonumber(colorStr[2]), tonumber(colorStr[3])}
+        local posRaw = string.split(posStr, ";")
+        local pos = {tonumber(posRaw[1]), tonumber(posRaw[2])}
+
+        table.insert(sprite, {
+            color = color,
+            pos = pos,
+            char = char
+        })
+    end
+
+    for _, pixel in ipairs(sprite) do
+        if pixel.char ~= "*" then
+
+            if pixel.char == " " then
+                terminal_set_cursor_backcolor(terminal, pixel.color)
+            else
+                terminal_set_cursor_backcolor(terminal, {0, 0, 0, 1})
+                terminal_set_cursor_color(terminal, pixel.color)
+            end
+
+            terminal_print(terminal, _x + pixel.pos[1], _y + pixel.pos[2], pixel.char)
+        end
+    end
+end
+
 
 local function terminal_save_position(terminal)
     table.insert(terminal.stdin, {type="save"})
@@ -484,7 +505,7 @@ local function terminal (self, width, height, font, custom_char_width, custom_ch
         instance.state_buffer[i] = state_row
     end
 
-    instance.update = terminal_update
+    instance.update = update
     instance.draw = terminal_draw
     instance.print = terminal_print
     instance.blit = terminal_blit
@@ -499,6 +520,7 @@ local function terminal (self, width, height, font, custom_char_width, custom_ch
     instance.setCursorBackColor = terminal_set_cursor_backcolor
     instance.rollUp = terminal_roll_up
     instance.getCursorColor = terminal_get_cursor_color
+    instance.blitSprite = blitSprite
 
     instance.getTerminalState = getTerminalState
     instance.applyTerminalState = applyTerminalState

@@ -236,7 +236,7 @@ function touches:touchmoved(id, x, y, dx, dy, pressure)
     self.touches[i].y = y
     self.touches[i].dx = dx
     self.touches[i].dy = dy
-    self.touches[i].pressure = pressure,
+    self.touches[i].pressure = pressure
     table.insert(self.touches[i].move, self.touches[i])
 end
 
