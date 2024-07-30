@@ -7,6 +7,33 @@ function string.split(_string, _sep)
     return t
 end
 
+-- Origin from penlight lib : https://github.com/lunarmodules/Penlight/blob/master/lua/pl/stringx.lua#L311
+function string.justify(str, width, char, align)
+    local n = #str
+    if width > n then
+        if not char then char = ' ' end
+        local f1, f2
+        if align == "center" then
+            local rn = math.ceil((width - n) / 2)
+            local ln = width - n - rn
+            f1 = string.rep(char, ln)
+            f2 = string.rep(char, rn)
+        elseif align == "right" then
+            f1 = string.rep(char, width - n)
+            f2 = ''
+        elseif align == "left" then
+            f2 = string.rep(char, width - n)
+            f1 = ''
+        else
+            error("Invalid align type")
+        end
+        return f1 .. str .. f2
+    else
+        return str
+    end
+end
+
+
 function string.tokenizeWithPattern(_string, _sep)
     _sep = _sep or "%s"
     local t = {}

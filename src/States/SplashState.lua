@@ -11,14 +11,13 @@ function SplashState:enter()
 
     bootsfx = love.audio.newSource("assets/sounds/bootsfx.ogg", "static")
     bootbeep = love.audio.newSource("assets/sounds/beepBoot.ogg", "static")
-    menumain = love.audio.newSource("assets/sounds/tracks/future_base.ogg", "static")
-    bootbeep:setVolume(0.1)
+    if not menumain then
+        menumain = love.audio.newSource("assets/sounds/tracks/future_base.ogg", "static")
+    end
 
     local termFont = fontcache.getFont("compaqthin", 24)
 
     termview = terminal(love.graphics.getWidth(), love.graphics.getHeight(), termFont)
-
-    print(debug.formattable({termview:getCursorColor()}))
 
     termview:setCursorBackColor(terminal.schemes.basic["black"])
     termview:setCursorColor(terminal.schemes.basic["white"])
@@ -29,20 +28,29 @@ function SplashState:enter()
     bootDelayTimer = timer.new()
     act = timer.new()
 
-    local coolStrings = {}
-
     bootDelayTimer:after(2, function()
         bootsfx:play()
         act:script(function(sleep)
-            sleep(20 / 60)
                 termview:showCursor()
             sleep(34 / 60)
-                menumain:play()
-                termview:print("Welcome user!\n")
+                if not menumain:isPlaying() then
+                    menumain:play()
+                end
+                termview:print("Initialization begin...\n")
                 termview:hideCursor()
-            sleep(43 / 60)
+            sleep(54 / 60)
                 termview:clear(1, 1, termview.width, termview.height)
             sleep(59 / 60)
+                bootsfx:play()
+
+                termview:setCursorColor(terminal.schemes.basic["brightYellow"])
+                termview:print(1, 5, string.justify(languageService["splash_menu_warning"], termview.width, nil, "center"))
+                termview:setCursorColor(terminal.schemes.basic["white"])
+                termview:print(1, 8, languageService["splash_menu_warning_text"])
+            sleep(190 / 60)
+                termview:clear(1, 1, termview.width, termview.height)
+                termview.speed = 5000
+            sleep(20 / 60)
                 bootbeep:play()
                 termview:blitSprite("assets/data/rpd/nxtest.rpd", 15, 3)
 
@@ -51,9 +59,17 @@ function SplashState:enter()
                 termview:setCursorColor(terminal.schemes.basic["brightMagenta"])
                 termview:print(#("Powered by ") + 1, termview.height - 1, "LÖVE")
                 termview:setCursorColor(terminal.schemes.basic["white"])
-            sleep(80 / 60)
+            sleep(190 / 60)
                 termview:clear(1, 1, termview.width, termview.height)
-            sleep(95 / 60)
+            sleep(20 / 60)
+                --gamestate.switch(MenuState)
+                bootsfx:play()
+                termview:blitSprite("assets/data/rpd/nxlogo.rpd", 7, 12)
+                termview:setCursorBackColor(terminal.schemes.basic["black"])
+                termview:setCursorColor(terminal.schemes.basic["white"])
+            sleep(140 / 60)
+                termview:clear(1, 1, termview.width, termview.height)
+            sleep(30 / 60)
                 gamestate.switch(MenuState)
         end)
     end)

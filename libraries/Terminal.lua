@@ -399,10 +399,22 @@ local function terminal_blit(terminal, x, y, str)
     end
 end
 
-function printTag(_str)
-    for t, c in pairs(basic_scheme) do
-        _str = _str:gsub("{" .. t .. "}", c)
-    end
+
+
+local function terminalPrintf(terminal, _str, _x, _y, _char, _width, _align)
+    assert(type(_str) == "string", "Invalid parameter type, expected 'string'. receive: " .. type(_str))
+    assert(type(_width) == "number", "Invalid parameter type, expected 'string'. receive: " .. type(_width))
+
+    
+    _x = _x or 1
+    _y = _y or 1
+    _char = _char or " "
+    _align = _align or "left"
+    --_limit = _limit or terminal.width
+
+    --_just(_str, _width - _x, _char, _align)
+
+    
 end
 
 local function blitSprite(terminal, _filename, _x, _y)

@@ -1,5 +1,6 @@
 return function()
     https = require 'https'
+    utf8 = require 'utf8'
     g3d = require 'libraries.g3d'
     lollipop = require 'libraries.lollipop'
     loveframes = require 'libraries.loveframes'
