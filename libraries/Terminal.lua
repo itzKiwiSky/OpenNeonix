@@ -153,6 +153,13 @@ local function update(terminal, dt)
         ["block"] = "██████"
     }
 
+    local fillStyles = {
+        ["block"] = "█",
+        ["semigrid"] = "▓",
+        ["halfgrid"] = "▒",
+        ["grid"] = "░"
+    }
+
     terminal.dirty = true
     if #terminal.stdin == 0 then return end
     local frame_budget = terminal.speed * dt + terminal.accumulator
@@ -219,11 +226,16 @@ local function update(terminal, dt)
             local x, y, w, h = char_or_command.x, char_or_command.y, char_or_command.w, char_or_command.h
             local style = char_or_command.style
 
-            local charStyle = styles[style]
+            local charStyle = fillStyles[style]
 
             if not charStyle then
                 assert(false, string.format("Unrecognized style %s", style))
             end
+
+            local x, y, width, height = char_or_command.x, char_or_command.y, char_or_command.w, char_or_command.h
+
+            local left, right = x, x + (width - 1)
+            local top, bottom = y, y + (height - 1)
 
             for cy = y, y + h, 1 do
                 for cx = x, x + w, 1 do
@@ -242,8 +254,8 @@ local function update(terminal, dt)
             local char_color = terminal.cursor_color
             local x,y,width,height = char_or_command.x, char_or_command.y, char_or_command.w, char_or_command.h
 
-            local left, right = x, x+width - 1
-            local top, bottom = y, y+height - 1
+            local left, right = x, x + (width - 1)
+            local top, bottom = y, y + (height - 1)
             terminal_update_character(terminal, left, top, utf8_sub(curStyle,1,1))
             terminal_update_character(terminal, right, top, utf8_sub(curStyle,2,2))
             terminal_update_character(terminal, left, bottom, utf8_sub(curStyle,3,3))
