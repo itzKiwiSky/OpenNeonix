@@ -111,7 +111,9 @@ function MenuListController:updateKeyboard(k)
                 self.currentItem = self.currentItem - 1
                 self:compose()
             end
-
+        end
+        if k == "return" then
+            self.metaState.meta[self.currentItem].action()
         end
     end
 end
