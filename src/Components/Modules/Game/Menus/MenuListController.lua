@@ -15,7 +15,7 @@ local function _longestString(t)
     return longestStr
 end
 
-local function _new(_term, _x, _y, _padding)
+local function _new(_term, _x, _y, _padding, _style)
     local self = setmetatable({}, MenuListController)
     self.terminal = _term
 
@@ -29,6 +29,7 @@ local function _new(_term, _x, _y, _padding)
     }
 
     self.padding = _padding or 2
+    self.style = _style or "line"
 
     self.area = {
         x = _x,
@@ -83,7 +84,7 @@ function MenuListController:compose()
     -- render --
     self.terminal:setCursorColor(self.terminal.schemes.basic["white"])
     self.terminal:setCursorBackColor(self.terminal.schemes.basic["black"])
-    self.terminal:frame("line", tx, self.area.y, self.area.w, self.area.h)
+    self.terminal:frame(self.style, tx, self.area.y, self.area.w, self.area.h)
 
     local py = self.area.y
     for i = 1, #self.metaState.labels, 1 do

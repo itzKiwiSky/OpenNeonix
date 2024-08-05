@@ -28,7 +28,7 @@ function MenuState:enter()
     termview:print(math.floor(termview.width / 2 - #("NX-DOS v0.0.1") / 2), 1, "NX-DOS v0.0.1")
     termview:blitSprite("assets/data/rpd/doslogo.rpd", math.floor(termview.width / 2 - 49 / 2), 2)
 
-    menu = menuList(termview, "center", 18, 10)
+    menu = menuList(termview, "center", 18, 10, "double")
 
     menu:addItems({
         {
