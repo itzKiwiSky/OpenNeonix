@@ -22,7 +22,6 @@ function LevelSelectState:enter()
     print(termview.width, termview.height)
 
     termview:hideCursor()
-    termview:blitSprite("assets/data/rpd/nxlogo.rpd", 1, 1)
 end
 
 function LevelSelectState:draw()
