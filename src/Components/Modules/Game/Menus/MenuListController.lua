@@ -64,38 +64,43 @@ function MenuListController:addItems(_item)
 end
 
 function MenuListController:compose()
-    -- reset --
-    local tx
-    if type(self.area.x) == "string" then
-        if self.area.x == "center" then
-            tx = math.floor(self.terminal.width / 2 - self.area.w / 2)
-        end
-    else
-        tx = math.floor(self.area.x)
-    end
-    self.terminal:clear(tx, self.area.y, self.area.w, self.area.h)
-    for _, item in pairs(self.metaState.meta) do
-        item.hovered = false
-    end
-
-    -- hover --
-    self.metaState.meta[self.currentItem].hovered = true
-
-    -- render --
-    self.terminal:setCursorColor(self.terminal.schemes.basic["white"])
-    self.terminal:setCursorBackColor(self.terminal.schemes.basic["black"])
-    self.terminal:frame(self.style, tx, self.area.y, self.area.w, self.area.h)
-
-    local py = self.area.y
-    for i = 1, #self.metaState.labels, 1 do
-        if self.metaState.meta[i].hovered then
-            self.terminal:setCursorColor(self.terminal.schemes.basic["black"])
-            self.terminal:setCursorBackColor(self.terminal.schemes.basic["white"])
+    if #self.metaState.labels > 0 then
+        -- reset --
+        local tx
+        if type(self.area.x) == "string" then
+            if self.area.x == "center" then
+                tx = math.floor(self.terminal.width / 2 - self.area.w / 2)
+            end
         else
-            self.terminal:setCursorColor(self.terminal.schemes.basic["white"])
-            self.terminal:setCursorBackColor(self.terminal.schemes.basic["black"])
+            tx = math.floor(self.area.x)
         end
-        self.terminal:print(tx + 1, py + i, self.metaState.labels[i])
+        self.terminal:clear(tx, self.area.y, self.area.w, self.area.h)
+        for _, item in pairs(self.metaState.meta) do
+            item.hovered = false
+        end
+
+        -- hover --
+        self.metaState.meta[self.currentItem].hovered = true
+
+        -- render --
+        self.terminal:setCursorColor(self.terminal.schemes.basic["white"])
+        self.terminal:setCursorBackColor(self.terminal.schemes.basic["black"])
+        self.terminal:frame(self.style, tx, self.area.y, self.area.w, self.area.h)
+
+        local py = self.area.y
+        for i = 1, #self.metaState.labels, 1 do
+            if self.metaState.meta[i].hovered then
+                self.terminal:setCursorColor(self.terminal.schemes.basic["black"])
+                self.terminal:setCursorBackColor(self.terminal.schemes.basic["white"])
+            else
+                self.terminal:setCursorColor(self.terminal.schemes.basic["white"])
+                self.terminal:setCursorBackColor(self.terminal.schemes.basic["black"])
+            end
+            self.terminal:print(tx + 1, py + i, self.metaState.labels[i])
+        end
+        self.terminal:setCursorColor(self.terminal.schemes.basic["white"])
+        self.terminal:setCursorBackColor(self.terminal.schemes.basic["black"])
+        self.terminal:moveTo(1, 1)
     end
 end
 

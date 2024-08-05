@@ -4,7 +4,9 @@ function MenuState:enter()
     --menuComposer = require 'src.Components.Modules.Game.Menus.MenuComposer'
     menuList = require 'src.Components.Modules.Game.Menus.MenuListController'
 
-    effect = moonshine(moonshine.effects.crt).chain(moonshine.effects.glow)
+    effect = moonshine(moonshine.effects.crt)
+    .chain(moonshine.effects.glow)
+    .chain(moonshine.effects.scanlines)
 
     bootsfx = love.audio.newSource("assets/sounds/bootsfx.ogg", "static")
     bootbeep = love.audio.newSource("assets/sounds/beepBoot.ogg", "static")
@@ -22,6 +24,8 @@ function MenuState:enter()
 
     print(termview.width, termview.height)
 
+    scrTimer = timer.new()
+
     termview:hideCursor()
 
     termview:frame("line", 1, 1, termview.width, termview.height)
@@ -34,31 +38,37 @@ function MenuState:enter()
         {
             label = "Story Mode",
             action = function()
-                
+                gamestate.switch(LevelSelectState)
             end
         },
         {
             label = "Editor Mode",
             action = function()
-                
+                gamestate.switch(EditorMenuState)
             end
         },
         {
             label = "Player Customization",
             action = function()
-                
+                gamestate.switch(PlayerCustomizationState)
             end
         },
         {
             label = "Settings",
             action = function()
-                
+                gamestate.switch(SettingsState)
             end
         },
         {
             label = "Shutdown",
             action = function()
-                
+                scrTimer:script(function(sleep)
+                    termview:clear(1, 1, termview.width, termview.height)
+                    sleep(40 / 60)
+                    termview:print("Shutting down.")
+                    sleep(30 / 60)
+                    love.event.quit()
+                end)
             end
         }
     })
@@ -84,6 +94,7 @@ end
 
 function MenuState:update(elapsed)
     termview:update(elapsed)
+    scrTimer:update(elapsed)
 end
 
 function MenuState:keypressed(k)
