@@ -1,6 +1,8 @@
 LevelSelectState = {}
 
 function LevelSelectState:enter()
+    terminalblit = require 'src.Components.Modules.Game.Graphics.TerminalBlit'
+
     effect = moonshine(moonshine.effects.crt)
     .chain(moonshine.effects.glow)
     .chain(moonshine.effects.scanlines)
@@ -20,6 +22,8 @@ function LevelSelectState:enter()
     termview.speed = 50000
 
     print(termview.width, termview.height)
+
+    terminalblit.write("Teste", termview.width / 2 - (#("teste") * 8 ) / 2, 32)
 
     termview:hideCursor()
 end
