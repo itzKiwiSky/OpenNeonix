@@ -36,31 +36,37 @@ function MenuState:enter()
 
     menu:addItems({
         {
-            label = "Story Mode",
+            label = languageService["main_menu_options_story_mode"],
             action = function()
                 gamestate.switch(LevelSelectState)
             end
         },
         {
-            label = "Editor Mode",
+            label = languageService["main_menu_options_editor_mode"],
             action = function()
                 gamestate.switch(EditorMenuState)
             end
         },
         {
-            label = "Player Customization",
+            label = languageService["main_menu_options_community_mode"],
+            action = function()
+                gamestate.switch(CommunityMenuState)
+            end
+        },
+        {
+            label = languageService["main_menu_options_customization_mode"],
             action = function()
                 gamestate.switch(PlayerCustomizationState)
             end
         },
         {
-            label = "Settings",
+            label = languageService["main_menu_options_settings_mode"],
             action = function()
                 gamestate.switch(SettingsState)
             end
         },
         {
-            label = "Shutdown",
+            label = languageService["main_menu_options_shutdown"],
             action = function()
                 scrTimer:script(function(sleep)
                     termview:clear(1, 1, termview.width, termview.height)

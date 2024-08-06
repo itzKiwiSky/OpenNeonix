@@ -466,6 +466,9 @@ local function blitSprite(terminal, _filename, _x, _y)
             terminal_print(terminal, _x + pixel.pos[1], _y + pixel.pos[2], pixel.char)
         end
     end
+
+    terminal_set_cursor_backcolor(terminal, {0, 0, 0, 1})
+    terminal_set_cursor_color(terminal, {1, 1, 1, 1})
 end
 
 

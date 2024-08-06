@@ -57,6 +57,7 @@ object composition
     r = 0,
     sx = 1,
     sy = 1,
-    tid = 1
+    tid = 1,
+    tag = "",
 }
 ```
