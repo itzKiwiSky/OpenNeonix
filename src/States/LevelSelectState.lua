@@ -23,7 +23,10 @@ function LevelSelectState:enter()
 
     print(termview.width, termview.height)
 
-    terminalblit.write("Teste", termview.width / 2 - (#("teste") * 8 ) / 2, 32)
+    terminalblit.write("Teste", termview.width / 2 - (#("teste") * 16) / 2, 26, "big")
+
+    termview:frame("block", 4, 8, termview.width - 8, math.floor(termview.height / 2))
+    termview:frame("block", 6, 10, termview.width - 12, math.floor(termview.height / 2) - 4)
 
     termview:hideCursor()
 end

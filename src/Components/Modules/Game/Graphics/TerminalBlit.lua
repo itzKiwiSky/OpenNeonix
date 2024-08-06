@@ -24,20 +24,26 @@ local function _getItem(_table, _value)
     return nil
 end
 
-function TerminalBlit.write(_text, _x, _y)
+function TerminalBlit.write(_text, _x, _y, _type)
+
+    local types = {
+        ["small"] = "8",
+        ["big"] = "16"
+    }
+
+    assert(types[_type], "Invalid size")
+
     local tchrs = {}
     for s in string.gmatch(_text:lower(), ".") do
         table.insert(tchrs, s)
     end
-    print(debug.formattable(tchrs))
 
     local cx = _x
 
     for _, c in ipairs(tchrs) do
         if _contains(chars, c) then
-            print(cx, _y)
-            termview:blitSprite(string.format("assets/data/rpd/letters/l%s.rpd", _getItem(chars, c)), cx, _y)
-            cx = _x + _ * 8
+            termview:blitSprite(string.format("assets/data/rpd/letters/%s/l%s.rpd", types[_type], _getItem(chars, c)), cx, _y)
+            cx = _x + _ * tonumber(types[_type])
         end
     end
 end
