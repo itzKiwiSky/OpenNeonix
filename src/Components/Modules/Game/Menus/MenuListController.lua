@@ -52,7 +52,6 @@ function MenuListController:addItems(_item)
 
     for _, item in ipairs(_item) do
         local transformedLabel = string.justify(item.label, maxLength + self.padding, " ", "center")
-        print(transformedLabel)
         table.insert(self.metaState.labels, transformedLabel)
         table.insert(self.metaState.meta, {
             action = item.action,
@@ -85,7 +84,7 @@ function MenuListController:compose()
         -- render --
         self.terminal:setCursorColor(self.terminal.schemes.basic["white"])
         self.terminal:setCursorBackColor(self.terminal.schemes.basic["black"])
-        self.terminal:frame(self.style, tx, self.area.y, self.area.w, self.area.h)
+        --self.terminal:frame(self.style, tx, self.area.y, self.area.w, self.area.h)
 
         local py = self.area.y
         for i = 1, #self.metaState.labels, 1 do
@@ -100,7 +99,10 @@ function MenuListController:compose()
         end
         self.terminal:setCursorColor(self.terminal.schemes.basic["white"])
         self.terminal:setCursorBackColor(self.terminal.schemes.basic["black"])
+
+        self.terminal:frameShadow(self.style, tx, self.area.y, self.area.w, self.area.h, "brightWhite", "brightBlack")
         self.terminal:moveTo(1, 1)
+        
     end
 end
 

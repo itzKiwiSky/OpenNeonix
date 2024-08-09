@@ -114,6 +114,8 @@ function love.initialize(args)
         require("src.States." .. states[s]:gsub(".lua", ""))
     end
 
+    joysticks = love.joystick.getJoysticks()
+
     local substates = love.filesystem.getDirectoryItems("src/SubStates")
     for s = 1, #substates, 1 do
         require("src.SubStates." .. substates[s]:gsub(".lua", ""))

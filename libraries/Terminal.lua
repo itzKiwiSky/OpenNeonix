@@ -273,14 +273,6 @@ local function update(terminal, dt)
                 terminal_update_character(terminal, right, i, vertical_char)
             end
         elseif char_or_command.type == "frame_shadow" then
-            local styles = {
-                ["line"] = "┌┐└┘─│",
-                ["bold"] = "┏┓┗┛━┃",
-                ["text"] = "++++-|",
-                ["double"] = "╔╗╚╝═║",
-                ["block"] = "██████"
-            }
-
             local curStyle = styles[char_or_command.style]
             if not curStyle then
                 assert(false, string.format("Unrecognized style %s", char_or_command.style))
@@ -288,7 +280,7 @@ local function update(terminal, dt)
 
             local buffer = terminal.buffer
             local state_buffer = terminal.state_buffer
-            local char_color = terminal.cursor_color
+            local char_color= terminal.cursor_color
             local x,y,width,height = char_or_command.x, char_or_command.y, char_or_command.w, char_or_command.h
 
             local left, right = x, x + (width - 1)
@@ -300,7 +292,6 @@ local function update(terminal, dt)
             local lg, sh = char_or_command.light, char_or_command.shadow
             local lastCursorColor = terminal.cursor_color
 
-            print(left, top)
             terminal.cursor_color = basic_scheme[lg]
             terminal_update_character(terminal, left, top, utf8_sub(curStyle, 1, 1))
             for i = left + 1, right - 1, 1 do

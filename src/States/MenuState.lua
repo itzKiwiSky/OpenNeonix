@@ -38,6 +38,13 @@ function MenuState:enter()
         {
             label = languageService["main_menu_options_story_mode"],
             action = function()
+                --gamestate.switch(LevelSelectState)
+                -- display popup --
+            end
+        },
+        {
+            label = languageService["main_menu_options_freeplay_mode"],
+            action = function()
                 gamestate.switch(LevelSelectState)
             end
         },
@@ -72,7 +79,7 @@ function MenuState:enter()
                     termview:clear(1, 1, termview.width, termview.height)
                     sleep(40 / 60)
                     termview:print("Shutting down.")
-                    sleep(30 / 60)
+                    sleep(60 / 60)
                     love.event.quit()
                 end)
             end
