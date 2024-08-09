@@ -114,7 +114,9 @@ function love.initialize(args)
         require("src.States." .. states[s]:gsub(".lua", ""))
     end
 
-    joysticks = love.joystick.getJoysticks()
+    if not love.system.getOS() == "Android" or not love.system.getOS() == "iOS" then
+        joysticks = love.joystick.getJoysticks()
+    end
 
     local substates = love.filesystem.getDirectoryItems("src/SubStates")
     for s = 1, #substates, 1 do
