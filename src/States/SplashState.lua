@@ -3,6 +3,8 @@ SplashState = {}
 function SplashState:enter()
     effect = moonshine(moonshine.effects.crt)
     .chain(moonshine.effects.glow)
+    .chain(moonshine.effects.scanlines)
+    effect.scanlines.opacity = 0.6
     effect.glow.min_luma = 0.2
 
     --love.graphics.setBackgroundColor(0.3, 0.1, 0.5)

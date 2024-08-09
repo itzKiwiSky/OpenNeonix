@@ -7,6 +7,8 @@ function MenuState:enter()
     effect = moonshine(moonshine.effects.crt)
     .chain(moonshine.effects.glow)
     .chain(moonshine.effects.scanlines)
+    effect.scanlines.opacity = 0.6
+    effect.glow.min_luma = 0.2
 
     bootsfx = love.audio.newSource("assets/sounds/bootsfx.ogg", "static")
     bootbeep = love.audio.newSource("assets/sounds/beepBoot.ogg", "static")
