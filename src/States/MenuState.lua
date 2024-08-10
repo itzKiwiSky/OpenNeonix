@@ -24,11 +24,11 @@ function MenuState:enter()
     bootbeep = love.audio.newSource("assets/sounds/beepBoot.ogg", "static")
     if not menumain then
         menumain = love.audio.newSource("assets/sounds/tracks/future_base.ogg", "static")
-        menumain:setLoop(true)
+        menumain:setLooping(true)
         menumain:play()
     else
         if not menumain:isPlaying() then
-            menumain:setLoop(true)
+            menumain:setLooping(true)
             menumain:play()
         end
     end
