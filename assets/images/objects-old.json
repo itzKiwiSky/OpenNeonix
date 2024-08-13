@@ -1,7 +1,7 @@
 {
   "frames": [
     {
-      "filename": "tile2.png",
+      "filename": "tile11.png",
       "frame": {
         "x": 0,
         "y": 0,
@@ -51,9 +51,84 @@
       }
     },
     {
-      "filename": "hazards1.png",
+      "filename": "fadePlayerHide.png",
       "frame": {
         "x": 0,
+        "y": 32,
+        "w": 32,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "fadePlayerShow.png",
+      "frame": {
+        "x": 32,
+        "y": 32,
+        "w": 32,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "hazards1.png",
+      "frame": {
+        "x": 64,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "hazards5.png",
+      "frame": {
+        "x": 64,
         "y": 32,
         "w": 32,
         "h": 32
@@ -78,33 +153,8 @@
     {
       "filename": "orb.png",
       "frame": {
-        "x": 32,
-        "y": 32,
-        "w": 32,
-        "h": 32
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
         "x": 0,
-        "y": 0,
-        "w": 32,
-        "h": 32
-      },
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    {
-      "filename": "saw2.png",
-      "frame": {
-        "x": 64,
-        "y": 0,
+        "y": 64,
         "w": 32,
         "h": 32
       },
@@ -128,56 +178,6 @@
     {
       "filename": "tile1.png",
       "frame": {
-        "x": 64,
-        "y": 32,
-        "w": 32,
-        "h": 32
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 32,
-        "h": 32
-      },
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    {
-      "filename": "tile10.png",
-      "frame": {
-        "x": 0,
-        "y": 64,
-        "w": 32,
-        "h": 32
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 32,
-        "h": 32
-      },
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    {
-      "filename": "tile11.png",
-      "frame": {
         "x": 32,
         "y": 64,
         "w": 32,
@@ -201,10 +201,60 @@
       }
     },
     {
-      "filename": "eventtrigger.png",
+      "filename": "tile10.png",
       "frame": {
         "x": 64,
         "y": 64,
+        "w": 32,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "colorTrigger.png",
+      "frame": {
+        "x": 96,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "tile2.png",
+      "frame": {
+        "x": 96,
+        "y": 32,
         "w": 32,
         "h": 32
       },
@@ -229,56 +279,6 @@
       "filename": "tile3.png",
       "frame": {
         "x": 96,
-        "y": 0,
-        "w": 32,
-        "h": 32
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 32,
-        "h": 32
-      },
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    {
-      "filename": "tile4.png",
-      "frame": {
-        "x": 96,
-        "y": 32,
-        "w": 32,
-        "h": 32
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 32,
-        "h": 32
-      },
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    {
-      "filename": "tile5.png",
-      "frame": {
-        "x": 96,
         "y": 64,
         "w": 32,
         "h": 32
@@ -301,7 +301,7 @@
       }
     },
     {
-      "filename": "tile6.png",
+      "filename": "tile4.png",
       "frame": {
         "x": 0,
         "y": 96,
@@ -326,7 +326,7 @@
       }
     },
     {
-      "filename": "tile7.png",
+      "filename": "tile5.png",
       "frame": {
         "x": 32,
         "y": 96,
@@ -351,7 +351,7 @@
       }
     },
     {
-      "filename": "tile8.png",
+      "filename": "tile6.png",
       "frame": {
         "x": 64,
         "y": 96,
@@ -376,10 +376,60 @@
       }
     },
     {
-      "filename": "tile9.png",
+      "filename": "tile7.png",
       "frame": {
         "x": 96,
         "y": 96,
+        "w": 32,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "tile8.png",
+      "frame": {
+        "x": 128,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "tile9.png",
+      "frame": {
+        "x": 128,
+        "y": 32,
         "w": 32,
         "h": 32
       },
@@ -407,7 +457,7 @@
     "image": "objects.png",
     "format": "RGBA8888",
     "size": {
-      "w": 128,
+      "w": 160,
       "h": 128
     },
     "scale": 1

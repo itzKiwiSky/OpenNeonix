@@ -87,6 +87,10 @@ function love.initialize(args)
                     sfx = lollipop.currentSave.game.user.settings.audio.sfx,
                 }
             },
+            editor = {
+                currentLevel = "",
+                levelList = {}
+            },
             gameTime = 0
         }
     }

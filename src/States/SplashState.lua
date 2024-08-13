@@ -15,13 +15,6 @@ function SplashState:enter()
     bootbeep = love.audio.newSource("assets/sounds/beepBoot.ogg", "static")
     if not menumain then
         menumain = love.audio.newSource("assets/sounds/tracks/future_base.ogg", "static")
-        menumain:setLooping(true)
-        menumain:play()
-    else
-        if not menumain:isPlaying() then
-            menumain:setLooping(true)
-            menumain:play()
-        end
     end
     menumain:setVolume(registers.system.settings.audio.music)
 
@@ -43,9 +36,8 @@ function SplashState:enter()
         act:script(function(sleep)
                 termview:showCursor()
             sleep(34 / 60)
-                if not menumain:isPlaying() then
-                    menumain:play()
-                end
+                menumain:setLooping(true)
+                menumain:play()
                 termview:print("Initialization begin...\n")
                 termview:hideCursor()
             sleep(54 / 60)

@@ -4,6 +4,9 @@ function EditorMenuState:enter()
     Conductor = require 'src.Components.Modules.Game.Conductor'
     particleController = require 'src.Components.Modules.Game.Graphics.ParticleController'
     --ParticleController = require 'src.Components.Modules.Game.Graphics.ParticleController'
+    levelEditorList = require 'src.Components.Modules.Game.Menus.LevelEditorList'
+
+    levelEditorList()
 
     fadeOpacity = 1
 
@@ -19,32 +22,29 @@ function EditorMenuState:enter()
     end
     menumain:setVolume(registers.system.settings.audio.music)
 
-    ctlr = particleController("assets/data/particles/EditorListBGParticles.lua")
+    ctlr = particleController("assets/data/particles/EditorStarBGParticles.lua")
+    bgctlr = particleController("assets/data/particles/EditorStarBGParticles.lua")
+    bgctlr.ps[1].system:setTexture(love.graphics.newImage("assets/images/menus/lightDot.png"))
 
     --particleBGFX = ParticleController("assets/data/particles/EditorListBGParticles.lua")
 
     editorLevelList = love.filesystem.getDirectoryItems("editor/edited")
     --editorHubParticles = require("src.Components.Modules.Game.Menu.EditorMenu.EditorMenuParticles")()
 
-    menuCam = camera(love.graphics.getWidth() + 512)
+    --menuCam = camera(love.graphics.getWidth() + 512)
 
-    f_menuSelection = fontcache.getFont("quicksand_regular", 32)
-    f_optionDesc = fontcache.getFont("quicksand_light", 24)
+    f_menuSelection = fontcache.getFont("comfortaa_regular", 32)
+    f_optionDesc = fontcache.getFont("comfortaa_light", 24)
 
     fxGradient = love.graphics.newGradient("vertical", {255, 255, 255, 255}, {0, 0, 0, 0})
 
     glowSize = 0
-
-    knifeevent.hook(Conductor, { "beatHit" })
-    knifeevent.on("beatHit", function()
-        glowSize = 512
-        ctlr:emit()
-    end)
 end
 
 function EditorMenuState:draw()
     love.graphics.setBlendMode("add")
-        ctlr:draw(0, love.graphics.getHeight())
+        ctlr:draw(love.graphics.getWidth() + 128, -128)
+        bgctlr:draw(love.graphics.getWidth() + 128, -128)
     love.graphics.setBlendMode("alpha")
 
     love.graphics.setColor(1, 1, 1, 0.5)
@@ -56,18 +56,34 @@ function EditorMenuState:draw()
     love.graphics.setColor(0, 0, 0, fadeOpacity)
         love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
     love.graphics.setColor(1, 1, 1, 1)
+
+    loveframes.draw()
 end
 
 function EditorMenuState:update(elapsed)
+    loveframes.update(elapsed)
     --particleBGFX:update(elapsed)
     fadeOpacity = math.lerp(fadeOpacity, 0, 0.01)
 
     ctlr:update(elapsed)
+    bgctlr:update(elapsed)
 
     --Conductor.songPos = (menumain:tell() * 1000)
     --Conductor:update(elapsed)
 
     glowSize = math.lerp(glowSize, 0, 0.01)
+end
+
+function EditorMenuState:mousepressed(x, y, button)
+    loveframes.mousepressed(x, y, button)
+end
+
+function EditorMenuState:mousereleased(x, y, button)
+    loveframes.mousereleased(x, y, button)
+end
+
+function EditorMenuState:keypressed(k, isrepeat)
+    loveframes.keypressed(k, isrepeat)
 end
 
 return EditorMenuState

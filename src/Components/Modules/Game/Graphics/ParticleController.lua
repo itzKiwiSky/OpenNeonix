@@ -1,7 +1,7 @@
 local ParticleController = {}
 ParticleController.__index = ParticleController
 
-local function _new(_filename)
+local function _new(_filename, _options)
     local self = setmetatable({}, ParticleController)
     self.ps = {}
 
@@ -18,18 +18,17 @@ local function _new(_filename)
         end
     end
 
+    if _options and _options.texture then
+        --assert(type(_options.id) == "number", "Invalid type, required number")
+        self.ps[_options.id]:setTexture(_options.texture)
+    end
+
     return self
 end
 
 function ParticleController:draw(_x, _y)
     for _, ps in ipairs(self.ps) do
         love.graphics.draw(ps.system, _x, _y)
-    end
-end
-
-function ParticleController:emit()
-    for _, ps in ipairs(self.ps) do
-        ps.system:emit(ps.emitAtStart)
     end
 end
 
