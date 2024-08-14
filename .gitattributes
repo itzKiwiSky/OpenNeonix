@@ -1,4 +1,5 @@
 # Auto detect text files and perform LF normalization
-* text=auto
 *.lang linguist-language=JSON
 *.lua linguist-language=Lua
+*.md linguist-language=Markdown
+*.py linguist-language=Python
