@@ -90,7 +90,12 @@ function love.initialize(args)
             editor = {
                 currentLevelFile = "",
                 currentLevelName = "",
-                levelList = {}
+                levelList = {},
+                interface = {
+                    createForm = {
+                        
+                    }
+                }
             },
             gameTime = 0
         }
