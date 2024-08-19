@@ -1,13 +1,16 @@
 local EventManager = {}
 
+local tags = {
+    restricts = {"__DEBUG__", "__ENGINE__"},
+    globals = {"__TRIGGER__", "__USER__", "__CLIENT__", "__CMD__"}
+}
+
 local function _getEventFiles(_path)
     local items = love.filesystem.getDirectoryItems(_path)
     for item = 1, #items, 1 do
         local path = _path .. "/" .. items[item]
         if love.filesystem.getInfo(path).type == "directory" then
-            if path ~= "preload" then
-                _getEventFiles(path)
-            end
+            _getEventFiles(path)
         end
         if love.filesystem.getInfo(path).type == "file" then
             if path:match("[^.]+$") == "lua" then
@@ -28,7 +31,7 @@ function EventManager.trigger(_code)
     local name = code[1]
     table.remove(code, 1)
     if EventManager.events[name] then
-        EventManager.events[name](unpack(code))
+        EventManager.events[name].action(unpack(code))
     end
 end
 

@@ -141,8 +141,7 @@ function theme.Input(input, opt, x,y,w,h)
 
 		love.graphics.setLineWidth(1)
 		love.graphics.setLineStyle('rough')
-		love.graphics.line(x + opt.cursor_pos + ws, y + (h-th)/2,
-		                   x + opt.cursor_pos + ws, y + (h+th)/2)
+		love.graphics.line(x + opt.cursor_pos + ws, y + (h-th)/2, x + opt.cursor_pos + ws, y + (h+th)/2)
 	end
 
 	-- reset scissor

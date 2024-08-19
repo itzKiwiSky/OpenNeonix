@@ -6,6 +6,8 @@ function EditorMenuState:enter()
     --ParticleController = require 'src.Components.Modules.Game.Graphics.ParticleController'
     levelEditorList = require 'src.Components.Modules.Game.Menus.LevelEditorList'
 
+    gui = suit.new()
+
     levelEditorList()
 
     fadeOpacity = 1
@@ -26,12 +28,7 @@ function EditorMenuState:enter()
     bgctlr = particleController("assets/data/particles/EditorStarBGParticles.lua")
     bgctlr.ps[1].system:setTexture(love.graphics.newImage("assets/images/menus/lightDot.png"))
 
-    --particleBGFX = ParticleController("assets/data/particles/EditorListBGParticles.lua")
-
     editorLevelList = love.filesystem.getDirectoryItems("editor/edited")
-    --editorHubParticles = require("src.Components.Modules.Game.Menu.EditorMenu.EditorMenuParticles")()
-
-    --menuCam = camera(love.graphics.getWidth() + 512)
 
     f_menuSelection = fontcache.getFont("comfortaa_regular", 32)
     f_optionDesc = fontcache.getFont("comfortaa_light", 24)
@@ -58,6 +55,7 @@ function EditorMenuState:draw()
     love.graphics.setColor(1, 1, 1, 1)
 
     loveframes.draw()
+    gui:draw()
 end
 
 function EditorMenuState:update(elapsed)
@@ -84,6 +82,15 @@ end
 
 function EditorMenuState:keypressed(k, isrepeat)
     loveframes.keypressed(k, isrepeat)
+    gui:keypressed(k)
+end
+
+function EditorMenuState:textinput(t)
+    gui:textinput(t)
+end
+
+function EditorMenuState:wheelmoved(x, y)
+    loveframes.wheelmoved(x, y)
 end
 
 return EditorMenuState

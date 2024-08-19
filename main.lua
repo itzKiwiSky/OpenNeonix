@@ -88,7 +88,8 @@ function love.initialize(args)
                 }
             },
             editor = {
-                currentLevel = "",
+                currentLevelFile = "",
+                currentLevelName = "",
                 levelList = {}
             },
             gameTime = 0
@@ -146,7 +147,7 @@ function love.update(elapsed)
     discordrpc.runCallbacks()
     if gamejolt.isLoggedIn then
         registers.system.gameTime = registers.system.gameTime * elapsed
-        if math.floor(registers.system.gameTime) > 25 then
+        if math.floor(registers.system.gameTime) >= 20 then
             gamejolt.pingSession(true)
             registers.system.gameTime = 0
         end
