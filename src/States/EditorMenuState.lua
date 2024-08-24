@@ -3,10 +3,6 @@ EditorMenuState = {}
 function EditorMenuState:enter()
     Conductor = require 'src.Components.Modules.Game.Conductor'
     particleController = require 'src.Components.Modules.Game.Graphics.ParticleController'
-    --ParticleController = require 'src.Components.Modules.Game.Graphics.ParticleController'
-    levelEditorList = require 'src.Components.Modules.Game.Menus.LevelEditorList'
-
-    helium = require 'libraries.helium'
 
     menu = helium.scene.new(true)
 
@@ -22,8 +18,6 @@ function EditorMenuState:enter()
     gausBlurs[3].fastgaussianblur.taps = 21
     gausBlurs[4].fastgaussianblur.taps = 37
     gausBlurs[5].fastgaussianblur.taps = 51
-
-    levelEditorList()
 
     menu:activate()
 
